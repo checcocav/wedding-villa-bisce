@@ -16,9 +16,11 @@ export default function LoginPage() {
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${window.location.origin}/dashboard`,
-      },
-    })
+        emailRedirectTo:
+          'https://wedding-villa-bisce-tq5f.vercel.app/auth/callback',
+  },
+})
+
 
     setLoading(false)
 
