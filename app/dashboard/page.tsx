@@ -174,8 +174,8 @@ export default async function DashboardPage({
         </button>
       </form>
 
-      {/* Photo Upload Link */}
-      <div style={{ marginTop: 16 }}>
+      {/* Photo and Gallery Links */}
+      <div style={{ marginTop: 16, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         <a 
           href="/photos" 
           style={{
@@ -189,6 +189,20 @@ export default async function DashboardPage({
           }}
         >
           📷 Carica foto del matrimonio
+        </a>
+        <a 
+          href="/gallery" 
+          style={{
+            display: 'inline-block',
+            padding: 12,
+            background: '#28a745',
+            color: 'white',
+            textDecoration: 'none',
+            borderRadius: 4,
+            fontWeight: 'bold'
+          }}
+        >
+          🖼️ Vedi tutte le foto
         </a>
       </div>
 
