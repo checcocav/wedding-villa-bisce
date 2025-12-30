@@ -2,23 +2,34 @@ import { createClient } from '@/lib/supabase/server'
 
 export default async function DashboardPage() {
   const supabase = createClient()
-
+  
   const {
     data: { user },
   } = await supabase.auth.getUser()
-
+  
   if (!user) {
     return <p>Non autenticato</p>
   }
 
-  const { data: guest } = await supabase
+  // Cerca per EMAIL invece che per ID
+  const { data: guest, error } = await supabase
     .from('guests')
     .select('*')
-    .eq('id', user.id)
+    .eq('email', user.email)
     .single()
 
+  // Debug: mostra l'errore se c'è
+  if (error) {
+    console.error('Errore query guest:', error)
+  }
+
   if (!guest) {
-    return <p>Non risulti tra gli invitati.</p>
+    return (
+      <div>
+        <p>Non risulti tra gli invitati.</p>
+        <p className="text-sm text-gray-500">Email: {user.email}</p>
+      </div>
+    )
   }
 
   return (
