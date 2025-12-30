@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import GalleryClient from './GalleryClient'
 
+export const dynamic = 'force-dynamic'
+
 export default async function GalleryPage() {
   const supabase = createClient()
   
@@ -14,13 +16,17 @@ export default async function GalleryPage() {
   }
 
   // Fetch all photos with guest information
-  const { data: photos, error } = await supabase
+  const { data: rawPhotos, error } = await supabase
     .from('photos')
     .select(`
       id,
       storage_path,
       created_at,
-      guest:guests(first_name, last_name)
+      guest_id,
+      guests!inner (
+        first_name,
+        last_name
+      )
     `)
     .order('created_at', { ascending: false })
 
@@ -28,13 +34,21 @@ export default async function GalleryPage() {
     console.error('Error fetching photos:', error)
   }
 
+  // Transform the data to match the expected format
+  const photos = rawPhotos?.map((photo: any) => ({
+    id: photo.id,
+    storage_path: photo.storage_path,
+    created_at: photo.created_at,
+    guests: Array.isArray(photo.guests) ? photo.guests[0] : photo.guests
+  })) || []
+
   return (
     <main style={{ padding: 32, maxWidth: 1200, margin: '0 auto' }}>
       <div style={{ marginBottom: 32 }}>
         <h1>🎉 Gallery del Matrimonio</h1>
         <p>Tutti i momenti speciali condivisi dagli ospiti</p>
         
-        <div style={{ marginTop: 16, display: 'flex', gap: 12 }}>
+        <div style={{ marginTop: 16, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <a 
             href="/dashboard" 
             style={{
