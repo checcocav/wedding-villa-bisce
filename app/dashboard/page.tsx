@@ -61,6 +61,28 @@ export default async function DashboardPage() {
           Non partecipo
         </button>
       </form>
+      {guest.has_plus_one && (
+  <section style={{ marginTop: 32 }}>
+    <h2>Il tuo accompagnatore</h2>
+
+    <form method="post" action="/plus-one">
+      <input
+        type="text"
+        name="first_name"
+        placeholder="Nome"
+        required
+      />
+      <input
+        type="text"
+        name="last_name"
+        placeholder="Cognome"
+        required
+      />
+      <button type="submit">Salva accompagnatore</button>
+    </form>
+  </section>
+)}
+
     </main>
   )
 }
