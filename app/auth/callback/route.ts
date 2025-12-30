@@ -1,37 +1,43 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
+import type { NextRequest } from 'next/server'
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
-
   const code = searchParams.get('code')
 
-  if (code) {
-    const cookieStore = cookies()
+  let response = NextResponse.redirect(`${origin}/dashboard`)
 
+  if (code) {
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       {
         cookies: {
-          get(name: string) {
-            return cookieStore.get(name)?.value
+          get(name) {
+            return request.cookies.get(name)?.value
           },
           set(name, value, options) {
-            cookieStore.set({ name, value, ...options })
+            response.cookies.set({
+              name,
+              value,
+              ...options,
+            })
           },
           remove(name, options) {
-            cookieStore.set({ name, value: '', ...options })
+            response.cookies.set({
+              name,
+              value: '',
+              ...options,
+            })
           },
         },
       }
     )
 
-    // 🔴 QUESTO È IL PASSAGGIO CRITICO
+    // 🔴 QUESTO ORA SCRIVE DAVVERO I COOKIE
     await supabase.auth.exchangeCodeForSession(code)
   }
 
-  // redirect finale
-  return NextResponse.redirect(`${origin}/dashboard`)
+  return response
 }
