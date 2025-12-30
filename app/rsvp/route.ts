@@ -2,22 +2,45 @@ import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
-  const formData = await req.formData()
-  const status = formData.get('status')
-
-  const supabase = createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  if (!user) {
-    return NextResponse.redirect(new URL('/login', req.url))
+  try {
+    const formData = await req.formData()
+    const status = formData.get('status') as string
+    
+    // Validate status
+    if (status !== 'yes' && status !== 'no') {
+      console.error('Invalid RSVP status:', status)
+      return NextResponse.redirect(new URL('/dashboard?error=invalid_status', req.url))
+    }
+    
+    const supabase = createClient()
+    
+    const {
+      data: { user },
+      error: userError
+    } = await supabase.auth.getUser()
+    
+    if (userError || !user) {
+      console.error('Authentication error:', userError)
+      return NextResponse.redirect(new URL('/login', req.url))
+    }
+    
+    const { error: updateError } = await supabase
+      .from('guests')
+      .update({
+        rsvp_status: status,
+      })
+      .eq('id', user.id)
+    
+    if (updateError) {
+      console.error('Update error:', updateError)
+      return NextResponse.redirect(new URL('/dashboard?error=update_failed', req.url))
+    }
+    
+    console.log('RSVP updated successfully for user:', user.id, 'Status:', status)
+    return NextResponse.redirect(new URL('/dashboard?success=rsvp_saved', req.url))
+    
+  } catch (error) {
+    console.error('Unexpected error in RSVP route:', error)
+    return NextResponse.redirect(new URL('/dashboard?error=unexpected', req.url))
   }
-
-  await supabase
-    .from('guests')
-    .update({ rsvp_status: status })
-    .eq('id', user.id)
-
-  return NextResponse.redirect(new URL('/dashboard', req.url))
 }
