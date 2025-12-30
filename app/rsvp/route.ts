@@ -11,7 +11,7 @@ export async function POST(req: Request) {
   } = await supabase.auth.getUser()
 
   if (!user) {
-    return NextResponse.redirect('/login')
+    return NextResponse.redirect(new URL('/login', req.url))
   }
 
   await supabase
@@ -19,5 +19,5 @@ export async function POST(req: Request) {
     .update({ rsvp_status: status })
     .eq('id', user.id)
 
-  return NextResponse.redirect('/dashboard')
+  return NextResponse.redirect(new URL('/dashboard', req.url))
 }
