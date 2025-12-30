@@ -13,7 +13,11 @@ const ALLERGIES = [
   'uva',
 ]
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: { success?: string; error?: string }
+}) {
   const supabase = createClient()
   
   // Verifica la sessione
@@ -55,6 +59,73 @@ export default async function DashboardPage() {
 
   return (
     <main style={{ padding: 32 }}>
+      {/* Success Messages */}
+      {searchParams.success === 'allergies_saved' && (
+        <div style={{ 
+          padding: 12, 
+          marginBottom: 16, 
+          background: '#d4edda', 
+          color: '#155724', 
+          borderRadius: 4,
+          border: '1px solid #c3e6cb'
+        }}>
+          ✅ Allergie salvate con successo!
+        </div>
+      )}
+      
+      {searchParams.success === 'plus_one_saved' && (
+        <div style={{ 
+          padding: 12, 
+          marginBottom: 16, 
+          background: '#d4edda', 
+          color: '#155724', 
+          borderRadius: 4,
+          border: '1px solid #c3e6cb'
+        }}>
+          ✅ Accompagnatore salvato con successo!
+        </div>
+      )}
+      
+      {searchParams.success === 'rsvp_saved' && (
+        <div style={{ 
+          padding: 12, 
+          marginBottom: 16, 
+          background: '#d4edda', 
+          color: '#155724', 
+          borderRadius: 4,
+          border: '1px solid #c3e6cb'
+        }}>
+          ✅ RSVP aggiornato con successo!
+        </div>
+      )}
+
+      {/* Error Messages */}
+      {searchParams.error === 'update_failed' && (
+        <div style={{ 
+          padding: 12, 
+          marginBottom: 16, 
+          background: '#f8d7da', 
+          color: '#721c24', 
+          borderRadius: 4,
+          border: '1px solid #f5c6cb'
+        }}>
+          ❌ Errore nel salvataggio. Riprova.
+        </div>
+      )}
+      
+      {searchParams.error === 'unexpected' && (
+        <div style={{ 
+          padding: 12, 
+          marginBottom: 16, 
+          background: '#f8d7da', 
+          color: '#721c24', 
+          borderRadius: 4,
+          border: '1px solid #f5c6cb'
+        }}>
+          ❌ Errore imprevisto. Riprova più tardi.
+        </div>
+      )}
+
       <h1>
         Benvenuto {guest.first_name} {guest.last_name}
       </h1>
@@ -69,16 +140,22 @@ export default async function DashboardPage() {
       </p>
       
       <form method="post" action="/rsvp">
-        <button name="status" value="yes">
+        <button name="status" value="yes" style={{ padding: 8, marginRight: 8 }}>
           Confermo la presenza
         </button>
-        <button name="status" value="no">
+        <button name="status" value="no" style={{ padding: 8 }}>
           Non partecipo
         </button>
       </form>
 
       {guest.has_plus_one === true && (
-        <section style={{ marginTop: 32, padding: 16, border: '1px solid #ccc', borderRadius: 8 }}>
+        <section style={{ 
+          marginTop: 32, 
+          padding: 16, 
+          border: '1px solid #ccc', 
+          borderRadius: 8,
+          background: '#f9f9f9'
+        }}>
           <h2>Il tuo accompagnatore</h2>
           <form method="post" action="/plus-one" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             <input
@@ -87,7 +164,7 @@ export default async function DashboardPage() {
               placeholder="Nome"
               defaultValue={guest.plus_one_first_name || ''}
               required
-              style={{ padding: 8 }}
+              style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
             />
             <input
               type="text"
@@ -95,26 +172,33 @@ export default async function DashboardPage() {
               placeholder="Cognome"
               defaultValue={guest.plus_one_last_name || ''}
               required
-              style={{ padding: 8 }}
+              style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
             />
-            <button type="submit" style={{ padding: 8 }}>
+            <button type="submit" style={{ padding: 8, borderRadius: 4 }}>
               Salva accompagnatore
             </button>
           </form>
         </section>
       )}
 
-      <section style={{ marginTop: 32, padding: 16, border: '1px solid #ccc', borderRadius: 8 }}>
+      <section style={{ 
+        marginTop: 32, 
+        padding: 16, 
+        border: '1px solid #ccc', 
+        borderRadius: 8,
+        background: '#f9f9f9'
+      }}>
         <h2>Allergie e intolleranze alimentari</h2>
         <form method="post" action="/food-allergies">
           <fieldset style={{ border: 'none', padding: 0 }}>
             {ALLERGIES.map((allergy) => (
-              <label key={allergy} style={{ display: 'block', marginBottom: 8 }}>
+              <label key={allergy} style={{ display: 'block', marginBottom: 8, cursor: 'pointer' }}>
                 <input
                   type="checkbox"
                   name="allergies"
                   value={allergy}
                   defaultChecked={guest.food_allergies?.includes(allergy)}
+                  style={{ marginRight: 8 }}
                 />{' '}
                 {allergy}
               </label>
@@ -128,20 +212,28 @@ export default async function DashboardPage() {
                 name="other"
                 rows={3}
                 defaultValue={guest.food_allergies_other ?? ''}
-                style={{ width: '100%', padding: 8, marginTop: 8 }}
+                style={{ 
+                  width: '100%', 
+                  padding: 8, 
+                  marginTop: 8, 
+                  borderRadius: 4, 
+                  border: '1px solid #ccc',
+                  fontFamily: 'inherit'
+                }}
               />
             </label>
           </div>
-          <button style={{ marginTop: 16, padding: 8 }} type="submit">
+          <button style={{ marginTop: 16, padding: 8, borderRadius: 4 }} type="submit">
             Salva
           </button>
         </form>
       </section>
 
       {/* Debug info - remove after testing */}
-      <div style={{ marginTop: 32, padding: 16, background: '#f0f0f0', fontSize: 12 }}>
-        <p>Debug: has_plus_one = {JSON.stringify(guest.has_plus_one)}</p>
-        <p>Debug: food_allergies = {JSON.stringify(guest.food_allergies)}</p>
+      <div style={{ marginTop: 32, padding: 16, background: '#f0f0f0', fontSize: 12, borderRadius: 4 }}>
+        <p><strong>Debug info:</strong></p>
+        <p>has_plus_one = {JSON.stringify(guest.has_plus_one)}</p>
+        <p>food_allergies = {JSON.stringify(guest.food_allergies)}</p>
       </div>
     </main>
   )
