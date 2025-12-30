@@ -1,5 +1,18 @@
 import { createClient } from '@/lib/supabase/server'
 
+const ALLERGIES = [
+  'lattosio/latte',
+  'celiachia',
+  'uova',
+  'pomodori',
+  'banane',
+  'melanzane',
+  'avocado',
+  'mango',
+  'olive',
+  'uva',
+]
+
 export default async function DashboardPage() {
   const supabase = createClient()
   
@@ -28,7 +41,7 @@ export default async function DashboardPage() {
 
   console.log('Guest error:', guestError)
   console.log('Guest data:', guest)
-  console.log('Has plus one:', guest?.has_plus_one) // Added debug
+  console.log('Has plus one:', guest?.has_plus_one)
 
   if (!guest) {
     return (
@@ -91,9 +104,44 @@ export default async function DashboardPage() {
         </section>
       )}
 
+      <section style={{ marginTop: 32, padding: 16, border: '1px solid #ccc', borderRadius: 8 }}>
+        <h2>Allergie e intolleranze alimentari</h2>
+        <form method="post" action="/food-allergies">
+          <fieldset style={{ border: 'none', padding: 0 }}>
+            {ALLERGIES.map((allergy) => (
+              <label key={allergy} style={{ display: 'block', marginBottom: 8 }}>
+                <input
+                  type="checkbox"
+                  name="allergies"
+                  value={allergy}
+                  defaultChecked={guest.food_allergies?.includes(allergy)}
+                />{' '}
+                {allergy}
+              </label>
+            ))}
+          </fieldset>
+          <div style={{ marginTop: 16 }}>
+            <label>
+              Altro (specificare):
+              <br />
+              <textarea
+                name="other"
+                rows={3}
+                defaultValue={guest.food_allergies_other ?? ''}
+                style={{ width: '100%', padding: 8, marginTop: 8 }}
+              />
+            </label>
+          </div>
+          <button style={{ marginTop: 16, padding: 8 }} type="submit">
+            Salva
+          </button>
+        </form>
+      </section>
+
       {/* Debug info - remove after testing */}
       <div style={{ marginTop: 32, padding: 16, background: '#f0f0f0', fontSize: 12 }}>
         <p>Debug: has_plus_one = {JSON.stringify(guest.has_plus_one)}</p>
+        <p>Debug: food_allergies = {JSON.stringify(guest.food_allergies)}</p>
       </div>
     </main>
   )
