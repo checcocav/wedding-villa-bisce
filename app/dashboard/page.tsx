@@ -174,6 +174,24 @@ export default async function DashboardPage({
         </button>
       </form>
 
+      {/* Photo Upload Link */}
+      <div style={{ marginTop: 16 }}>
+        <a 
+          href="/photos" 
+          style={{
+            display: 'inline-block',
+            padding: 12,
+            background: '#007bff',
+            color: 'white',
+            textDecoration: 'none',
+            borderRadius: 4,
+            fontWeight: 'bold'
+          }}
+        >
+          📷 Carica foto del matrimonio
+        </a>
+      </div>
+
       {guest.has_plus_one === true && (
         <section style={{ 
           marginTop: 32, 
