@@ -28,6 +28,7 @@ export default async function DashboardPage() {
 
   console.log('Guest error:', guestError)
   console.log('Guest data:', guest)
+  console.log('Has plus one:', guest?.has_plus_one) // Added debug
 
   if (!guest) {
     return (
@@ -51,8 +52,9 @@ export default async function DashboardPage() {
         📍 <strong>Villa delle Bisce</strong>
       </p>
       <p>
-        Stato RSVP: <strong>{guest.rsvp_status}</strong>
+        Stato RSVP: <strong>{guest.rsvp_status || 'pending'}</strong>
       </p>
+      
       <form method="post" action="/rsvp">
         <button name="status" value="yes">
           Confermo la presenza
@@ -61,28 +63,38 @@ export default async function DashboardPage() {
           Non partecipo
         </button>
       </form>
-      {guest.has_plus_one && (
-  <section style={{ marginTop: 32 }}>
-    <h2>Il tuo accompagnatore</h2>
 
-    <form method="post" action="/plus-one">
-      <input
-        type="text"
-        name="first_name"
-        placeholder="Nome"
-        required
-      />
-      <input
-        type="text"
-        name="last_name"
-        placeholder="Cognome"
-        required
-      />
-      <button type="submit">Salva accompagnatore</button>
-    </form>
-  </section>
-)}
+      {guest.has_plus_one === true && (
+        <section style={{ marginTop: 32, padding: 16, border: '1px solid #ccc', borderRadius: 8 }}>
+          <h2>Il tuo accompagnatore</h2>
+          <form method="post" action="/plus-one" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <input
+              type="text"
+              name="first_name"
+              placeholder="Nome"
+              defaultValue={guest.plus_one_first_name || ''}
+              required
+              style={{ padding: 8 }}
+            />
+            <input
+              type="text"
+              name="last_name"
+              placeholder="Cognome"
+              defaultValue={guest.plus_one_last_name || ''}
+              required
+              style={{ padding: 8 }}
+            />
+            <button type="submit" style={{ padding: 8 }}>
+              Salva accompagnatore
+            </button>
+          </form>
+        </section>
+      )}
 
+      {/* Debug info - remove after testing */}
+      <div style={{ marginTop: 32, padding: 16, background: '#f0f0f0', fontSize: 12 }}>
+        <p>Debug: has_plus_one = {JSON.stringify(guest.has_plus_one)}</p>
+      </div>
     </main>
   )
 }
