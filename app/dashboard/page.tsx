@@ -23,7 +23,7 @@ export default async function DashboardPage() {
   const { data: guest, error: guestError } = await supabase
     .from('guests')
     .select('*')
-    .eq('email', user.email)
+    .eq('id', user.id)
     .single()
 
   console.log('Guest error:', guestError)
@@ -40,9 +40,27 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div>
-      <h1>Ciao {guest.first_name} {guest.last_name} 👋</h1>
-      <p>RSVP: {guest.rsvp_status}</p>
-    </div>
+    <main style={{ padding: 32 }}>
+      <h1>
+        Benvenuto {guest.first_name} {guest.last_name}
+      </h1>
+      <p>
+        📅 <strong>29 Agosto 2026</strong>
+      </p>
+      <p>
+        📍 <strong>Villa delle Bisce</strong>
+      </p>
+      <p>
+        Stato RSVP: <strong>{guest.rsvp_status}</strong>
+      </p>
+      <form method="post" action="/rsvp">
+        <button name="status" value="yes">
+          Confermo la presenza
+        </button>
+        <button name="status" value="no">
+          Non partecipo
+        </button>
+      </form>
+    </main>
   )
 }
