@@ -126,6 +126,32 @@ export default async function DashboardPage({
         </div>
       )}
 
+      {searchParams.error === 'missing_fields' && (
+        <div style={{ 
+          padding: 12, 
+          marginBottom: 16, 
+          background: '#f8d7da', 
+          color: '#721c24', 
+          borderRadius: 4,
+          border: '1px solid #f5c6cb'
+        }}>
+          ❌ Compila tutti i campi obbligatori.
+        </div>
+      )}
+
+      {searchParams.error === 'invalid_status' && (
+        <div style={{ 
+          padding: 12, 
+          marginBottom: 16, 
+          background: '#f8d7da', 
+          color: '#721c24', 
+          borderRadius: 4,
+          border: '1px solid #f5c6cb'
+        }}>
+          ❌ Stato RSVP non valido.
+        </div>
+      )}
+
       <h1>
         Benvenuto {guest.first_name} {guest.last_name}
       </h1>
@@ -234,6 +260,7 @@ export default async function DashboardPage({
         <p><strong>Debug info:</strong></p>
         <p>has_plus_one = {JSON.stringify(guest.has_plus_one)}</p>
         <p>food_allergies = {JSON.stringify(guest.food_allergies)}</p>
+        <p>rsvp_status = {JSON.stringify(guest.rsvp_status)}</p>
       </div>
     </main>
   )
