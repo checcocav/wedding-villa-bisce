@@ -7,7 +7,7 @@ type Photo = {
   id: string
   storage_path: string
   created_at: string
-  guest: {
+  guests: {
     first_name: string
     last_name: string
   } | null
@@ -77,7 +77,7 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
               <>
                 <img
                   src={photoUrls[photo.id]}
-                  alt={`Foto di ${photo.guest?.first_name || 'Ospite'}`}
+                  alt={`Foto di ${photo.guests?.first_name || 'Ospite'}`}
                   style={{
                     width: '100%',
                     height: 250,
@@ -90,7 +90,7 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
                   background: 'white'
                 }}>
                   <p style={{ margin: 0, fontSize: 14, fontWeight: 'bold' }}>
-                    {photo.guest ? `${photo.guest.first_name} ${photo.guest.last_name}` : 'Ospite'}
+                    {photo.guests ? `${photo.guests.first_name} ${photo.guests.last_name}` : 'Ospite'}
                   </p>
                   <p style={{ margin: '4px 0 0 0', fontSize: 12, color: '#666' }}>
                     {formatDate(photo.created_at)}
@@ -150,8 +150,8 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
               textAlign: 'center'
             }}>
               <p style={{ margin: 0, fontWeight: 'bold' }}>
-                {selectedPhoto.photo.guest 
-                  ? `${selectedPhoto.photo.guest.first_name} ${selectedPhoto.photo.guest.last_name}` 
+                {selectedPhoto.photo.guests 
+                  ? `${selectedPhoto.photo.guests.first_name} ${selectedPhoto.photo.guests.last_name}` 
                   : 'Ospite'}
               </p>
               <p style={{ margin: '8px 0 0 0', fontSize: 14, color: '#666' }}>
@@ -159,7 +159,10 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
               </p>
             </div>
             <button
-              onClick={() => setSelectedPhoto(null)}
+              onClick={(e) => {
+                e.stopPropagation()
+                setSelectedPhoto(null)
+              }}
               style={{
                 position: 'absolute',
                 top: -40,
