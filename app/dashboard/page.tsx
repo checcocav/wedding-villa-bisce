@@ -39,10 +39,10 @@ export default async function DashboardPage({
     )
   }
 
-  const { data: guest } = await supabase
+  const { data: guest, error: guestError } = await supabase
     .from('guests')
     .select('*')
-    .eq('user_id', user.id)
+    .eq('user_id', user.id)  // <-- Cambiato da 'id' a 'user_id'
     .single()
 
   if (!guest) {
