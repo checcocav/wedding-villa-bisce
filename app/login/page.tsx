@@ -1,31 +1,18 @@
-'use client'
+import LoginClient from './LoginClient'
 
-import { useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
+export const dynamic = 'force-dynamic'
 
 export default function LoginPage() {
-  const supabase = createClient()
-  const [email, setEmail] = useState('')
-
-  async function signIn() {
-    await supabase.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo:
-          'https://wedding-villa-bisce-tq5f.vercel.app/auth/callback',
-      },
-    })
-  }
-
   return (
-    <div>
-      <input
-        type="email"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <button onClick={signIn}>Accedi</button>
-    </div>
+    <main style={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+      padding: '20px'
+    }}>
+      <LoginClient />
+    </main>
   )
 }
