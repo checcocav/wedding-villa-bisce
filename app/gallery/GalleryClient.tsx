@@ -13,11 +13,13 @@ type Photo = {
   } | null
 }
 
-export default function GalleryClient({ photos }: { photos: Photo[] }) {
+export default function GalleryClient({ photos: initialPhotos }: { photos: Photo[] }) {
+  const [photos, setPhotos] = useState<Photo[]>(initialPhotos)
   const [photoUrls, setPhotoUrls] = useState<Record<string, string>>({})
   const [selectedPhoto, setSelectedPhoto] = useState<{ url: string; photo: Photo } | null>(null)
   const supabase = createClient()
 
+  // Load photo URLs
   useEffect(() => {
     const loadPhotoUrls = async () => {
       const urls: Record<string, string> = {}
@@ -37,6 +39,67 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
 
     loadPhotoUrls()
   }, [photos, supabase])
+
+  // REALTIME: Listen for new photos
+  useEffect(() => {
+    const channel = supabase
+      .channel('photos-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'photos'
+        },
+        async (payload) => {
+          console.log('New photo inserted!', payload)
+          
+          // Fetch the new photo with guest info
+          const { data: newPhoto } = await supabase
+            .from('photos')
+            .select(`
+              id,
+              storage_path,
+              created_at,
+              guests!inner (
+                first_name,
+                last_name
+              )
+            `)
+            .eq('id', payload.new.id)
+            .single()
+
+          if (newPhoto) {
+            const transformedPhoto = {
+              id: newPhoto.id,
+              storage_path: newPhoto.storage_path,
+              created_at: newPhoto.created_at,
+              guests: Array.isArray(newPhoto.guests) ? newPhoto.guests[0] : newPhoto.guests
+            }
+            
+            // Add to the top of the list
+            setPhotos(prev => [transformedPhoto, ...prev])
+            
+            // Load the URL for the new photo
+            const { data } = await supabase.storage
+              .from('wedding-photos')
+              .createSignedUrl(transformedPhoto.storage_path, 3600)
+            
+            if (data?.signedUrl) {
+              setPhotoUrls(prev => ({
+                ...prev,
+                [transformedPhoto.id]: data.signedUrl
+              }))
+            }
+          }
+        }
+      )
+      .subscribe()
+
+    return () => {
+      supabase.removeChannel(channel)
+    }
+  }, [supabase])
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
@@ -67,7 +130,8 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
               overflow: 'hidden',
               cursor: 'pointer',
               transition: 'transform 0.2s',
-              border: '1px solid #ddd'
+              border: '1px solid #ddd',
+              animation: 'fadeIn 0.5s ease-in'
             }}
             onClick={() => photoUrls[photo.id] && setSelectedPhoto({ url: photoUrls[photo.id], photo })}
             onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
@@ -184,6 +248,19 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
           </div>
         </div>
       )}
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      `}</style>
     </>
   )
 }
