@@ -42,7 +42,7 @@ export default async function DashboardPage({
   const { data: guest, error: guestError } = await supabase
     .from('guests')
     .select('*')
-    .eq('user_id', user.id)  // <-- Cambiato da 'id' a 'user_id'
+    .eq('user_id', user.id)
     .single()
 
   if (!guest) {
@@ -92,6 +92,29 @@ export default async function DashboardPage({
         }}>
           Benvenuto, {guest.first_name}
         </h1>
+        
+        {/* ADMIN BUTTON */}
+        {guest.role === 'admin' && (
+          <div style={{ marginTop: 16 }}>
+            
+              href="/admin"
+              style={{
+                display: 'inline-block',
+                padding: '12px 24px',
+                background: '#667eea',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: 4,
+                fontSize: '1rem',
+                fontWeight: '500',
+                boxShadow: '0 2px 8px rgba(102, 126, 234, 0.3)',
+                transition: 'all 0.3s'
+              }}
+            >
+              🛠️ Admin Dashboard
+            </a>
+          </div>
+        )}
       </header>
 
       <main style={{ 
