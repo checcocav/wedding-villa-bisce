@@ -41,8 +41,19 @@ export default async function DashboardPage({
 
   const { data: guest, error: guestError } = await supabase
     .from('guests')
-    .select('*')
-    .eq('user_id', user.id)  // <-- Cambiato da 'id' a 'user_id'
+    .select(`
+      *,
+      accommodations (
+        id,
+        name,
+        address,
+        description,
+        phone,
+        email,
+        maps_link
+      )
+    `)
+    .eq('user_id', user.id)
     .single()
 
   if (!guest) {
@@ -69,6 +80,11 @@ export default async function DashboardPage({
       </div>
     )
   }
+
+  // Extract accommodation from the array if it exists
+  const assignedAccommodation = Array.isArray(guest.accommodations) 
+    ? guest.accommodations[0] 
+    : guest.accommodations
 
   return (
     <div style={{ 
@@ -139,6 +155,20 @@ export default async function DashboardPage({
             textAlign: 'center'
           }}>
             ✅ RSVP aggiornato con successo!
+          </div>
+        )}
+
+        {searchParams.success === 'accommodation_saved' && (
+          <div style={{ 
+            padding: 16, 
+            marginBottom: 24, 
+            background: '#d4edda', 
+            color: '#155724', 
+            borderRadius: 8,
+            border: '1px solid #c3e6cb',
+            textAlign: 'center'
+          }}>
+            ✅ Preferenze alloggio salvate con successo!
           </div>
         )}
 
@@ -354,6 +384,172 @@ export default async function DashboardPage({
               🖼️ Gallery
             </a>
           </div>
+        </section>
+
+        {/* Accommodation Section */}
+        <section style={{ 
+          background: 'white',
+          borderRadius: 8,
+          padding: 32,
+          marginBottom: 32,
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+        }}>
+          <h3 style={{
+            fontSize: '1.5rem',
+            fontWeight: '300',
+            color: '#2c3e50',
+            marginBottom: 24,
+            textAlign: 'center',
+            letterSpacing: '0.5px'
+          }}>
+            🏨 Alloggio
+          </h3>
+
+          {assignedAccommodation ? (
+            // Guest has assigned accommodation
+            <div style={{
+              background: '#e7f3ff',
+              border: '2px solid #2196F3',
+              borderRadius: 8,
+              padding: 24,
+              marginBottom: 24
+            }}>
+              <h4 style={{
+                fontSize: '1.3rem',
+                color: '#2c3e50',
+                marginBottom: 16,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8
+              }}>
+                ✨ Alloggio Riservato per Te
+              </h4>
+              <div style={{ marginBottom: 12 }}>
+                <strong style={{ color: '#1976D2', fontSize: '1.1rem' }}>
+                  {assignedAccommodation.name}
+                </strong>
+              </div>
+              {assignedAccommodation.description && (
+                <p style={{ color: '#546e7a', marginBottom: 12, lineHeight: 1.6 }}>
+                  {assignedAccommodation.description}
+                </p>
+              )}
+              <div style={{ color: '#2c3e50', marginBottom: 8 }}>
+                📍 <strong>Indirizzo:</strong> {assignedAccommodation.address}
+              </div>
+              {assignedAccommodation.phone && (
+                <div style={{ color: '#2c3e50', marginBottom: 8 }}>
+                  📞 <strong>Telefono:</strong> {assignedAccommodation.phone}
+                </div>
+              )}
+              {assignedAccommodation.email && (
+                <div style={{ color: '#2c3e50', marginBottom: 8 }}>
+                  ✉️ <strong>Email:</strong> {assignedAccommodation.email}
+                </div>
+              )}
+              {assignedAccommodation.maps_link && (
+                <a 
+                  href={assignedAccommodation.maps_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-block',
+                    marginTop: 16,
+                    padding: '10px 20px',
+                    background: '#2196F3',
+                    color: 'white',
+                    textDecoration: 'none',
+                    borderRadius: 4,
+                    fontSize: '0.95rem',
+                    fontWeight: '500'
+                  }}
+                >
+                  🗺️ Vedi su Maps
+                </a>
+              )}
+            </div>
+          ) : (
+            // No assigned accommodation - ask if they need one
+            <form method="post" action="/accommodation" style={{ maxWidth: 500, margin: '0 auto' }}>
+              <div style={{ marginBottom: 24 }}>
+                <label style={{
+                  display: 'block',
+                  marginBottom: 12,
+                  color: '#2c3e50',
+                  fontSize: '1.1rem',
+                  fontWeight: '500'
+                }}>
+                  Hai bisogno di alloggio?
+                </label>
+                <div style={{ display: 'flex', gap: 16, marginBottom: 16 }}>
+                  <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', flex: 1 }}>
+                    <input
+                      type="radio"
+                      name="needs_accommodation"
+                      value="yes"
+                      defaultChecked={guest.needs_accommodation === true}
+                      style={{ marginRight: 8, cursor: 'pointer', width: 18, height: 18 }}
+                    />
+                    <span style={{ fontSize: '1rem', color: '#2c3e50' }}>Sì</span>
+                  </label>
+                  <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', flex: 1 }}>
+                    <input
+                      type="radio"
+                      name="needs_accommodation"
+                      value="no"
+                      defaultChecked={guest.needs_accommodation === false}
+                      style={{ marginRight: 8, cursor: 'pointer', width: 18, height: 18 }}
+                    />
+                    <span style={{ fontSize: '1rem', color: '#2c3e50' }}>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: 24 }}>
+                <label style={{
+                  display: 'block',
+                  marginBottom: 8,
+                  color: '#2c3e50',
+                  fontSize: '0.95rem'
+                }}>
+                  Note o richieste particolari (opzionale):
+                </label>
+                <textarea
+                  name="accommodation_notes"
+                  rows={3}
+                  defaultValue={guest.accommodation_notes ?? ''}
+                  placeholder="Es. preferenze, numero di notti, ecc."
+                  style={{ 
+                    width: '100%',
+                    padding: 12,
+                    border: '1px solid #ddd',
+                    borderRadius: 4,
+                    fontSize: '1rem',
+                    fontFamily: 'inherit',
+                    resize: 'vertical'
+                  }}
+                />
+              </div>
+
+              <button 
+                type="submit"
+                style={{ 
+                  width: '100%',
+                  padding: 14,
+                  background: '#667eea',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: 4,
+                  fontSize: '1rem',
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  fontWeight: '500'
+                }}
+              >
+                Salva Preferenze
+              </button>
+            </form>
+          )}
         </section>
 
         {/* Plus One */}
