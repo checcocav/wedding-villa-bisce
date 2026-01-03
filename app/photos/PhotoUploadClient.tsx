@@ -12,7 +12,7 @@ export default function PhotoUploadClient({
 }) {
   const [uploading, setUploading] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null)
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+  const [previewUrls, setPreviewUrls] = useState<string[]>([])
   const cameraInputRef = useRef<HTMLInputElement>(null)
   const galleryInputRef = useRef<HTMLInputElement>(null)
   const supabase = createClient()
@@ -26,18 +26,21 @@ export default function PhotoUploadClient({
   }
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return
+    const files = e.target.files
+    if (!files || files.length === 0) return
 
-    // Mostra preview
-    const objectUrl = URL.createObjectURL(file)
-    setPreviewUrl(objectUrl)
+    // Crea preview per tutte le foto selezionate
+    const urls = Array.from(files).map(file => URL.createObjectURL(file))
+    setPreviewUrls(urls)
     setMessage(null)
   }
 
   const handleUpload = async () => {
-    const file = cameraInputRef.current?.files?.[0] || galleryInputRef.current?.files?.[0]
-    if (!file) {
+    const files = Array.from(cameraInputRef.current?.files || []).concat(
+      Array.from(galleryInputRef.current?.files || [])
+    )
+    
+    if (files.length === 0) {
       setMessage({ type: 'error', text: 'Nessuna foto selezionata' })
       return
     }
@@ -46,33 +49,62 @@ export default function PhotoUploadClient({
     setMessage(null)
 
     try {
-      // 1. Upload file to Supabase Storage
-      const fileExt = file.name.split('.').pop()
-      const fileName = `${guestId}-${Date.now()}.${fileExt}`
-      const filePath = `${fileName}`
+      let successCount = 0
+      let errorCount = 0
 
-      const { error: uploadError } = await supabase.storage
-        .from('wedding-photos')
-        .upload(filePath, file, {
-          cacheControl: '3600',
-          upsert: false
+      // Carica ogni foto
+      for (const file of files) {
+        try {
+          // 1. Upload file to Supabase Storage
+          const fileExt = file.name.split('.').pop()
+          const fileName = `${guestId}-${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
+          const filePath = `${fileName}`
+
+          const { error: uploadError } = await supabase.storage
+            .from('wedding-photos')
+            .upload(filePath, file, {
+              cacheControl: '3600',
+              upsert: false
+            })
+
+          if (uploadError) throw uploadError
+
+          // 2. Insert record in photos table
+          const { error: dbError } = await supabase
+            .from('photos')
+            .insert({
+              guest_id: guestId,
+              storage_path: filePath,
+            })
+
+          if (dbError) throw dbError
+
+          successCount++
+        } catch (error) {
+          console.error('Error uploading file:', error)
+          errorCount++
+        }
+      }
+
+      // Mostra risultato
+      if (successCount > 0 && errorCount === 0) {
+        setMessage({ 
+          type: 'success', 
+          text: `✅ ${successCount} ${successCount === 1 ? 'foto caricata' : 'foto caricate'} con successo!` 
         })
-
-      if (uploadError) throw uploadError
-
-      // 2. Insert record in photos table
-      const { error: dbError } = await supabase
-        .from('photos')
-        .insert({
-          guest_id: guestId,
-          storage_path: filePath,
+      } else if (successCount > 0 && errorCount > 0) {
+        setMessage({ 
+          type: 'success', 
+          text: `⚠️ ${successCount} foto caricate, ${errorCount} non riuscite` 
         })
+      } else {
+        setMessage({ 
+          type: 'error', 
+          text: `❌ Errore nel caricamento delle foto` 
+        })
+      }
 
-      if (dbError) throw dbError
-
-      // Success!
-      setMessage({ type: 'success', text: '✅ Foto caricata con successo!' })
-      setPreviewUrl(null)
+      setPreviewUrls([])
       if (cameraInputRef.current) cameraInputRef.current.value = ''
       if (galleryInputRef.current) galleryInputRef.current.value = ''
 
@@ -85,7 +117,7 @@ export default function PhotoUploadClient({
   }
 
   const handleCancel = () => {
-    setPreviewUrl(null)
+    setPreviewUrls([])
     setMessage(null)
     if (cameraInputRef.current) cameraInputRef.current.value = ''
     if (galleryInputRef.current) galleryInputRef.current.value = ''
@@ -120,12 +152,13 @@ export default function PhotoUploadClient({
         ref={galleryInputRef}
         type="file"
         accept="image/*"
+        multiple
         onChange={handleFileChange}
         style={{ display: 'none' }}
       />
 
       {/* Two separate buttons or Preview */}
-      {!previewUrl ? (
+      {previewUrls.length === 0 ? (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <button
             onClick={handleCameraCapture}
@@ -163,19 +196,32 @@ export default function PhotoUploadClient({
         </div>
       ) : (
         <div>
-          {/* Preview */}
+          {/* Preview Grid */}
           <div style={{
             marginBottom: 16,
-            border: '2px solid #ccc',
-            borderRadius: 8,
-            overflow: 'hidden'
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+            gap: 12
           }}>
-            <img 
-              src={previewUrl} 
-              alt="Preview" 
-              style={{ width: '100%', display: 'block' }}
-            />
+            {previewUrls.map((url, index) => (
+              <div key={index} style={{
+                border: '2px solid #ccc',
+                borderRadius: 8,
+                overflow: 'hidden',
+                aspectRatio: '1'
+              }}>
+                <img 
+                  src={url} 
+                  alt={`Preview ${index + 1}`} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+            ))}
           </div>
+
+          <p style={{ marginBottom: 12, fontSize: 14, color: '#666', textAlign: 'center' }}>
+            {previewUrls.length} {previewUrls.length === 1 ? 'foto selezionata' : 'foto selezionate'}
+          </p>
 
           {/* Action buttons */}
           <div style={{ display: 'flex', gap: 12 }}>
