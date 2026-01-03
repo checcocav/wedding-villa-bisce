@@ -90,50 +90,55 @@ export default function LoginClient() {
   }
 
   const handleMagicLink = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setMessage(null)
+  e.preventDefault()
+  setLoading(true)
+  setMessage(null)
 
-    try {
-      // Verifica che l'email sia nella lista invitati
-      const { data: guest } = await supabase
-        .from('guests')
-        .select('email')
-        .eq('email', email)
-        .single()
+  try {
+    console.log('Tentativo magic link per:', email) // DEBUG
+    
+    // Verifica che l'email sia nella lista invitati
+    const { data: guest, error: guestError } = await supabase
+      .from('guests')
+      .select('email, role')
+      .eq('email', email)
+      .single()
 
-      if (!guest) {
-        setMessage({ 
-          type: 'error', 
-          text: 'Email non trovata nella lista degli invitati. Contatta gli sposi.' 
-        })
-        setLoading(false)
-        return
-      }
+    console.log('Risultato query guest:', { guest, guestError }) // DEBUG
 
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
-        },
-      })
-      
-      if (error) throw error
-      
-      setMessage({ 
-        type: 'success', 
-        text: 'Controlla la tua email per il link di accesso!' 
-      })
-    } catch (error: any) {
+    if (!guest) {
+      console.log('Guest non trovato per email:', email) // DEBUG
       setMessage({ 
         type: 'error', 
-        text: error.message || 'Si è verificato un errore' 
+        text: 'Email non trovata nella lista degli invitati. Contatta gli sposi.' 
       })
-    } finally {
       setLoading(false)
+      return
     }
-  }
 
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: `${window.location.origin}/auth/callback`,
+      },
+    })
+    
+    if (error) throw error
+    
+    setMessage({ 
+      type: 'success', 
+      text: 'Controlla la tua email per il link di accesso!' 
+    })
+  } catch (error: any) {
+    console.error('Errore completo:', error) // DEBUG
+    setMessage({ 
+      type: 'error', 
+      text: error.message || 'Si è verificato un errore' 
+    })
+  } finally {
+    setLoading(false)
+  }
+}
   return (
     <div style={{
       background: 'white',
