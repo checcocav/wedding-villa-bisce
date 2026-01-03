@@ -42,7 +42,7 @@ export default async function DashboardPage({
   const { data: guest, error: guestError } = await supabase
     .from('guests')
     .select('*')
-    .eq('user_id', user.id)
+    .eq('user_id', user.id)  // <-- Cambiato da 'id' a 'user_id'
     .single()
 
   if (!guest) {
@@ -76,6 +76,7 @@ export default async function DashboardPage({
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
     }}>
+      {/* Header */}
       <header style={{
         background: 'white',
         borderBottom: '1px solid #e0e0e0',
@@ -91,27 +92,6 @@ export default async function DashboardPage({
         }}>
           Benvenuto, {guest.first_name}
         </h1>
-        
-        {guest.role === 'admin' && (
-          <div style={{ marginTop: 16 }}>
-            
-              href="/admin"
-              style={{
-                display: 'inline-block',
-                padding: '12px 24px',
-                background: '#667eea',
-                color: 'white',
-                textDecoration: 'none',
-                borderRadius: 4,
-                fontSize: '1rem',
-                fontWeight: '500',
-                boxShadow: '0 2px 8px rgba(102, 126, 234, 0.3)'
-              }}
-            >
-              🛠️ Admin Dashboard
-            </a>
-          </div>
-        )}
       </header>
 
       <main style={{ 
@@ -119,6 +99,7 @@ export default async function DashboardPage({
         margin: '0 auto',
         padding: '40px 20px'
       }}>
+        {/* Success Messages */}
         {searchParams.success === 'allergies_saved' && (
           <div style={{ 
             padding: 16, 
@@ -161,6 +142,7 @@ export default async function DashboardPage({
           </div>
         )}
 
+        {/* Error Messages */}
         {searchParams.error === 'update_failed' && (
           <div style={{ 
             padding: 16, 
@@ -217,6 +199,7 @@ export default async function DashboardPage({
           </div>
         )}
 
+        {/* Event Info Card */}
         <section style={{
           background: 'white',
           borderRadius: 8,
@@ -319,6 +302,7 @@ export default async function DashboardPage({
           </div>
         </section>
 
+        {/* Quick Actions */}
         <section style={{
           background: 'white',
           borderRadius: 8,
@@ -372,6 +356,7 @@ export default async function DashboardPage({
           </div>
         </section>
 
+        {/* Plus One */}
         {guest.has_plus_one === true && (
           <section style={{ 
             background: 'white',
@@ -462,6 +447,7 @@ export default async function DashboardPage({
           </section>
         )}
 
+        {/* Allergies */}
         <section style={{ 
           background: 'white',
           borderRadius: 8,
@@ -546,6 +532,7 @@ export default async function DashboardPage({
         </section>
       </main>
 
+      {/* Footer */}
       <footer style={{
         padding: '32px 20px',
         textAlign: 'center',
