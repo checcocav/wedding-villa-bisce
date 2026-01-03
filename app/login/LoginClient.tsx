@@ -19,7 +19,7 @@ export default function LoginClient() {
     setMessage(null)
 
     try {
-      // Verifica che l'email sia nella lista invitati
+      /* // Verifica che l'email sia nella lista invitati
       const { data: guest } = await supabase
         .from('guests')
         .select('email')
@@ -33,7 +33,7 @@ export default function LoginClient() {
         })
         setLoading(false)
         return
-      }
+      }*/
 
       // Registra l'utente
       const { data, error } = await supabase.auth.signUp({
