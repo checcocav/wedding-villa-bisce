@@ -31,7 +31,7 @@ export async function POST(req: Request) {
         plus_one_first_name: firstName.trim(),
         plus_one_last_name: lastName.trim(),
       })
-      .eq('id', user.id)
+      .eq('user_id', user.id)
     
     if (updateError) {
       console.error('Update error:', updateError)
