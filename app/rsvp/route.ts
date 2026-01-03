@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       .update({
         rsvp_status: status,
       })
-      .eq('id', user.id)
+      .eq('user_id', user.id)
     
     if (updateError) {
       console.error('Update error:', updateError)
