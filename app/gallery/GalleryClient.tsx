@@ -7,6 +7,7 @@ type Photo = {
   id: string
   storage_path: string
   created_at: string
+  uploader_name: string | null
   guests: {
     first_name: string
     last_name: string
@@ -54,14 +55,15 @@ export default function GalleryClient({ photos: initialPhotos }: { photos: Photo
         async (payload) => {
           console.log('New photo inserted!', payload)
           
-          // Fetch the new photo with guest info
+          // Fetch the new photo with guest info (using left join now)
           const { data: newPhoto } = await supabase
             .from('photos')
             .select(`
               id,
               storage_path,
               created_at,
-              guests!inner (
+              uploader_name,
+              guests (
                 first_name,
                 last_name
               )
@@ -74,6 +76,7 @@ export default function GalleryClient({ photos: initialPhotos }: { photos: Photo
               id: newPhoto.id,
               storage_path: newPhoto.storage_path,
               created_at: newPhoto.created_at,
+              uploader_name: newPhoto.uploader_name,
               guests: Array.isArray(newPhoto.guests) ? newPhoto.guests[0] : newPhoto.guests
             }
             
@@ -112,6 +115,13 @@ export default function GalleryClient({ photos: initialPhotos }: { photos: Photo
     })
   }
 
+  const getDisplayName = (photo: Photo) => {
+    if (photo.guests) {
+      return `${photo.guests.first_name} ${photo.guests.last_name}`
+    }
+    return photo.uploader_name || 'Ospite'
+  }
+
   return (
     <>
       {/* Gallery Grid */}
@@ -141,7 +151,7 @@ export default function GalleryClient({ photos: initialPhotos }: { photos: Photo
               <>
                 <img
                   src={photoUrls[photo.id]}
-                  alt={`Foto di ${photo.guests?.first_name || 'Ospite'}`}
+                  alt={`Foto di ${getDisplayName(photo)}`}
                   style={{
                     width: '100%',
                     height: 250,
@@ -154,7 +164,7 @@ export default function GalleryClient({ photos: initialPhotos }: { photos: Photo
                   background: 'white'
                 }}>
                   <p style={{ margin: 0, fontSize: 14, fontWeight: 'bold' }}>
-                    {photo.guests ? `${photo.guests.first_name} ${photo.guests.last_name}` : 'Ospite'}
+                    {getDisplayName(photo)}
                   </p>
                   <p style={{ margin: '4px 0 0 0', fontSize: 12, color: '#666' }}>
                     {formatDate(photo.created_at)}
@@ -214,9 +224,7 @@ export default function GalleryClient({ photos: initialPhotos }: { photos: Photo
               textAlign: 'center'
             }}>
               <p style={{ margin: 0, fontWeight: 'bold' }}>
-                {selectedPhoto.photo.guests 
-                  ? `${selectedPhoto.photo.guests.first_name} ${selectedPhoto.photo.guests.last_name}` 
-                  : 'Ospite'}
+                {getDisplayName(selectedPhoto.photo)}
               </p>
               <p style={{ margin: '8px 0 0 0', fontSize: 14, color: '#666' }}>
                 {formatDate(selectedPhoto.photo.created_at)}
