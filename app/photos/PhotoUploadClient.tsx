@@ -13,11 +13,16 @@ export default function PhotoUploadClient({
   const [uploading, setUploading] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
-  const fileInputRef = useRef<HTMLInputElement>(null)
+  const cameraInputRef = useRef<HTMLInputElement>(null)
+  const galleryInputRef = useRef<HTMLInputElement>(null)
   const supabase = createClient()
 
-  const handleCapture = () => {
-    fileInputRef.current?.click()
+  const handleCameraCapture = () => {
+    cameraInputRef.current?.click()
+  }
+
+  const handleGallerySelect = () => {
+    galleryInputRef.current?.click()
   }
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +36,7 @@ export default function PhotoUploadClient({
   }
 
   const handleUpload = async () => {
-    const file = fileInputRef.current?.files?.[0]
+    const file = cameraInputRef.current?.files?.[0] || galleryInputRef.current?.files?.[0]
     if (!file) {
       setMessage({ type: 'error', text: 'Nessuna foto selezionata' })
       return
@@ -68,7 +73,8 @@ export default function PhotoUploadClient({
       // Success!
       setMessage({ type: 'success', text: '✅ Foto caricata con successo!' })
       setPreviewUrl(null)
-      if (fileInputRef.current) fileInputRef.current.value = ''
+      if (cameraInputRef.current) cameraInputRef.current.value = ''
+      if (galleryInputRef.current) galleryInputRef.current.value = ''
 
     } catch (error: any) {
       console.error('Upload error:', error)
@@ -81,7 +87,8 @@ export default function PhotoUploadClient({
   const handleCancel = () => {
     setPreviewUrl(null)
     setMessage(null)
-    if (fileInputRef.current) fileInputRef.current.value = ''
+    if (cameraInputRef.current) cameraInputRef.current.value = ''
+    if (galleryInputRef.current) galleryInputRef.current.value = ''
   }
 
   return (
@@ -100,34 +107,60 @@ export default function PhotoUploadClient({
         </div>
       )}
 
-      {/* Hidden file input with camera capture */}
+      {/* Hidden file inputs */}
       <input
-        ref={fileInputRef}
+        ref={cameraInputRef}
         type="file"
         accept="image/*"
         capture="environment"
         onChange={handleFileChange}
         style={{ display: 'none' }}
       />
+      <input
+        ref={galleryInputRef}
+        type="file"
+        accept="image/*"
+        onChange={handleFileChange}
+        style={{ display: 'none' }}
+      />
 
-      {/* Preview or Capture Button */}
+      {/* Two separate buttons or Preview */}
       {!previewUrl ? (
-        <button
-          onClick={handleCapture}
-          style={{
-            width: '100%',
-            padding: 20,
-            fontSize: 18,
-            background: '#007bff',
-            color: 'white',
-            border: 'none',
-            borderRadius: 8,
-            cursor: 'pointer',
-            fontWeight: 'bold'
-          }}
-        >
-          📷 Scatta una foto
-        </button>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <button
+            onClick={handleCameraCapture}
+            style={{
+              width: '100%',
+              padding: 20,
+              fontSize: 18,
+              background: '#007bff',
+              color: 'white',
+              border: 'none',
+              borderRadius: 8,
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+          >
+            📷 Scatta una foto
+          </button>
+          
+          <button
+            onClick={handleGallerySelect}
+            style={{
+              width: '100%',
+              padding: 20,
+              fontSize: 18,
+              background: '#6c757d',
+              color: 'white',
+              border: 'none',
+              borderRadius: 8,
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+          >
+            🖼️ Scegli dalla galleria
+          </button>
+        </div>
       ) : (
         <div>
           {/* Preview */}
