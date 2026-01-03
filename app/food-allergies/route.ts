@@ -25,7 +25,7 @@ export async function POST(req: Request) {
         food_allergies: allergies,
         food_allergies_other: other || null,
       })
-      .eq('id', user.id)
+      .eq('user_id', user.id)
     
     if (updateError) {
       console.error('Update error:', updateError)
