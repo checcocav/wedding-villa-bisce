@@ -61,7 +61,7 @@ export default async function PhotosPage() {
         </a>
       </div>
       
-      <PhotoUploadClient guestId={user.id} guestName={`${guest.first_name} ${guest.last_name}`} />
+      <PhotoUploadClient guestId={guest.id} guestName={`${guest.first_name} ${guest.last_name}`} />
     </main>
   )
 }
