@@ -143,7 +143,7 @@ export default function LandingClient() {
               color: '#546e7a',
               lineHeight: '1.6'
             }}>
-              Venerdì<br />
+              Sabato<br />
               29 Agosto 2026
             </p>
           </div>
@@ -168,8 +168,8 @@ export default function LandingClient() {
               color: '#546e7a',
               lineHeight: '1.6'
             }}>
-              Villa delle Bisce<br />
-              Carate Brianza, MB
+              Palazzo delle Bisce<br />
+              Molinella, BO
             </p>
           </div>
 
