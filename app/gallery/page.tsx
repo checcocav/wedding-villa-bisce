@@ -15,7 +15,7 @@ export default async function GalleryPage() {
     redirect('/login')
   }
 
-  // Fetch all photos with guest information
+  // Fetch all photos with guest information (rimosso !inner)
   const { data: rawPhotos, error } = await supabase
     .from('photos')
     .select(`
@@ -23,7 +23,7 @@ export default async function GalleryPage() {
       storage_path,
       created_at,
       guest_id,
-      guests!inner (
+      guests (
         first_name,
         last_name
       )
@@ -33,6 +33,8 @@ export default async function GalleryPage() {
   if (error) {
     console.error('Error fetching photos:', error)
   }
+
+  console.log('Fetched photos:', rawPhotos) // Debug log
 
   // Transform the data to match the expected format
   const photos = rawPhotos?.map((photo: any) => ({
