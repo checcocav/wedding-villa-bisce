@@ -21,7 +21,7 @@ export default function LandingClient() {
           color: '#2c3e50',
           letterSpacing: '2px'
         }}>
-          Francesco & Martina
+          Martina & Francesco
         </h1>
         <p style={{
           fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
@@ -37,33 +37,67 @@ export default function LandingClient() {
           background: '#b8860b',
           margin: '0 0 40px 0'
         }} />
-        <a 
-          href="/login"
-          style={{
-            display: 'inline-block',
-            padding: '16px 48px',
-            background: 'white',
-            color: '#2c3e50',
-            textDecoration: 'none',
-            borderRadius: '2px',
-            fontSize: '1rem',
-            letterSpacing: '1px',
-            textTransform: 'uppercase',
-            border: '1px solid #ddd',
-            transition: 'all 0.3s',
-            fontWeight: '400'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = '#2c3e50'
-            e.currentTarget.style.color = 'white'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'white'
-            e.currentTarget.style.color = '#2c3e50'
-          }}
-        >
-          Accedi all'area riservata
-        </a>
+        <div style={{
+          display: 'flex',
+          gap: '16px',
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}>
+          <a 
+            href="/login"
+            style={{
+              display: 'inline-block',
+              padding: '16px 48px',
+              background: 'white',
+              color: '#2c3e50',
+              textDecoration: 'none',
+              borderRadius: '2px',
+              fontSize: '1rem',
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              border: '1px solid #ddd',
+              transition: 'all 0.3s',
+              fontWeight: '400'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#2c3e50'
+              e.currentTarget.style.color = 'white'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'white'
+              e.currentTarget.style.color = '#2c3e50'
+            }}
+          >
+            Accedi all'area riservata
+          </a>
+          <a 
+            href="/public-photos"
+            style={{
+              display: 'inline-block',
+              padding: '16px 48px',
+              background: '#f093fb',
+              color: 'white',
+              textDecoration: 'none',
+              borderRadius: '2px',
+              fontSize: '1rem',
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              border: 'none',
+              transition: 'all 0.3s',
+              fontWeight: '400'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#e066eb'
+              e.currentTarget.style.transform = 'translateY(-2px)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#f093fb'
+              e.currentTarget.style.transform = 'translateY(0)'
+            }}
+          >
+            📸 Carica Foto
+          </a>
+        </div>
       </section>
 
       {/* Info Section */}
@@ -288,6 +322,59 @@ export default function LandingClient() {
         </div>
       </section>
 
+      {/* Photo Upload CTA Section */}
+      <section style={{
+        padding: '100px 20px',
+        textAlign: 'center',
+        background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        color: 'white'
+      }}>
+        <h2 style={{
+          fontSize: 'clamp(2rem, 5vw, 3rem)',
+          fontWeight: '300',
+          marginBottom: '24px',
+          letterSpacing: '1px'
+        }}>
+          Condividi i Tuoi Momenti
+        </h2>
+        <p style={{
+          fontSize: '1.2rem',
+          marginBottom: '40px',
+          opacity: 0.9,
+          maxWidth: '600px',
+          margin: '0 auto 40px auto'
+        }}>
+          Carica le tue foto del matrimonio e aiutaci a catturare ogni momento speciale!<br />
+          Non è necessario registrarsi 📸
+        </p>
+        <a 
+          href="/public-photos"
+          style={{
+            display: 'inline-block',
+            padding: '16px 48px',
+            background: 'white',
+            color: '#f093fb',
+            textDecoration: 'none',
+            borderRadius: '2px',
+            fontSize: '1rem',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            fontWeight: '500',
+            transition: 'all 0.3s'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = 'none'
+          }}
+        >
+          📸 Carica le Tue Foto
+        </a>
+      </section>
+
       {/* RSVP Section */}
       <section style={{
         padding: '100px 20px',
@@ -306,10 +393,12 @@ export default function LandingClient() {
         <p style={{
           fontSize: '1.2rem',
           marginBottom: '40px',
-          opacity: 0.9
+          opacity: 0.9,
+          maxWidth: '700px',
+          margin: '0 auto 40px auto'
         }}>
           Accedi all'area riservata per confermare la tua partecipazione,<br />
-          indicare eventuali allergie e condividere le foto della giornata
+          indicare eventuali allergie e vedere tutte le foto della giornata
         </p>
         <a 
           href="/login"
