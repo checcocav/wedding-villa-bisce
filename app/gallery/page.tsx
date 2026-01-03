@@ -15,7 +15,7 @@ export default async function GalleryPage() {
     redirect('/login')
   }
 
-  // Fetch all photos with guest information (rimosso !inner)
+  // Fetch all photos with guest information and uploader_name
   const { data: rawPhotos, error } = await supabase
     .from('photos')
     .select(`
@@ -23,6 +23,7 @@ export default async function GalleryPage() {
       storage_path,
       created_at,
       guest_id,
+      uploader_name,
       guests (
         first_name,
         last_name
@@ -41,6 +42,7 @@ export default async function GalleryPage() {
     id: photo.id,
     storage_path: photo.storage_path,
     created_at: photo.created_at,
+    uploader_name: photo.uploader_name,
     guests: Array.isArray(photo.guests) ? photo.guests[0] : photo.guests
   })) || []
 
@@ -80,6 +82,21 @@ export default async function GalleryPage() {
           >
             📷 Carica nuova foto
           </a>
+          <a 
+            href="/public-photos" 
+            style={{
+              display: 'inline-block',
+              padding: 10,
+              background: '#f093fb',
+              color: 'white',
+              textDecoration: 'none',
+              borderRadius: 4,
+              fontSize: 14,
+              fontWeight: 'bold'
+            }}
+          >
+            📸 Carica Foto (Pubblico)
+          </a>
         </div>
       </div>
 
@@ -101,21 +118,36 @@ export default async function GalleryPage() {
           <p style={{ fontSize: 48, marginBottom: 16 }}>📷</p>
           <p style={{ fontSize: 18, marginBottom: 8 }}>Nessuna foto ancora</p>
           <p style={{ color: '#666' }}>Sii il primo a condividere un momento speciale!</p>
-          <a 
-            href="/photos" 
-            style={{
-              display: 'inline-block',
-              marginTop: 16,
-              padding: 12,
-              background: '#007bff',
-              color: 'white',
-              textDecoration: 'none',
-              borderRadius: 4,
-              fontWeight: 'bold'
-            }}
-          >
-            📷 Carica la prima foto
-          </a>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 16, flexWrap: 'wrap' }}>
+            <a 
+              href="/photos" 
+              style={{
+                display: 'inline-block',
+                padding: 12,
+                background: '#007bff',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: 4,
+                fontWeight: 'bold'
+              }}
+            >
+              📷 Carica la prima foto
+            </a>
+            <a 
+              href="/public-photos" 
+              style={{
+                display: 'inline-block',
+                padding: 12,
+                background: '#f093fb',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: 4,
+                fontWeight: 'bold'
+              }}
+            >
+              📸 Carica (Pubblico)
+            </a>
+          </div>
         </div>
       )}
     </main>
