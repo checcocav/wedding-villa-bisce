@@ -95,19 +95,20 @@ export default function LoginClient() {
   setMessage(null)
 
   try {
-    console.log('Tentativo magic link per:', email) // DEBUG
+    console.log('Tentativo magic link per:', email)
     
-    // Verifica che l'email sia nella lista invitati
-    const { data: guest, error: guestError } = await supabase
-      .from('guests')
-      .select('email, role')
-      .eq('email', email)
-      .single()
+    // Usa la funzione invece della query diretta
+    const { data: emailExists, error: checkError } = await supabase
+      .rpc('email_exists_in_guests', { check_email: email })
 
-    console.log('Risultato query guest:', { guest, guestError }) // DEBUG
+    console.log('Email exists result:', { emailExists, checkError })
 
-    if (!guest) {
-      console.log('Guest non trovato per email:', email) // DEBUG
+    if (checkError) {
+      console.error('Errore verifica email:', checkError)
+      throw checkError
+    }
+
+    if (!emailExists) {
       setMessage({ 
         type: 'error', 
         text: 'Email non trovata nella lista degli invitati. Contatta gli sposi.' 
@@ -130,7 +131,7 @@ export default function LoginClient() {
       text: 'Controlla la tua email per il link di accesso!' 
     })
   } catch (error: any) {
-    console.error('Errore completo:', error) // DEBUG
+    console.error('Errore completo:', error)
     setMessage({ 
       type: 'error', 
       text: error.message || 'Si è verificato un errore' 
