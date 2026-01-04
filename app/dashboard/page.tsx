@@ -479,7 +479,7 @@ export default async function DashboardPage({
                   fontSize: '1.1rem',
                   fontWeight: '500'
                 }}>
-                  Hai bisogno di alloggio?
+                  Necessiti di supporto per trovare un alloggio?
                 </label>
                 <div style={{ display: 'flex', gap: 16, marginBottom: 16 }}>
                   <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', flex: 1 }}>
