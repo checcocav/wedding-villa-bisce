@@ -12,7 +12,7 @@ export default function LandingClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   useEffect(() => {
-    const weddingDate = new Date('2026-08-29T16:00:00').getTime()
+    const weddingDate = new Date('2026-08-29T17:00:00').getTime()
     
     const updateCountdown = () => {
       const now = new Date().getTime()
@@ -34,16 +34,8 @@ export default function LandingClient() {
 
   const faqs = [
     {
-      question: "Qual è il dress code?",
-      answer: "L'evento è elegante. Suggeriamo abito lungo per le signore e completo scuro per i signori."
-    },
-    {
-      question: "Posso portare bambini?",
-      answer: "Sì, i bambini sono i benvenuti! Vi preghiamo di segnalarcelo in anticipo per organizzare al meglio il ricevimento."
-    },
-    {
       question: "C'è parcheggio disponibile?",
-      answer: "Sì, il Palazzo delle Bisce dispone di un ampio parcheggio gratuito per gli ospiti."
+      answer: "Sì, il Palazzo delle Biscie dispone di un ampio parcheggio gratuito per gli ospiti."
     },
     {
       question: "Posso fare foto durante la cerimonia?",
@@ -64,46 +56,63 @@ export default function LandingClient() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+        background: 'linear-gradient(135deg, #f4f1e8 0%, #e8dcc4 100%)',
         textAlign: 'center',
-        padding: '40px 20px'
+        padding: '40px 20px',
+        position: 'relative'
       }}>
+        {/* Video Background */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+          zIndex: 0
+        }}>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              opacity: 0.4
+            }}
+          >
+            <source src="[Inserisci URL video]" type="video/mp4" />
+          </video>
+        </div>
+
         <h1 style={{
           fontSize: 'clamp(2rem, 8vw, 5rem)',
           fontWeight: '300',
           margin: '0 0 20px 0',
-          color: '#2c3e50',
+          color: '#6b2c3e',
           letterSpacing: '2px',
-          fontStyle: 'italic'
+          fontStyle: 'italic',
+          position: 'relative',
+          zIndex: 1,
+          textAlign: 'center',
+          lineHeight: '1.3'
         }}>
-          Francesco & Martina
+          Martina<br />
+          &<br />
+          Francesco
         </h1>
-        
-        {/* Image Placeholder */}
-        <div style={{
-          width: '100%',
-          maxWidth: '400px',
-          aspectRatio: '3/4',
-          background: '#e0e0e0',
-          borderRadius: 8,
-          marginBottom: 40,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '#999',
-          fontSize: '1rem',
-          fontStyle: 'italic'
-        }}>
-          [Inserisci URL immagine]
-        </div>
 
         <p style={{
           fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
-          color: '#546e7a',
+          color: '#8b7c6f',
           margin: '0 0 40px 0',
-          fontStyle: 'italic'
+          fontStyle: 'italic',
+          position: 'relative',
+          zIndex: 1
         }}>
-          29 Agosto 2026
+          Sabato 29 Agosto 2026
         </p>
       </section>
 
@@ -111,17 +120,17 @@ export default function LandingClient() {
       <section style={{
         padding: '100px 20px',
         textAlign: 'center',
-        background: 'white'
+        background: '#faf8f5'
       }}>
         <h2 style={{
           fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
           fontWeight: '300',
-          color: '#2c3e50',
+          color: '#6b2c3e',
           marginBottom: '60px',
           letterSpacing: '1px',
           fontStyle: 'italic'
         }}>
-          Quanto manca al nostro giorno speciale
+          Quanto manca al nostro "Lo Voglio"
         </h2>
         
         <div style={{
@@ -133,21 +142,21 @@ export default function LandingClient() {
         }}>
           <div style={{
             padding: 30,
-            background: '#f8f9fa',
+            background: 'white',
             borderRadius: 8,
-            border: '2px solid #b8860b'
+            border: '2px solid #d4a5a5'
           }}>
             <div style={{
               fontSize: 'clamp(2.5rem, 8vw, 4rem)',
               fontWeight: '300',
-              color: '#2c3e50',
+              color: '#6b2c3e',
               marginBottom: 8
             }}>
               {timeLeft.days}
             </div>
             <div style={{
               fontSize: '1rem',
-              color: '#546e7a',
+              color: '#8b7c6f',
               fontStyle: 'italic'
             }}>
               Giorni
@@ -156,21 +165,21 @@ export default function LandingClient() {
           
           <div style={{
             padding: 30,
-            background: '#f8f9fa',
+            background: 'white',
             borderRadius: 8,
-            border: '2px solid #b8860b'
+            border: '2px solid #d4a5a5'
           }}>
             <div style={{
               fontSize: 'clamp(2.5rem, 8vw, 4rem)',
               fontWeight: '300',
-              color: '#2c3e50',
+              color: '#6b2c3e',
               marginBottom: 8
             }}>
               {timeLeft.hours}
             </div>
             <div style={{
               fontSize: '1rem',
-              color: '#546e7a',
+              color: '#8b7c6f',
               fontStyle: 'italic'
             }}>
               Ore
@@ -179,21 +188,21 @@ export default function LandingClient() {
           
           <div style={{
             padding: 30,
-            background: '#f8f9fa',
+            background: 'white',
             borderRadius: 8,
-            border: '2px solid #b8860b'
+            border: '2px solid #d4a5a5'
           }}>
             <div style={{
               fontSize: 'clamp(2.5rem, 8vw, 4rem)',
               fontWeight: '300',
-              color: '#2c3e50',
+              color: '#6b2c3e',
               marginBottom: 8
             }}>
               {timeLeft.minutes}
             </div>
             <div style={{
               fontSize: '1rem',
-              color: '#546e7a',
+              color: '#8b7c6f',
               fontStyle: 'italic'
             }}>
               Minuti
@@ -202,21 +211,21 @@ export default function LandingClient() {
           
           <div style={{
             padding: 30,
-            background: '#f8f9fa',
+            background: 'white',
             borderRadius: 8,
-            border: '2px solid #b8860b'
+            border: '2px solid #d4a5a5'
           }}>
             <div style={{
               fontSize: 'clamp(2.5rem, 8vw, 4rem)',
               fontWeight: '300',
-              color: '#2c3e50',
+              color: '#6b2c3e',
               marginBottom: 8
             }}>
               {timeLeft.seconds}
             </div>
             <div style={{
               fontSize: '1rem',
-              color: '#546e7a',
+              color: '#8b7c6f',
               fontStyle: 'italic'
             }}>
               Secondi
@@ -228,28 +237,28 @@ export default function LandingClient() {
       {/* Location Section */}
       <section style={{
         padding: '100px 20px',
-        background: '#f8f9fa',
+        background: '#f4f1e8',
         textAlign: 'center'
       }}>
         <h2 style={{
           fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
           fontWeight: '300',
-          color: '#2c3e50',
+          color: '#6b2c3e',
           marginBottom: '40px',
           letterSpacing: '1px',
           fontStyle: 'italic'
         }}>
-          Location del giorno
+          Location
         </h2>
         
         <h3 style={{
           fontSize: 'clamp(1.5rem, 4vw, 2rem)',
           fontWeight: '400',
-          color: '#2c3e50',
+          color: '#8b7c6f',
           marginBottom: '40px',
           fontStyle: 'italic'
         }}>
-          Palazzo delle Bisce
+          Palazzo delle Biscie
         </h3>
         
         <div style={{
@@ -257,7 +266,7 @@ export default function LandingClient() {
           margin: '0 auto',
           borderRadius: 8,
           overflow: 'hidden',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+          boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
         }}>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2835.9!2d11.65!3d44.62!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDM3JzEyLjAiTiAxMcKwMzknMDAuMCJF!5e0!3m2!1sit!2sit!4v1234567890"
@@ -271,14 +280,14 @@ export default function LandingClient() {
         </div>
         
         <a
-          href="https://maps.google.com/?q=Palazzo+delle+Bisce+Molinella"
+          href="https://maps.google.com/?q=Palazzo+delle+Biscie+Molinella"
           target="_blank"
           rel="noopener noreferrer"
           style={{
             display: 'inline-block',
             marginTop: 24,
             padding: '12px 32px',
-            background: '#2c3e50',
+            background: '#6b2c3e',
             color: 'white',
             textDecoration: 'none',
             borderRadius: 4,
@@ -294,13 +303,13 @@ export default function LandingClient() {
       {/* Timeline Section */}
       <section style={{
         padding: '100px 20px',
-        background: 'white'
+        background: '#faf8f5'
       }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: '300',
-            color: '#2c3e50',
+            color: '#6b2c3e',
             marginBottom: '60px',
             textAlign: 'center',
             letterSpacing: '1px',
@@ -317,14 +326,14 @@ export default function LandingClient() {
               top: 0,
               bottom: 0,
               width: '2px',
-              background: '#ddd'
+              background: '#d4a5a5'
             }} />
 
             {[
-              { time: '15:30', title: 'Arrivo degli ospiti', desc: 'Benvenuto al Palazzo delle Bisce' },
-              { time: '16:00', title: 'Cerimonia', desc: 'Momento della promessa' },
-              { time: '17:00', title: 'Aperitivo', desc: 'Brindisi e foto nel giardino' },
-              { time: '18:30', title: 'Ricevimento', desc: 'Cena e festeggiamenti' },
+              { time: '16:30', title: 'Arrivo degli ospiti', desc: 'Benvenuto al Palazzo delle Biscie' },
+              { time: '17:00', title: 'Cerimonia', desc: 'Momento della promessa' },
+              { time: '18:00', title: 'Aperitivo', desc: 'Brindisi e foto nel giardino' },
+              { time: '20:00', title: 'Cena', desc: 'Ricevimento e festeggiamenti' },
               { time: '23:00', title: 'Taglio della torta', desc: 'Dolce finale' }
             ].map((event, index) => (
               <div key={index} style={{
@@ -340,13 +349,13 @@ export default function LandingClient() {
                   height: '40px',
                   borderRadius: '50%',
                   background: 'white',
-                  border: '2px solid #b8860b',
+                  border: '2px solid #d4a5a5',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: '0.75rem',
                   fontWeight: '500',
-                  color: '#2c3e50',
+                  color: '#6b2c3e',
                   zIndex: 1
                 }}>
                   {event.time}
@@ -355,7 +364,7 @@ export default function LandingClient() {
                   <h3 style={{
                     fontSize: '1.3rem',
                     fontWeight: '400',
-                    color: '#2c3e50',
+                    color: '#6b2c3e',
                     marginBottom: '8px',
                     fontStyle: 'italic'
                   }}>
@@ -363,7 +372,7 @@ export default function LandingClient() {
                   </h3>
                   <p style={{
                     fontSize: '1rem',
-                    color: '#546e7a',
+                    color: '#8b7c6f',
                     fontStyle: 'italic'
                   }}>
                     {event.desc}
@@ -375,67 +384,11 @@ export default function LandingClient() {
         </div>
       </section>
 
-      {/* Photo Upload CTA Section */}
-      <section style={{
-        padding: '100px 20px',
-        textAlign: 'center',
-        background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-        color: 'white'
-      }}>
-        <h2 style={{
-          fontSize: 'clamp(2rem, 5vw, 3rem)',
-          fontWeight: '300',
-          marginBottom: '24px',
-          letterSpacing: '1px',
-          fontStyle: 'italic'
-        }}>
-          Condividi i Tuoi Momenti
-        </h2>
-        <p style={{
-          fontSize: '1.2rem',
-          marginBottom: '40px',
-          opacity: 0.9,
-          maxWidth: '600px',
-          margin: '0 auto 40px auto',
-          fontStyle: 'italic'
-        }}>
-          Carica le tue foto del matrimonio e aiutaci a catturare ogni momento speciale!<br />
-          Non è necessario registrarsi 📸
-        </p>
-        <a 
-          href="/public-photos"
-          style={{
-            display: 'inline-block',
-            padding: '16px 48px',
-            background: 'white',
-            color: '#f093fb',
-            textDecoration: 'none',
-            borderRadius: '2px',
-            fontSize: '1rem',
-            letterSpacing: '1px',
-            textTransform: 'uppercase',
-            fontWeight: '500',
-            transition: 'all 0.3s',
-            fontStyle: 'italic'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px)'
-            e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.style.boxShadow = 'none'
-          }}
-        >
-          📸 Carica le Tue Foto
-        </a>
-      </section>
-
       {/* RSVP Section */}
       <section style={{
         padding: '100px 20px',
         textAlign: 'center',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, #a8b5a5 0%, #8b9d8b 100%)',
         color: 'white'
       }}>
         <h2 style={{
@@ -450,7 +403,7 @@ export default function LandingClient() {
         <p style={{
           fontSize: '1.2rem',
           marginBottom: '40px',
-          opacity: 0.9,
+          opacity: 0.95,
           maxWidth: '700px',
           margin: '0 auto 40px auto',
           fontStyle: 'italic'
@@ -464,7 +417,7 @@ export default function LandingClient() {
             display: 'inline-block',
             padding: '16px 48px',
             background: 'white',
-            color: '#667eea',
+            color: '#8b9d8b',
             textDecoration: 'none',
             borderRadius: '2px',
             fontSize: '1rem',
@@ -490,13 +443,13 @@ export default function LandingClient() {
       {/* FAQ Section */}
       <section style={{
         padding: '100px 20px',
-        background: '#f8f9fa'
+        background: '#f4f1e8'
       }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: '300',
-            color: '#2c3e50',
+            color: '#6b2c3e',
             marginBottom: '60px',
             textAlign: 'center',
             letterSpacing: '1px',
@@ -513,7 +466,7 @@ export default function LandingClient() {
                   background: 'white',
                   borderRadius: 8,
                   overflow: 'hidden',
-                  boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.08)'
                 }}
               >
                 <button
@@ -528,13 +481,13 @@ export default function LandingClient() {
                     alignItems: 'center',
                     cursor: 'pointer',
                     fontSize: '1.1rem',
-                    color: '#2c3e50',
+                    color: '#6b2c3e',
                     fontFamily: 'Georgia, serif',
                     fontStyle: 'italic',
                     textAlign: 'left',
                     transition: 'background 0.3s'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#f8f9fa'}
+                  onMouseEnter={(e) => e.currentTarget.style.background = '#faf8f5'}
                   onMouseLeave={(e) => e.currentTarget.style.background = 'white'}
                 >
                   <span>{faq.question}</span>
@@ -550,7 +503,7 @@ export default function LandingClient() {
                 {openFaq === index && (
                   <div style={{
                     padding: '0 24px 20px 24px',
-                    color: '#546e7a',
+                    color: '#8b7c6f',
                     fontSize: '1rem',
                     lineHeight: '1.6',
                     fontStyle: 'italic',
@@ -565,20 +518,76 @@ export default function LandingClient() {
         </div>
       </section>
 
+      {/* Photo Upload CTA Section */}
+      <section style={{
+        padding: '100px 20px',
+        textAlign: 'center',
+        background: 'linear-gradient(135deg, #d4a5a5 0%, #e6c9c9 100%)',
+        color: 'white'
+      }}>
+        <h2 style={{
+          fontSize: 'clamp(2rem, 5vw, 3rem)',
+          fontWeight: '300',
+          marginBottom: '24px',
+          letterSpacing: '1px',
+          fontStyle: 'italic'
+        }}>
+          Condividi i Tuoi Momenti
+        </h2>
+        <p style={{
+          fontSize: '1.2rem',
+          marginBottom: '40px',
+          opacity: 0.95,
+          maxWidth: '600px',
+          margin: '0 auto 40px auto',
+          fontStyle: 'italic'
+        }}>
+          Carica le tue foto del matrimonio e aiutaci a catturare ogni momento speciale!<br />
+          Non è necessario registrarsi 📸
+        </p>
+        <a 
+          href="/public-photos"
+          style={{
+            display: 'inline-block',
+            padding: '16px 48px',
+            background: 'white',
+            color: '#d4a5a5',
+            textDecoration: 'none',
+            borderRadius: '2px',
+            fontSize: '1rem',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            fontWeight: '500',
+            transition: 'all 0.3s',
+            fontStyle: 'italic'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = 'none'
+          }}
+        >
+          📸 Carica le Tue Foto
+        </a>
+      </section>
+
       {/* Footer */}
       <footer style={{
         padding: '40px 20px',
         textAlign: 'center',
-        background: '#2c3e50',
+        background: '#6b2c3e',
         color: 'white'
       }}>
         <p style={{
           fontSize: '1rem',
-          opacity: 0.8,
+          opacity: 0.9,
           margin: 0,
           fontStyle: 'italic'
         }}>
-          © 2025 Francesco & Martina · Con amore
+          © 2026 Martina & Francesco · Con amore
         </p>
       </footer>
 
