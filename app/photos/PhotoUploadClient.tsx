@@ -29,7 +29,6 @@ export default function PhotoUploadClient({
     const files = e.target.files
     if (!files || files.length === 0) return
 
-    // Crea preview per tutte le foto selezionate
     const urls = Array.from(files).map(file => URL.createObjectURL(file))
     setPreviewUrls(urls)
     setMessage(null)
@@ -52,10 +51,8 @@ export default function PhotoUploadClient({
       let successCount = 0
       let errorCount = 0
 
-      // Carica ogni foto
       for (const file of files) {
         try {
-          // 1. Upload file to Supabase Storage
           const fileExt = file.name.split('.').pop()
           const fileName = `${guestId}-${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
           const filePath = `${fileName}`
@@ -69,7 +66,6 @@ export default function PhotoUploadClient({
 
           if (uploadError) throw uploadError
 
-          // 2. Insert record in photos table
           const { error: dbError } = await supabase
             .from('photos')
             .insert({
@@ -86,12 +82,14 @@ export default function PhotoUploadClient({
         }
       }
 
-      // Mostra risultato
       if (successCount > 0 && errorCount === 0) {
         setMessage({ 
           type: 'success', 
           text: `✅ ${successCount} ${successCount === 1 ? 'foto caricata' : 'foto caricate'} con successo!` 
         })
+        setPreviewUrls([])
+        if (cameraInputRef.current) cameraInputRef.current.value = ''
+        if (galleryInputRef.current) galleryInputRef.current.value = ''
       } else if (successCount > 0 && errorCount > 0) {
         setMessage({ 
           type: 'success', 
@@ -103,10 +101,6 @@ export default function PhotoUploadClient({
           text: `❌ Errore nel caricamento delle foto` 
         })
       }
-
-      setPreviewUrls([])
-      if (cameraInputRef.current) cameraInputRef.current.value = ''
-      if (galleryInputRef.current) galleryInputRef.current.value = ''
 
     } catch (error: any) {
       console.error('Upload error:', error)
@@ -128,12 +122,13 @@ export default function PhotoUploadClient({
       {/* Messages */}
       {message && (
         <div style={{
-          padding: 12,
-          marginBottom: 16,
+          padding: 16,
+          marginBottom: 24,
           background: message.type === 'success' ? '#d4edda' : '#f8d7da',
           color: message.type === 'success' ? '#155724' : '#721c24',
-          borderRadius: 4,
-          border: `1px solid ${message.type === 'success' ? '#c3e6cb' : '#f5c6cb'}`
+          borderRadius: 8,
+          border: `1px solid ${message.type === 'success' ? '#c3e6cb' : '#f5c6cb'}`,
+          fontStyle: 'italic'
         }}>
           {message.text}
         </div>
@@ -159,19 +154,32 @@ export default function PhotoUploadClient({
 
       {/* Two separate buttons or Preview */}
       {previewUrls.length === 0 ? (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <button
             onClick={handleCameraCapture}
             style={{
               width: '100%',
-              padding: 20,
-              fontSize: 18,
-              background: '#007bff',
+              padding: 24,
+              fontSize: '1.1rem',
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
               color: 'white',
               border: 'none',
               borderRadius: 8,
               cursor: 'pointer',
-              fontWeight: 'bold'
+              fontWeight: '400',
+              fontFamily: 'Georgia, serif',
+              fontStyle: 'italic',
+              letterSpacing: '0.5px',
+              transition: 'all 0.3s',
+              boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)'
+              e.currentTarget.style.boxShadow = '0 6px 16px rgba(102, 126, 234, 0.4)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)'
             }}
           >
             📷 Scatta una foto
@@ -181,14 +189,27 @@ export default function PhotoUploadClient({
             onClick={handleGallerySelect}
             style={{
               width: '100%',
-              padding: 20,
-              fontSize: 18,
-              background: '#6c757d',
+              padding: 24,
+              fontSize: '1.1rem',
+              background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
               color: 'white',
               border: 'none',
               borderRadius: 8,
               cursor: 'pointer',
-              fontWeight: 'bold'
+              fontWeight: '400',
+              fontFamily: 'Georgia, serif',
+              fontStyle: 'italic',
+              letterSpacing: '0.5px',
+              transition: 'all 0.3s',
+              boxShadow: '0 4px 12px rgba(240, 147, 251, 0.3)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)'
+              e.currentTarget.style.boxShadow = '0 6px 16px rgba(240, 147, 251, 0.4)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(240, 147, 251, 0.3)'
             }}
           >
             🖼️ Scegli dalla galleria
@@ -198,17 +219,18 @@ export default function PhotoUploadClient({
         <div>
           {/* Preview Grid */}
           <div style={{
-            marginBottom: 16,
+            marginBottom: 24,
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
-            gap: 12
+            gap: 16
           }}>
             {previewUrls.map((url, index) => (
               <div key={index} style={{
-                border: '2px solid #ccc',
+                border: '2px solid #b8860b',
                 borderRadius: 8,
                 overflow: 'hidden',
-                aspectRatio: '1'
+                aspectRatio: '1',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}>
                 <img 
                   src={url} 
@@ -219,26 +241,36 @@ export default function PhotoUploadClient({
             ))}
           </div>
 
-          <p style={{ marginBottom: 12, fontSize: 14, color: '#666', textAlign: 'center' }}>
+          <p style={{ 
+            marginBottom: 20, 
+            fontSize: '1rem', 
+            color: '#546e7a', 
+            textAlign: 'center',
+            fontStyle: 'italic'
+          }}>
             {previewUrls.length} {previewUrls.length === 1 ? 'foto selezionata' : 'foto selezionate'}
           </p>
 
           {/* Action buttons */}
-          <div style={{ display: 'flex', gap: 12 }}>
+          <div style={{ display: 'flex', gap: 16 }}>
             <button
               onClick={handleUpload}
               disabled={uploading}
               style={{
                 flex: 1,
-                padding: 12,
-                fontSize: 16,
-                background: '#28a745',
+                padding: 16,
+                fontSize: '1rem',
+                background: uploading ? '#ccc' : '#28a745',
                 color: 'white',
                 border: 'none',
                 borderRadius: 8,
                 cursor: uploading ? 'not-allowed' : 'pointer',
-                opacity: uploading ? 0.6 : 1,
-                fontWeight: 'bold'
+                fontWeight: '400',
+                fontFamily: 'Georgia, serif',
+                fontStyle: 'italic',
+                letterSpacing: '0.5px',
+                transition: 'all 0.3s',
+                boxShadow: uploading ? 'none' : '0 2px 8px rgba(40, 167, 69, 0.3)'
               }}
             >
               {uploading ? '⏳ Caricamento...' : '✅ Carica foto'}
@@ -249,15 +281,19 @@ export default function PhotoUploadClient({
               disabled={uploading}
               style={{
                 flex: 1,
-                padding: 12,
-                fontSize: 16,
-                background: '#dc3545',
+                padding: 16,
+                fontSize: '1rem',
+                background: uploading ? '#ccc' : '#dc3545',
                 color: 'white',
                 border: 'none',
                 borderRadius: 8,
                 cursor: uploading ? 'not-allowed' : 'pointer',
-                opacity: uploading ? 0.6 : 1,
-                fontWeight: 'bold'
+                fontWeight: '400',
+                fontFamily: 'Georgia, serif',
+                fontStyle: 'italic',
+                letterSpacing: '0.5px',
+                transition: 'all 0.3s',
+                boxShadow: uploading ? 'none' : '0 2px 8px rgba(220, 53, 69, 0.3)'
               }}
             >
               ❌ Annulla
@@ -267,7 +303,13 @@ export default function PhotoUploadClient({
       )}
 
       {/* Info */}
-      <p style={{ marginTop: 24, fontSize: 14, color: '#666', textAlign: 'center' }}>
+      <p style={{ 
+        marginTop: 32, 
+        fontSize: '0.95rem', 
+        color: '#546e7a', 
+        textAlign: 'center',
+        fontStyle: 'italic'
+      }}>
         Le tue foto saranno visibili nella gallery del matrimonio 🎉
       </p>
     </div>
