@@ -148,7 +148,8 @@ export default function LandingClient() {
           fontWeight: '300',
           margin: '0 0 20px 0',
           color: '#2c3e50',
-          letterSpacing: '2px'
+          letterSpacing: '2px',
+          fontStyle: 'italic'
         }}>
           Francesco & Martina
         </h1>
@@ -181,14 +182,16 @@ export default function LandingClient() {
               fontSize: '1.5rem',
               fontWeight: '300',
               marginBottom: '24px',
-              color: '#2c3e50'
+              color: '#2c3e50',
+              fontStyle: 'italic'
             }}>
               Conferma la tua presenza
             </h2>
             <p style={{
               fontSize: '1rem',
               color: '#666',
-              marginBottom: '32px'
+              marginBottom: '32px',
+              fontStyle: 'italic'
             }}>
               Inserisci la tua email per accedere al modulo RSVP
             </p>
@@ -200,7 +203,8 @@ export default function LandingClient() {
                 background: '#f8d7da',
                 color: '#721c24',
                 borderRadius: '4px',
-                fontSize: '0.9rem'
+                fontSize: '0.9rem',
+                fontStyle: 'italic'
               }}>
                 {error}
               </div>
@@ -218,9 +222,10 @@ export default function LandingClient() {
                   padding: '16px',
                   fontSize: '1rem',
                   border: '1px solid #ddd',
-                  borderRadius: '4px',
+                  borderRadius: '8px',
                   marginBottom: '16px',
-                  fontFamily: 'inherit'
+                  fontFamily: 'Georgia, serif',
+                  fontStyle: 'italic'
                 }}
               />
               <button
@@ -229,14 +234,17 @@ export default function LandingClient() {
                 style={{
                   width: '100%',
                   padding: '16px',
-                  background: '#667eea',
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                   color: 'white',
                   border: 'none',
-                  borderRadius: '4px',
+                  borderRadius: '8px',
                   fontSize: '1rem',
                   fontWeight: '500',
                   cursor: loading ? 'not-allowed' : 'pointer',
-                  opacity: loading ? 0.6 : 1
+                  opacity: loading ? 0.6 : 1,
+                  fontFamily: 'Georgia, serif',
+                  fontStyle: 'italic',
+                  transition: 'all 0.3s'
                 }}
               >
                 {loading ? 'Verifica...' : 'Continua'}
@@ -262,7 +270,8 @@ export default function LandingClient() {
               fontWeight: '300',
               marginBottom: '8px',
               color: '#2c3e50',
-              textAlign: 'center'
+              textAlign: 'center',
+              fontStyle: 'italic'
             }}>
               Ciao {guest.first_name}!
             </h2>
@@ -270,7 +279,8 @@ export default function LandingClient() {
               fontSize: '1rem',
               color: '#666',
               marginBottom: '32px',
-              textAlign: 'center'
+              textAlign: 'center',
+              fontStyle: 'italic'
             }}>
               Conferma la tua partecipazione al nostro matrimonio
             </p>
@@ -281,8 +291,9 @@ export default function LandingClient() {
                 marginBottom: '20px',
                 background: '#f8d7da',
                 color: '#721c24',
-                borderRadius: '4px',
-                fontSize: '0.9rem'
+                borderRadius: '8px',
+                fontSize: '0.9rem',
+                fontStyle: 'italic'
               }}>
                 {error}
               </div>
@@ -296,7 +307,8 @@ export default function LandingClient() {
                   marginBottom: '12px',
                   color: '#2c3e50',
                   fontSize: '1.1rem',
-                  fontWeight: '500'
+                  fontWeight: '500',
+                  fontStyle: 'italic'
                 }}>
                   Parteciperai? *
                 </label>
@@ -310,10 +322,12 @@ export default function LandingClient() {
                       background: rsvpStatus === 'yes' ? '#28a745' : 'white',
                       color: rsvpStatus === 'yes' ? 'white' : '#2c3e50',
                       border: `2px solid ${rsvpStatus === 'yes' ? '#28a745' : '#ddd'}`,
-                      borderRadius: '4px',
+                      borderRadius: '8px',
                       fontSize: '1rem',
                       cursor: 'pointer',
-                      fontFamily: 'inherit'
+                      fontFamily: 'Georgia, serif',
+                      fontStyle: 'italic',
+                      transition: 'all 0.3s'
                     }}
                   >
                     ✓ Sì, ci sarò!
@@ -327,10 +341,12 @@ export default function LandingClient() {
                       background: rsvpStatus === 'no' ? '#dc3545' : 'white',
                       color: rsvpStatus === 'no' ? 'white' : '#2c3e50',
                       border: `2px solid ${rsvpStatus === 'no' ? '#dc3545' : '#ddd'}`,
-                      borderRadius: '4px',
+                      borderRadius: '8px',
                       fontSize: '1rem',
                       cursor: 'pointer',
-                      fontFamily: 'inherit'
+                      fontFamily: 'Georgia, serif',
+                      fontStyle: 'italic',
+                      transition: 'all 0.3s'
                     }}
                   >
                     ✗ Non potrò
@@ -342,16 +358,17 @@ export default function LandingClient() {
               {guest.has_plus_one && rsvpStatus === 'yes' && (
                 <div style={{
                   marginBottom: '24px',
-                  padding: '16px',
+                  padding: '20px',
                   background: '#f8f9fa',
-                  borderRadius: '4px'
+                  borderRadius: '8px'
                 }}>
                   <label style={{
                     display: 'block',
-                    marginBottom: '12px',
+                    marginBottom: '16px',
                     color: '#2c3e50',
                     fontSize: '1rem',
-                    fontWeight: '500'
+                    fontWeight: '500',
+                    fontStyle: 'italic'
                   }}>
                     Accompagnatore
                   </label>
@@ -364,9 +381,10 @@ export default function LandingClient() {
                       style={{
                         padding: '12px',
                         border: '1px solid #ddd',
-                        borderRadius: '4px',
+                        borderRadius: '8px',
                         fontSize: '1rem',
-                        fontFamily: 'inherit'
+                        fontFamily: 'Georgia, serif',
+                        fontStyle: 'italic'
                       }}
                     />
                     <input
@@ -377,9 +395,10 @@ export default function LandingClient() {
                       style={{
                         padding: '12px',
                         border: '1px solid #ddd',
-                        borderRadius: '4px',
+                        borderRadius: '8px',
                         fontSize: '1rem',
-                        fontFamily: 'inherit'
+                        fontFamily: 'Georgia, serif',
+                        fontStyle: 'italic'
                       }}
                     />
                   </div>
@@ -391,10 +410,11 @@ export default function LandingClient() {
                 <div style={{ marginBottom: '24px' }}>
                   <label style={{
                     display: 'block',
-                    marginBottom: '8px',
+                    marginBottom: '12px',
                     color: '#2c3e50',
                     fontSize: '1rem',
-                    fontWeight: '500'
+                    fontWeight: '500',
+                    fontStyle: 'italic'
                   }}>
                     Numero di bambini
                   </label>
@@ -408,9 +428,10 @@ export default function LandingClient() {
                       width: '100%',
                       padding: '12px',
                       border: '1px solid #ddd',
-                      borderRadius: '4px',
+                      borderRadius: '8px',
                       fontSize: '1rem',
-                      fontFamily: 'inherit'
+                      fontFamily: 'Georgia, serif',
+                      fontStyle: 'italic'
                     }}
                   />
                 </div>
@@ -429,12 +450,13 @@ export default function LandingClient() {
                       type="checkbox"
                       checked={needsAccommodation}
                       onChange={(e) => setNeedsAccommodation(e.target.checked)}
-                      style={{ marginRight: '8px', cursor: 'pointer' }}
+                      style={{ marginRight: '8px', cursor: 'pointer', width: 18, height: 18 }}
                     />
                     <span style={{
                       color: '#2c3e50',
                       fontSize: '1rem',
-                      fontWeight: '500'
+                      fontWeight: '500',
+                      fontStyle: 'italic'
                     }}>
                       Ho bisogno di supporto per l'alloggio
                     </span>
@@ -449,9 +471,10 @@ export default function LandingClient() {
                         width: '100%',
                         padding: '12px',
                         border: '1px solid #ddd',
-                        borderRadius: '4px',
+                        borderRadius: '8px',
                         fontSize: '1rem',
-                        fontFamily: 'inherit',
+                        fontFamily: 'Georgia, serif',
+                        fontStyle: 'italic',
                         resize: 'vertical'
                       }}
                     />
@@ -464,10 +487,11 @@ export default function LandingClient() {
                 <div style={{ marginBottom: '24px' }}>
                   <label style={{
                     display: 'block',
-                    marginBottom: '8px',
+                    marginBottom: '12px',
                     color: '#2c3e50',
                     fontSize: '1rem',
-                    fontWeight: '500'
+                    fontWeight: '500',
+                    fontStyle: 'italic'
                   }}>
                     Allergie e intolleranze alimentari
                   </label>
@@ -480,9 +504,10 @@ export default function LandingClient() {
                       width: '100%',
                       padding: '12px',
                       border: '1px solid #ddd',
-                      borderRadius: '4px',
+                      borderRadius: '8px',
                       fontSize: '1rem',
-                      fontFamily: 'inherit',
+                      fontFamily: 'Georgia, serif',
+                      fontStyle: 'italic',
                       resize: 'vertical'
                     }}
                   />
@@ -493,10 +518,11 @@ export default function LandingClient() {
               <div style={{ marginBottom: '24px' }}>
                 <label style={{
                   display: 'block',
-                  marginBottom: '8px',
+                  marginBottom: '12px',
                   color: '#2c3e50',
                   fontSize: '1rem',
-                  fontWeight: '500'
+                  fontWeight: '500',
+                  fontStyle: 'italic'
                 }}>
                   Messaggio per gli sposi (opzionale)
                 </label>
@@ -509,9 +535,10 @@ export default function LandingClient() {
                     width: '100%',
                     padding: '12px',
                     border: '1px solid #ddd',
-                    borderRadius: '4px',
+                    borderRadius: '8px',
                     fontSize: '1rem',
-                    fontFamily: 'inherit',
+                    fontFamily: 'Georgia, serif',
+                    fontStyle: 'italic',
                     resize: 'vertical'
                   }}
                 />
@@ -524,14 +551,18 @@ export default function LandingClient() {
                 style={{
                   width: '100%',
                   padding: '16px',
-                  background: '#667eea',
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                   color: 'white',
                   border: 'none',
-                  borderRadius: '4px',
+                  borderRadius: '8px',
                   fontSize: '1.1rem',
                   fontWeight: '500',
                   cursor: loading ? 'not-allowed' : 'pointer',
-                  opacity: loading ? 0.6 : 1
+                  opacity: loading ? 0.6 : 1,
+                  fontFamily: 'Georgia, serif',
+                  fontStyle: 'italic',
+                  transition: 'all 0.3s',
+                  boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)'
                 }}
               >
                 {loading ? 'Salvataggio...' : 'Salva RSVP'}
@@ -558,14 +589,16 @@ export default function LandingClient() {
               fontSize: '2rem',
               fontWeight: '300',
               marginBottom: '16px',
-              color: '#2c3e50'
+              color: '#2c3e50',
+              fontStyle: 'italic'
             }}>
               {rsvpStatus === 'yes' ? 'Grazie!' : 'Grazie per la risposta'}
             </h2>
             <p style={{
               fontSize: '1.1rem',
               color: '#666',
-              marginBottom: '32px'
+              marginBottom: '32px',
+              fontStyle: 'italic'
             }}>
               {rsvpStatus === 'yes' 
                 ? 'La tua conferma è stata registrata. Ci vediamo il 29 Agosto!' 
@@ -581,12 +614,15 @@ export default function LandingClient() {
               }}
               style={{
                 padding: '12px 32px',
-                background: '#667eea',
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                 color: 'white',
                 border: 'none',
-                borderRadius: '4px',
+                borderRadius: '8px',
                 fontSize: '1rem',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                fontFamily: 'Georgia, serif',
+                fontStyle: 'italic',
+                transition: 'all 0.3s'
               }}
             >
               Modifica risposta
@@ -607,7 +643,8 @@ export default function LandingClient() {
           fontWeight: '300',
           color: '#2c3e50',
           marginBottom: '60px',
-          letterSpacing: '1px'
+          letterSpacing: '1px',
+          fontStyle: 'italic'
         }}>
           Il Nostro Giorno Speciale
         </h2>
@@ -625,14 +662,16 @@ export default function LandingClient() {
               fontWeight: '400',
               color: '#2c3e50',
               marginBottom: '12px',
-              letterSpacing: '0.5px'
+              letterSpacing: '0.5px',
+              fontStyle: 'italic'
             }}>
               Data
             </h3>
             <p style={{
               fontSize: '1.1rem',
               color: '#546e7a',
-              lineHeight: '1.6'
+              lineHeight: '1.6',
+              fontStyle: 'italic'
             }}>
               Venerdì<br />
               29 Agosto 2026
@@ -646,17 +685,19 @@ export default function LandingClient() {
               fontWeight: '400',
               color: '#2c3e50',
               marginBottom: '12px',
-              letterSpacing: '0.5px'
+              letterSpacing: '0.5px',
+              fontStyle: 'italic'
             }}>
               Location
             </h3>
             <p style={{
               fontSize: '1.1rem',
               color: '#546e7a',
-              lineHeight: '1.6'
+              lineHeight: '1.6',
+              fontStyle: 'italic'
             }}>
-              Villa delle Bisce<br />
-              Carate Brianza, MB
+              Palazzo delle Bisce<br />
+              Molinella, BO
             </p>
           </div>
 
@@ -667,14 +708,16 @@ export default function LandingClient() {
               fontWeight: '400',
               color: '#2c3e50',
               marginBottom: '12px',
-              letterSpacing: '0.5px'
+              letterSpacing: '0.5px',
+              fontStyle: 'italic'
             }}>
               Orario
             </h3>
             <p style={{
               fontSize: '1.1rem',
               color: '#546e7a',
-              lineHeight: '1.6'
+              lineHeight: '1.6',
+              fontStyle: 'italic'
             }}>
               Cerimonia: 16:00<br />
               Ricevimento: 18:00
@@ -695,190 +738,148 @@ export default function LandingClient() {
             color: '#2c3e50',
             marginBottom: '60px',
             textAlign: 'center',
-            letterSpacing: '1px'
+            letterSpacing: '1px',
+            fontStyle: 'italic'
           }}>
             Programma della Giornata
           </h2>
 
-          <div style={{ position: 'relative' }}>
+          <div style={{ position: 'relative', paddingLeft: '60px' }}>
             <div style={{
               position: 'absolute',
-              left: '50%',
+              left: '20px',
               top: 0,
               bottom: 0,
               width: '2px',
-              background: '#ddd',
-              transform: 'translateX(-50%)'
+              background: '#ddd'
             }} />
 
             {[
-              { time: '15:30', title: 'Arrivo degli ospiti', desc: 'Benvenuto a Villa delle Bisce' },
+              { time: '15:30', title: 'Arrivo degli ospiti', desc: 'Benvenuto al Palazzo delle Bisce' },
               { time: '16:00', title: 'Cerimonia', desc: 'Momento della promessa' },
               { time: '17:00', title: 'Aperitivo', desc: 'Brindisi e foto nel giardino' },
               { time: '18:30', title: 'Ricevimento', desc: 'Cena e festeggiamenti' },
               { time: '23:00', title: 'Taglio della torta', desc: 'Dolce finale' }
             ].map((event, index) => (
               <div key={index} style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr auto 1fr',
-                gap: '20px',
-                alignItems: 'center',
-                marginBottom: '40px'
+                display: 'flex',
+                alignItems: 'flex-start',
+                marginBottom: '40px',
+                position: 'relative'
               }}>
-                {index % 2 === 0 ? (
-                <>
-<div style={{ textAlign: 'right', paddingRight: '20px' }}>
-<h3 style={{
-fontSize: '1.3rem',
-fontWeight: '400',
-color: '#2c3e50',
-marginBottom: '8px'
-}}>
-{event.title}
-</h3>
-<p style={{
-fontSize: '1rem',
-color: '#546e7a'
-}}>
-{event.desc}
-</p>
-</div>
-<div style={{
-width: '60px',
-height: '60px',
-borderRadius: '50%',
-background: 'white',
-border: '2px solid #b8860b',
-display: 'flex',
-alignItems: 'center',
-justifyContent: 'center',
-fontSize: '0.9rem',
-fontWeight: '500',
-color: '#2c3e50',
-zIndex: 1
-}}>
-{event.time}
-</div>
-<div />
-</>
-) : (
-<>
-<div />
-<div style={{
-width: '60px',
-height: '60px',
-borderRadius: '50%',
-background: 'white',
-border: '2px solid #b8860b',
-display: 'flex',
-alignItems: 'center',
-justifyContent: 'center',
-fontSize: '0.9rem',
-fontWeight: '500',
-color: '#2c3e50',
-zIndex: 1
-}}>
-{event.time}
-</div>
-<div style={{ textAlign: 'left', paddingLeft: '20px' }}>
-<h3 style={{
-fontSize: '1.3rem',
-fontWeight: '400',
-color: '#2c3e50',
-marginBottom: '8px'
-}}>
-{event.title}
-</h3>
-<p style={{
-fontSize: '1rem',
-color: '#546e7a'
-}}>
-{event.desc}
-</p>
-</div>
-</>
-)}
-</div>
-))}
-</div>
-</div>
-</section>
-      {/* Gallery Link */}
-  <section style={{
-    padding: '100px 20px',
-    textAlign: 'center',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    color: 'white'
-  }}>
-    <h2 style={{
-      fontSize: 'clamp(2rem, 5vw, 3rem)',
-      fontWeight: '300',
-      marginBottom: '24px',
-      letterSpacing: '1px'
-    }}>
-      Condividi i tuoi momenti
-    </h2>
-    <p style={{
-      fontSize: '1.2rem',
-      marginBottom: '40px',
-      opacity: 0.9
-    }}>
-      Carica e visualizza le foto della giornata
-    </p>
-    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-      <a 
-        href="/photos"
-        style={{
-          display: 'inline-block',
-          padding: '16px 48px',
-          background: 'white',
-          color: '#667eea',
-          textDecoration: 'none',
-          borderRadius: '2px',
-          fontSize: '1rem',
-          letterSpacing: '1px',
-          textTransform: 'uppercase',
-          fontWeight: '500',
-          transition: 'all 0.3s'
-        }}
-      >
-        📷 Carica Foto
-      </a>
-      <a 
-        href="/gallery"
-        style={{
-          display: 'inline-block',
-          padding: '16px 48px',
-          background: 'transparent',
-          color: 'white',
-          textDecoration: 'none',
-          borderRadius: '2px',
-          fontSize: '1rem',
-          letterSpacing: '1px',
-          textTransform: 'uppercase',
-          fontWeight: '500',
-          border: '2px solid white',
-          transition: 'all 0.3s'
-        }}
-      >
-        🖼️ Gallery
-      </a>
-    </div>
-  </section>
+                <div style={{
+                  position: 'absolute',
+                  left: '-40px',
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  background: 'white',
+                  border: '2px solid #b8860b',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.75rem',
+                  fontWeight: '500',
+                  color: '#2c3e50',
+                  zIndex: 1
+                }}>
+                  {event.time}
+                </div>
+                <div style={{ paddingLeft: '20px' }}>
+                  <h3 style={{
+                    fontSize: '1.3rem',
+                    fontWeight: '400',
+                    color: '#2c3e50',
+                    marginBottom: '8px',
+                    fontStyle: 'italic'
+                  }}>
+                    {event.title}
+                  </h3>
+                  <p style={{
+                    fontSize: '1rem',
+                    color: '#546e7a',
+                    fontStyle: 'italic'
+                  }}>
+                    {event.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-  {/* Footer */}
-  <footer style={{
-    padding: '40px 20px',
-    textAlign: 'center',
-    background: '#2c3e50',
-    color: 'white'
-  }}>
-    <p style={{
-      fontSize: '1rem',
-      opacity: 0.8,
-      margin: 0
-    }}>
-      © 2026 Francesco & Martina · Con amore
-    </p>
-  </footer>
-</div>
+      {/* Gallery Link */}
+      <section style={{
+        padding: '100px 20px',
+        textAlign: 'center',
+        background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        color: 'white'
+      }}>
+        <h2 style={{
+          fontSize: 'clamp(2rem, 5vw, 3rem)',
+          fontWeight: '300',
+          marginBottom: '24px',
+          letterSpacing: '1px',
+          fontStyle: 'italic'
+        }}>
+          Condividi i tuoi momenti
+        </h2>
+        <p style={{
+          fontSize: '1.2rem',
+          marginBottom: '40px',
+          opacity: 0.9,
+          fontStyle: 'italic'
+        }}>
+          Carica e visualizza le foto della giornata
+        </p>
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <a 
+            href="/public-photos"
+            style={{
+              display: 'inline-block',
+              padding: '16px 48px',
+              background: 'white',
+              color: '#f093fb',
+              textDecoration: 'none',
+              borderRadius: '8px',
+              fontSize: '1rem',
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              fontWeight: '500',
+              fontStyle: 'italic',
+              transition: 'all 0.3s'
+            }}
+          >
+            📷 Carica Foto
+          </a>
+          <a 
+            href="/gallery"
+            style={{
+              display: 'inline-block',
+              padding: '16px 48px',
+              background: 'transparent',
+              color: 'white',
+              textDecoration: 'none',
+              borderRadius: '8px',
+              ontSize: '1rem',
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              fontWeight: '500',
+              border: '2px solid white',
+              fontStyle: 'italic'
+            }}
+          >
+            🖼️ Gallery
+          </a>
+        </div>
+      </section>
+
+      <footer style={{ padding: '40px 20px', textAlign: 'center', background: '#2c3e50', color: 'white' }}>
+        <p style={{ fontSize: '1rem', opacity: 0.8, margin: 0, fontStyle: 'italic' }}>
+          © 2026 Francesco & Martina · Con amore
+        </p>
+      </footer>
+    </div>
+  )
+}
