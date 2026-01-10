@@ -862,7 +862,7 @@ export default function LandingClient() {
               color: 'white',
               textDecoration: 'none',
               borderRadius: '8px',
-              ontSize: '1rem',
+              fontSize: '1rem',
               letterSpacing: '1px',
               textTransform: 'uppercase',
               fontWeight: '500',
