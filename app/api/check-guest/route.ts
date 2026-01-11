@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     const { data: guest, error } = await supabase
       .from('guests')
       .select('*')
-      .eq('email', email.toLowerCase())
+      .eq('email', email.toLowerCase().trim())
       .single()
 
     if (error || !guest) {
