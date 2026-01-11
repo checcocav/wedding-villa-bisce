@@ -722,8 +722,7 @@ export default function LandingClient() {
                       max="10"
                       value={childrenCount}
                       onChange={(e) => setChildrenCount(parseInt(e.target.value) || 0)}
-                      style={{ width: '100%', padding: '15px', border: '1px solid #d5c9b8', borderRadius: 2, fontSize: '
-                        }}
+style={{ width: '100%', padding: '15px', border: '1px solid #d5c9b8', borderRadius: 2, fontSize: '1rem', fontFamily: "'Cormorant Garamond', Georgia, serif"                        }}
                     />
                   </div>
                 )}
