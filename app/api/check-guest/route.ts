@@ -17,11 +17,24 @@ export async function POST(req: Request) {
     
     const normalizedEmail = email.toLowerCase().trim()
     
-    const { data: guests, error } = await supabase
-      .from('guests')
-      .select('*')
-      .ilike('email', normalizedEmail)
-
+    
+const { data: guest, error } = await supabase
+  .from('guests')
+  .select(`
+    *,
+    accommodations (
+      id,
+      name,
+      address,
+      description,
+      phone,
+      email,
+      maps_link
+    )
+  `)
+  .ilike('email', normalizedEmail)
+  .single()
+    
     if (error) {
       console.error('Supabase error:', error)
       return NextResponse.json({ 
