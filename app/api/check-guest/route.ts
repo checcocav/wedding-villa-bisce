@@ -11,11 +11,19 @@ export async function POST(req: Request) {
 
     const supabase = createClient()
     
+    // Normalizza l'email
+    const normalizedEmail = email.toLowerCase().trim()
+    
+    console.log('Searching for email:', normalizedEmail) // Debug log
+    
     const { data: guest, error } = await supabase
       .from('guests')
       .select('*')
-      .eq('email', email.toLowerCase().trim())
+      .ilike('email', normalizedEmail) // Usa ilike invece di eq per case-insensitive
       .single()
+
+    console.log('Guest found:', guest) // Debug log
+    console.log('Error:', error) // Debug log
 
     if (error || !guest) {
       return NextResponse.json({ 
