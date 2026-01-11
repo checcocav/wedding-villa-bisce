@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server'
+import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
@@ -22,20 +22,26 @@ export async function POST(req: Request) {
       }, { status: 400 })
     }
 
-    const supabase = createClient()
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    )
+
+    const normalizedEmail = email.toLowerCase().trim()
 
     // Verifica che il guest esista
-    const { data: existingGuest } = await supabase
+    const { data: guests } = await supabase
       .from('guests')
       .select('id, has_plus_one, has_children')
-      .eq('email', email.toLowerCase())
-      .single()
+      .ilike('email', normalizedEmail)
 
-    if (!existingGuest) {
+    if (!guests || guests.length === 0) {
       return NextResponse.json({ 
         error: 'Guest non trovato' 
       }, { status: 404 })
     }
+
+    const existingGuest = guests[0]
 
     // Prepara i dati da aggiornare
     const updateData: any = {
@@ -45,18 +51,15 @@ export async function POST(req: Request) {
       message_to_couple: message_to_couple || null,
     }
 
-    // Aggiungi plus one solo se abilitato
     if (existingGuest.has_plus_one) {
       updateData.plus_one_first_name = plus_one_first_name || null
       updateData.plus_one_last_name = plus_one_last_name || null
     }
 
-    // Aggiungi bambini solo se abilitato
     if (existingGuest.has_children) {
       updateData.children_count = children_count || 0
     }
 
-    // Aggiungi alloggio
     updateData.needs_accommodation = needs_accommodation || false
     updateData.accommodation_notes = accommodation_notes || null
 
@@ -64,7 +67,7 @@ export async function POST(req: Request) {
     const { error: updateError } = await supabase
       .from('guests')
       .update(updateData)
-      .eq('email', email.toLowerCase())
+      .eq('id', existingGuest.id)
 
     if (updateError) {
       console.error('Update error:', updateError)
