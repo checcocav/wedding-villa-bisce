@@ -9,7 +9,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Email richiesta' }, { status: 400 })
     }
 
-    // Usa direttamente le credenziali invece del wrapper
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -17,41 +16,30 @@ export async function POST(req: Request) {
     
     const normalizedEmail = email.toLowerCase().trim()
     
-    
-const { data: guest, error } = await supabase
-  .from('guests')
-  .select(`
-    *,
-    accommodations (
-      id,
-      name,
-      address,
-      description,
-      phone,
-      email,
-      maps_link
-    )
-  `)
-  .ilike('email', normalizedEmail)
-  .single()
-    
-    if (error) {
+    const { data: guest, error } = await supabase
+      .from('guests')
+      .select(`
+        *,
+        accommodations (
+          id,
+          name,
+          address,
+          description,
+          phone,
+          email,
+          maps_link
+        )
+      `)
+      .ilike('email', normalizedEmail)
+      .single()
+
+    if (error || !guest) {
       console.error('Supabase error:', error)
       return NextResponse.json({ 
         found: false, 
-        message: 'Errore database',
-        debug: error.message 
+        message: 'Email non trovata nella lista invitati'
       })
     }
-
-    if (!guests || guests.length === 0) {
-      return NextResponse.json({ 
-        found: false, 
-        message: 'Email non trovata nella lista invitati' 
-      })
-    }
-
-    const guest = guests[0]
 
     return NextResponse.json({ 
       found: true, 
@@ -70,6 +58,8 @@ const { data: guest, error } = await supabase
         accommodation_notes: guest.accommodation_notes,
         allergies_notes: guest.allergies_notes,
         message_to_couple: guest.message_to_couple,
+        assigned_accommodation_id: guest.assigned_accommodation_id,
+        accommodations: Array.isArray(guest.accommodations) ? guest.accommodations[0] : guest.accommodations
       }
     })
   } catch (error) {
