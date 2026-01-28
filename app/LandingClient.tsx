@@ -168,7 +168,7 @@ export default function LandingClient() {
         }}>
           {/* SOSTITUISCI QUESTO DIV CON: 
           <img 
-            src="URL_TUA_IMMAGINE" 
+            src= "https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/background_video.mp4"
             alt="Francesco e Martina" 
             style={{
               width: '100%',
