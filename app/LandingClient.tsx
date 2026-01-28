@@ -757,7 +757,7 @@ export default function LandingClient() {
                 {/* Alloggio */}
                 {rsvpStatus === 'yes' && (
                   <div style={{ marginBottom: '30px' }}>
-                    {guest.accommodation_given ? (  // Cambiato da accommodation_included
+                    {guest.accommodation_given ? (
                       // Ha alloggio fornito dagli sposi
                       <div style={{
                         background: 'linear-gradient(135deg, #e7f3ff 0%, #d4e9ff 100%)',
@@ -780,47 +780,34 @@ export default function LandingClient() {
                         </p>
                       </div>
                     ) : (
-                      // Non ha alloggio - chiedi se serve supporto
-                      <>
+                      // Non ha alloggio - mostra direttamente la textarea
+                      <div>
                         <label style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          cursor: 'pointer',
-                          marginBottom: '15px'
+                          display: 'block',
+                          marginBottom: '15px',
+                          color: '#7a4f4f',
+                          fontSize: '1rem',
+                          fontWeight: '500',
+                          letterSpacing: '0.5px'
                         }}>
-                          <input
-                            type="checkbox"
-                            checked={needsAccommodation}
-                            onChange={(e) => setNeedsAccommodation(e.target.checked)}
-                            style={{ marginRight: '10px', cursor: 'pointer', width: 20, height: 20 }}
-                          />
-                          <span style={{
-                            color: '#7a4f4f',
-                            fontSize: '1rem',
-                            fontWeight: '500',
-                            letterSpacing: '0.5px'
-                          }}>
-                            Vorresti supporto per trovare un alloggio?
-                          </span>
+                          Per quante persone cerchi alloggio?
                         </label>
-                        {needsAccommodation && (
-                          <textarea
-                            value={accommodationNotes}
-                            onChange={(e) => setAccommodationNotes(e.target.value)}
-                            placeholder="Per quante persone cerchi alloggio? Indica anche eventuali preferenze o necessità particolari."
-                            rows={4}
-                            style={{
-                              width: '100%',
-                              padding: '15px',
-                              border: '1px solid #d9cfc3',
-                              borderRadius: 4,
-                              fontSize: '1rem',
-                              fontFamily: "'Cormorant Garamond', Georgia, serif",
-                              resize: 'vertical'
-                            }}
-                          />
-                        )}
-                      </>
+                        <textarea
+                          value={accommodationNotes}
+                          onChange={(e) => setAccommodationNotes(e.target.value)}
+                          placeholder="Indica il numero di persone e eventuali preferenze o necessità particolari (es. 2 persone, 1 notte, preferenza per hotel vicino alla location)"
+                          rows={4}
+                          style={{
+                            width: '100%',
+                            padding: '15px',
+                            border: '1px solid #d9cfc3',
+                            borderRadius: 4,
+                            fontSize: '1rem',
+                            fontFamily: "'Cormorant Garamond', Georgia, serif",
+                            resize: 'vertical'
+                          }}
+                        />
+                      </div>
                     )}
                   </div>
                 )}
