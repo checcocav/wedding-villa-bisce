@@ -18,18 +18,7 @@ export async function POST(req: Request) {
     
     const { data: guest, error } = await supabase
       .from('guests')
-      .select(`
-        *,
-        accommodations (
-          id,
-          name,
-          address,
-          description,
-          phone,
-          email,
-          maps_link
-        )
-      `)
+      .select('*')  // Rimosso il join con accommodations
       .ilike('email', normalizedEmail)
       .single()
 
@@ -53,12 +42,12 @@ export async function POST(req: Request) {
         rsvp_status: guest.rsvp_status,
         plus_one_first_name: guest.plus_one_first_name,
         plus_one_last_name: guest.plus_one_last_name,
-     children_count: guest.children_count,
-    accommodation_included: guest.accommodation_included || false,
-    needs_accommodation: guest.needs_accommodation || false,
-    accommodation_notes: guest.accommodation_notes,
-    allergies_notes: guest.allergies_notes,
-    message_to_couple: guest.message_to_couple
+        children_count: guest.children_count,
+        accommodation_included: guest.accommodation_included || false,
+        needs_accommodation: guest.needs_accommodation || false,
+        accommodation_notes: guest.accommodation_notes,
+        allergies_notes: guest.allergies_notes,
+        message_to_couple: guest.message_to_couple
       }
     })
   } catch (error) {
