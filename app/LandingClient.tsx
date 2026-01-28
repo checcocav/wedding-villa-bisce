@@ -188,7 +188,7 @@ export default function LandingClient() {
               objectFit: 'cover'
             }}
           >
-            <source src="URL_TUO_VIDEO" type="video/mp4" />
+            <source src="https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/background_video.mp4" type="video/mp4" />
           </video>
           */}
           <div style={{
