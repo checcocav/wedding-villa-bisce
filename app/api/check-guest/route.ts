@@ -43,11 +43,11 @@ export async function POST(req: Request) {
         plus_one_first_name: guest.plus_one_first_name,
         plus_one_last_name: guest.plus_one_last_name,
         children_count: guest.children_count,
-        accommodation_included: guest.accommodation_included || false,
-        needs_accommodation: guest.needs_accommodation || false,
-        accommodation_notes: guest.accommodation_notes,
-        allergies_notes: guest.allergies_notes,
-        message_to_couple: guest.message_to_couple
+        accommodation_given: guest.accommodation_given || false,  // Cambiato
+    needs_accommodation: guest.needs_accommodation || false,
+    accommodation_notes: guest.accommodation_notes,
+    allergies_notes: guest.allergies_notes,
+    message_to_couple: guest.message_to_couple
       }
     })
   } catch (error) {
