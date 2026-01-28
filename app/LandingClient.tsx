@@ -168,7 +168,7 @@ export default function LandingClient() {
         }}>
           {/* SOSTITUISCI QUESTO DIV CON: 
           <img 
-            src= "https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/background_video.mp4"
+            src= "https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/sfondo.JPG"
             alt="Francesco e Martina" 
             style={{
               width: '100%',
@@ -188,7 +188,7 @@ export default function LandingClient() {
               objectFit: 'cover'
             }}
           >
-            <source src="https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/background_video.mp4" type="video/mp4" />
+            <source src="https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/sfondo.JPG" type="video/mp4" />
           </video>
           */}
           <div style={{
