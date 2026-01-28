@@ -13,7 +13,7 @@ type Guest = {
   plus_one_first_name: string | null
   plus_one_last_name: string | null
   children_count: number | null
-  accommodation_given:: boolean
+  accommodation_given: boolean
   needs_accommodation: boolean
   accommodation_notes: string | null
   allergies_notes: string | null
