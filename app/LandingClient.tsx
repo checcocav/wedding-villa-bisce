@@ -157,7 +157,8 @@ export default function LandingClient() {
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Background Image/Video - Sostituisci questo div con <img> o <video> */}
+        
+        {/* Background Image */}
         <div style={{
           position: 'absolute',
           top: 0,
@@ -166,9 +167,8 @@ export default function LandingClient() {
           bottom: 0,
           zIndex: 0
         }}>
-          {/* SOSTITUISCI QUESTO DIV CON: 
           <img 
-            src= "https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/sfondo.JPG"
+            src="https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/sfondo.JPG"
             alt="Francesco e Martina" 
             style={{
               width: '100%',
@@ -176,36 +176,8 @@ export default function LandingClient() {
               objectFit: 'cover'
             }}
           />
-          OPPURE:
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover'
-            }}
-          >
-            <source src="https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/sfondo.JPG" type="video/mp4" />
-          </video>
-          */}
-          <div style={{
-            width: '100%',
-            height: '100%',
-            background: 'linear-gradient(135deg, #c3cfe2 0%, #f5f7fa 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#9fa8b3',
-            fontSize: '1.5rem',
-            letterSpacing: '2px'
-          }}>
-            [Sostituisci con immagine o video]
-          </div>
         </div>
-
+        
         {/* Overlay scuro per leggibilità */}
         <div style={{
           position: 'absolute',
