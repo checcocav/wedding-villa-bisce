@@ -13,7 +13,7 @@ type Guest = {
   plus_one_first_name: string | null
   plus_one_last_name: string | null
   children_count: number | null
-  accommodation_included: boolean
+  accommodation_given:: boolean
   needs_accommodation: boolean
   accommodation_notes: string | null
   allergies_notes: string | null
@@ -154,91 +154,116 @@ export default function LandingClient() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#f5f7fa',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Background Image/Video */}
+        {/* Background Image/Video - Sostituisci questo div con <img> o <video> */}
         <div style={{
           position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(135deg, #c3cfe2 0%, #f5f7fa 100%)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
+          zIndex: 0
         }}>
+          {/* SOSTITUISCI QUESTO DIV CON: 
+          <img 
+            src="URL_TUA_IMMAGINE" 
+            alt="Francesco e Martina" 
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover'
+            }}
+          />
+          OPPURE:
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover'
+            }}
+          >
+            <source src="URL_TUO_VIDEO" type="video/mp4" />
+          </video>
+          */}
           <div style={{
             width: '100%',
-            maxWidth: '500px',
-            aspectRatio: '3/4',
-            background: '#d5dce5',
-            margin: '0 20px',
-            borderRadius: 8,
+            height: '100%',
+            background: 'linear-gradient(135deg, #c3cfe2 0%, #f5f7fa 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             color: '#9fa8b3',
-            fontSize: '0.9rem',
+            fontSize: '1.5rem',
             letterSpacing: '2px'
           }}>
-            [Immagine/Video]
+            [Sostituisci con immagine o video]
           </div>
         </div>
 
-        {/* Overlay Text */}
+        {/* Overlay scuro per leggibilità */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.3)',
+          zIndex: 1
+        }} />
+
+        {/* Testo sovrapposto */}
         <div style={{
           position: 'relative',
-          zIndex: 1,
+          zIndex: 2,
           textAlign: 'center',
           padding: '40px 20px',
-          background: 'rgba(255, 255, 255, 0.9)',
-          backdropFilter: 'blur(10px)',
-          borderRadius: 8,
-          maxWidth: '90%',
-          margin: '20px'
+          color: 'white',
+          textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)'
         }}>
           <h1 style={{
-            fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+            fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
             fontWeight: '300',
-            margin: '0 0 20px 0',
-            color: '#7a4f4f',
-            letterSpacing: '3px'
+            margin: '0 0 30px 0',
+            letterSpacing: '4px',
+            textTransform: 'uppercase'
           }}>
             Francesco & Martina
           </h1>
           
           <div style={{
-            width: '80px',
-            height: '1px',
-            background: '#a8836f',
-            margin: '20px auto'
+            width: '100px',
+            height: '2px',
+            background: 'rgba(255, 255, 255, 0.8)',
+            margin: '30px auto'
           }} />
 
           <p style={{
-            fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
-            color: '#7a4f4f',
-            margin: '20px 0 10px 0',
+            fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
+            margin: '20px 0 15px 0',
             fontWeight: '300',
-            letterSpacing: '2px'
+            letterSpacing: '3px'
           }}>
             29 Agosto 2026
           </p>
           
           <p style={{
-            fontSize: '1rem',
-            color: '#8b8376',
-            letterSpacing: '2px',
+            fontSize: 'clamp(1rem, 2vw, 1.3rem)',
+            letterSpacing: '3px',
             fontFamily: "'Montserrat', sans-serif",
-            fontWeight: '400'
+            fontWeight: '300',
+            textTransform: 'uppercase'
           }}>
             Palazzo delle Bisce • Molinella, BO
           </p>
         </div>
       </section>
-
+      
       {/* Countdown */}
       <section style={{ padding: '100px 20px', background: 'white', textAlign: 'center' }}>
         <h2 style={{
@@ -729,11 +754,11 @@ export default function LandingClient() {
                   </div>
                 )}
 
-                {/* Alloggio - Logica modificata */}
+                {/* Alloggio */}
                 {rsvpStatus === 'yes' && (
                   <div style={{ marginBottom: '30px' }}>
-                    {guest.accommodation_included ? (
-                      // Ha alloggio incluso
+                    {guest.accommodation_given ? (  // Cambiato da accommodation_included
+                      // Ha alloggio fornito dagli sposi
                       <div style={{
                         background: 'linear-gradient(135deg, #e7f3ff 0%, #d4e9ff 100%)',
                         border: '2px solid #7a9cc6',
@@ -747,7 +772,7 @@ export default function LandingClient() {
                           marginBottom: '20px',
                           letterSpacing: '1px'
                         }}>
-                          🎉 Hai alloggio incluso in location!
+                          🎉 Hai l'accommodation inclusa in location!
                         </h4>
                         <p style={{ color: '#5a7399', fontSize: '1rem', lineHeight: 1.6 }}>
                           Abbiamo riservato una camera per te al Palazzo delle Bisce. 
@@ -755,7 +780,7 @@ export default function LandingClient() {
                         </p>
                       </div>
                     ) : (
-                      // Non ha alloggio incluso - chiedi se serve supporto
+                      // Non ha alloggio - chiedi se serve supporto
                       <>
                         <label style={{
                           display: 'flex',
@@ -799,7 +824,7 @@ export default function LandingClient() {
                     )}
                   </div>
                 )}
-
+                
                 {rsvpStatus === 'yes' && (
                   <div style={{ marginBottom: '30px' }}>
                     <label style={{ display: 'block', marginBottom: '15px', color: '#7a4f4f', fontSize: '1rem', fontWeight: '500', letterSpacing: '0.5px' }}>
