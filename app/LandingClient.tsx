@@ -59,7 +59,7 @@ export default function LandingClient() {
   const faqs = [
     { 
       question: "C'è un parcheggio in location?", 
-      answer: "Sì, il Palazzo delle Bisce dispone di un ampio parcheggio gratuito per gli ospiti." 
+      answer: "Sì, il Palazzo delle Biscie dispone di un ampio parcheggio gratuito per gli ospiti." 
     },
     { 
       question: "Posso fare foto durante l'evento?", 
@@ -231,7 +231,7 @@ export default function LandingClient() {
             fontWeight: '300',
             textTransform: 'uppercase'
           }}>
-            Palazzo delle Bisce • Molinella, BO
+            Palazzo delle Biscie • Molinella, BO
           </p>
         </div>
       </section>
@@ -309,7 +309,7 @@ export default function LandingClient() {
           marginBottom: '50px',
           letterSpacing: '1px'
         }}>
-          Palazzo delle Bisce
+          Palazzo delle Biscie
         </h3>
         
         <div style={{
@@ -377,7 +377,7 @@ export default function LandingClient() {
             }} />
 
             {[
-              { time: '16:30', title: 'Arrivo Ospiti', desc: 'Benvenuto al Palazzo delle Bisce' },
+              { time: '16:30', title: 'Arrivo Ospiti', desc: 'Benvenuto al Palazzo delle Biscie' },
               { time: '17:00', title: 'Cerimonia', desc: 'Momento della promessa' },
               { time: '18:00', title: 'Aperitivo', desc: 'Brindisi e foto nel giardino' },
               { time: '20:00', title: 'Cena', desc: 'Cena e festeggiamenti' },
@@ -747,7 +747,7 @@ export default function LandingClient() {
                           🎉 Hai l'accommodation inclusa in location!
                         </h4>
                         <p style={{ color: '#5a7399', fontSize: '1rem', lineHeight: 1.6 }}>
-                          Abbiamo riservato una camera per te al Palazzo delle Bisce. 
+                          Abbiamo riservato una camera per te al Palazzo delle Biscie. 
                           Riceverai tutti i dettagli via email prima dell'evento.
                         </p>
                       </div>
