@@ -320,7 +320,7 @@ export default function LandingClient() {
           border: '1px solid #d9cfc3'
         }}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2835.9!2d11.65!3d44.62!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f7!3m3!1m2!1s0x0%3A0x0!2zNDTCsDM3JzEyLjAiTiAxMcKwMzknMDAuMCJF!5e0!3m2!1sit!2sit!4v1234567890"
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7186!2d11.6574118!3d44.6161051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13!3m3!1m2!1s0x477e3bcda4bd3189:0x225c1bb9c86e99df!2sPalazzo%20delle%20Biscie!5e0!3m2!1sit!2sit!4v1234567890"
             width="100%"
             height="450"
             style={{ border: 0 }}
