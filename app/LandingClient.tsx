@@ -231,7 +231,7 @@ export default function LandingClient() {
             fontWeight: '300',
             textTransform: 'uppercase'
           }}>
-            Palazzo delle Biscie • Molinella, BO
+            Palazzo delle Biscie
           </p>
         </div>
       </section>
