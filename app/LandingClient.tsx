@@ -205,7 +205,7 @@ export default function LandingClient() {
             letterSpacing: '4px',
             textTransform: 'uppercase'
           }}>
-            Francesco & Martina
+            Martina & Francesco
           </h1>
           
           <div style={{
@@ -903,7 +903,7 @@ export default function LandingClient() {
 
       <footer style={{ padding: '60px 20px', textAlign: 'center', background: 'white', borderTop: '1px solid #d9cfc3' }}>
         <p style={{ fontSize: '0.9rem', color: '#8b8376', margin: 0, letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif" }}>
-          © 2026 Francesco & Martina · Con amore
+          © 2026 Martina & Francesco · Con amore
         </p>
       </footer>
     </div>
