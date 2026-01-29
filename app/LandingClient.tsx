@@ -168,8 +168,8 @@ export default function LandingClient() {
           zIndex: 0
         }}>
           <img 
-            src="https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/sfondo.JPG"
-            alt="Francesco e Martina" 
+            src="https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/foto_sfondo.jpeg"
+            alt="Martina & Francesco" 
             style={{
               width: '100%',
               height: '100%',
