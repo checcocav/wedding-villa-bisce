@@ -263,7 +263,7 @@ export default function LandingClient() {
           ].map((item, i) => (
             <div key={i} style={{
               padding: '40px 20px',
-              background: '#7D8F82',
+              background: '#A4B3A9',
               border: '1px solid #A4B3A9',
               borderRadius: 4
             }}>
