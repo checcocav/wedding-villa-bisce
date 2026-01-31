@@ -150,7 +150,7 @@ export default function LandingClient() {
     <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: '#2c2c2c' }}>
       {/* Hero */}
       <section style={{
-        minHeight: '70vh',
+        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
