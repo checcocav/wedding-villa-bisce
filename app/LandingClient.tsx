@@ -169,7 +169,9 @@ export default function LandingClient() {
         }}>
           <img 
             src="https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/foto_sfondo.jpeg"
-            alt="Martina & Francesco" 
+            alt="Martina 
+            & 
+            Francesco" 
             style={{
               width: '100%',
               height: '100%',
