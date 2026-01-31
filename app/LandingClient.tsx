@@ -241,7 +241,7 @@ export default function LandingClient() {
         <h2 style={{
           fontSize: 'clamp(2rem, 5vw, 3rem)',
           fontWeight: '300',
-          color: '#A4B3A9',
+          color: '#5C161E',
           marginBottom: '60px',
           letterSpacing: '2px'
         }}>
@@ -263,8 +263,8 @@ export default function LandingClient() {
           ].map((item, i) => (
             <div key={i} style={{
               padding: '40px 20px',
-              background: '#A4B3A9',
-              border: '1px solid #A4B3A9',
+              background: '#F2E6E1',
+              border: '1px solid #F2E6E1',
               borderRadius: 4
             }}>
               <div style={{
