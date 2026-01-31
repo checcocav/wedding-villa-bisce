@@ -241,7 +241,7 @@ export default function LandingClient() {
         <h2 style={{
           fontSize: 'clamp(2rem, 5vw, 3rem)',
           fontWeight: '300',
-          color: '#7a4f4f',
+          color: '#5C161E',
           marginBottom: '60px',
           letterSpacing: '2px'
         }}>
@@ -263,14 +263,14 @@ export default function LandingClient() {
           ].map((item, i) => (
             <div key={i} style={{
               padding: '40px 20px',
-              background: '#f9f5f1',
-              border: '1px solid #d9cfc3',
+              background: '#7D8F82',
+              border: '1px solid #A4B3A9',
               borderRadius: 4
             }}>
               <div style={{
                 fontSize: 'clamp(3rem, 8vw, 5rem)',
                 fontWeight: '300',
-                color: '#7a4f4f',
+                color: '#5C161E',
                 marginBottom: 10,
                 lineHeight: 1
               }}>
@@ -291,11 +291,11 @@ export default function LandingClient() {
       </section>
 
       {/* Location */}
-      <section style={{ padding: '100px 20px', background: '#f9f5f1', textAlign: 'center' }}>
+      <section style={{ padding: '100px 20px', background: '#7D8F82', textAlign: 'center' }}>
         <h2 style={{
           fontSize: 'clamp(2rem, 5vw, 3rem)',
           fontWeight: '300',
-          color: '#7a4f4f',
+          color: '#5C161E',
           marginBottom: '20px',
           letterSpacing: '2px'
         }}>
@@ -305,7 +305,7 @@ export default function LandingClient() {
         <h3 style={{
           fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
           fontWeight: '400',
-          color: '#7a4f4f',
+          color: '#5C161E',
           marginBottom: '50px',
           letterSpacing: '1px'
         }}>
@@ -317,7 +317,7 @@ export default function LandingClient() {
           margin: '0 auto 30px',
           borderRadius: 4,
           overflow: 'hidden',
-          border: '1px solid #d9cfc3'
+          border: '1px solid #A4B3A9'
         }}>
           <iframe
   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10161!2d11.6606956!3d44.6182114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13!3m3!1m2!1s0x477e3bcda4bd3189:0x225c1bb9c86e99df!2sPalazzo%20delle%20Biscie!5e0!3m2!1sit!2sit!4v1234567890"
@@ -336,7 +336,7 @@ export default function LandingClient() {
           style={{
             display: 'inline-block',
             padding: '14px 40px',
-            background: '#7a4f4f',
+            background: '#5C161E',
             color: 'white',
             textDecoration: 'none',
             borderRadius: 4,
@@ -358,7 +358,7 @@ export default function LandingClient() {
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: '300',
-            color: '#7a4f4f',
+            color: '#5C161E',
             marginBottom: '80px',
             textAlign: 'center',
             letterSpacing: '2px'
@@ -373,7 +373,7 @@ export default function LandingClient() {
               top: 0,
               bottom: 0,
               width: '1px',
-              background: '#d9cfc3'
+              background: '#A4B3A9'
             }} />
 
             {[
@@ -402,7 +402,7 @@ export default function LandingClient() {
                   justifyContent: 'center',
                   fontSize: '0.75rem',
                   fontWeight: '500',
-                  color: '#7a4f4f',
+                  color: '#5C161E',
                   fontFamily: "'Montserrat', sans-serif",
                   letterSpacing: '1px'
                 }}>
@@ -412,7 +412,7 @@ export default function LandingClient() {
                   <h3 style={{
                     fontSize: '1.5rem',
                     fontWeight: '400',
-                    color: '#7a4f4f',
+                    color: '#5C161E',
                     marginBottom: '8px',
                     letterSpacing: '1px'
                   }}>
@@ -433,12 +433,12 @@ export default function LandingClient() {
       </section>
 
       {/* FAQ */}
-      <section style={{ padding: '100px 20px', background: '#f9f5f1' }}>
+      <section style={{ padding: '100px 20px', background: '#7D8F82' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: '300',
-            color: '#7a4f4f',
+            color: '#5C161E',
             marginBottom: '60px',
             textAlign: 'center',
             letterSpacing: '2px'
@@ -452,7 +452,7 @@ export default function LandingClient() {
                 key={index}
                 style={{
                   background: 'white',
-                  border: '1px solid #d9cfc3',
+                  border: '1px solid #A4B3A9',
                   borderRadius: 4,
                   overflow: 'hidden'
                 }}
@@ -469,12 +469,12 @@ export default function LandingClient() {
                     alignItems: 'center',
                     cursor: 'pointer',
                     fontSize: '1.1rem',
-                    color: '#7a4f4f',
+                    color: '#5C161E',
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
                     textAlign: 'left',
                     transition: 'background 0.3s'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#f9f5f1'}
+                  onMouseEnter={(e) => e.currentTarget.style.background = '#7D8F82'}
                   onMouseLeave={(e) => e.currentTarget.style.background = 'white'}
                 >
                   <span style={{ letterSpacing: '0.5px' }}>{faq.question}</span>
@@ -510,7 +510,7 @@ export default function LandingClient() {
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: '300',
-            color: '#7a4f4f',
+            color: '#5C161E',
             marginBottom: '50px',
             letterSpacing: '2px'
           }}>
@@ -519,9 +519,9 @@ export default function LandingClient() {
 
           {step === 'email' && (
             <div style={{
-              background: '#f9f5f1',
+              background: '#7D8F82',
               padding: '50px 40px',
-              border: '1px solid #d9cfc3',
+              border: '1px solid #A4B3A9',
               borderRadius: 4
             }}>
               <p style={{
@@ -557,7 +557,7 @@ export default function LandingClient() {
                     width: '100%',
                     padding: '18px',
                     fontSize: '1rem',
-                    border: '1px solid #d9cfc3',
+                    border: '1px solid #A4B3A9',
                     borderRadius: 4,
                     marginBottom: '20px',
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
@@ -570,7 +570,7 @@ export default function LandingClient() {
                   style={{
                     width: '100%',
                     padding: '18px',
-                    background: '#7a4f4f',
+                    background: '#5C161E',
                     color: 'white',
                     border: 'none',
                     borderRadius: 4,
@@ -592,9 +592,9 @@ export default function LandingClient() {
 
 {step === 'form' && guest && (
             <div style={{
-              background: '#f9f5f1',
+              background: '#7D8F82',
               padding: 'clamp(20px, 5vw, 50px)',
-              border: '1px solid #d9cfc3',
+              border: '1px solid #A4B3A9',
               borderRadius: 4,
               maxHeight: '80vh',
               overflowY: 'auto',
@@ -604,7 +604,7 @@ export default function LandingClient() {
                 fontSize: 'clamp(1.5rem, 5vw, 2rem)',
                 fontWeight: '300',
                 marginBottom: '10px',
-                color: '#7a4f4f',
+                color: '#5C161E',
                 textAlign: 'center',
                 letterSpacing: '1px'
               }}>
@@ -638,7 +638,7 @@ export default function LandingClient() {
                   <label style={{
                     display: 'block',
                     marginBottom: '12px',
-                    color: '#7a4f4f',
+                    color: '#5C161E',
                     fontSize: 'clamp(0.95rem, 3vw, 1rem)',
                     fontWeight: '500',
                     letterSpacing: '0.5px'
@@ -655,9 +655,9 @@ export default function LandingClient() {
                       onClick={() => setRsvpStatus('yes')}
                       style={{
                         padding: 'clamp(12px, 3vw, 18px)',
-                        background: rsvpStatus === 'yes' ? '#7a4f4f' : 'white',
-                        color: rsvpStatus === 'yes' ? 'white' : '#7a4f4f',
-                        border: `1px solid ${rsvpStatus === 'yes' ? '#7a4f4f' : '#d9cfc3'}`,
+                        background: rsvpStatus === 'yes' ? '#5C161E' : 'white',
+                        color: rsvpStatus === 'yes' ? 'white' : '#5C161E',
+                        border: `1px solid ${rsvpStatus === 'yes' ? '#5C161E' : '#A4B3A9'}`,
                         borderRadius: 4,
                         fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)',
                         cursor: 'pointer',
@@ -673,9 +673,9 @@ export default function LandingClient() {
                       onClick={() => setRsvpStatus('no')}
                       style={{
                         padding: 'clamp(12px, 3vw, 18px)',
-                        background: rsvpStatus === 'no' ? '#7a4f4f' : 'white',
-                        color: rsvpStatus === 'no' ? 'white' : '#7a4f4f',
-                        border: `1px solid ${rsvpStatus === 'no' ? '#7a4f4f' : '#d9cfc3'}`,
+                        background: rsvpStatus === 'no' ? '#5C161E' : 'white',
+                        color: rsvpStatus === 'no' ? 'white' : '#5C161E',
+                        border: `1px solid ${rsvpStatus === 'no' ? '#5C161E' : '#A4B3A9'}`,
                         borderRadius: 4,
                         fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)',
                         cursor: 'pointer',
@@ -696,12 +696,12 @@ export default function LandingClient() {
                     padding: 'clamp(15px, 4vw, 25px)', 
                     background: 'white', 
                     borderRadius: 4, 
-                    border: '1px solid #d9cfc3' 
+                    border: '1px solid #A4B3A9' 
                   }}>
                     <label style={{ 
                       display: 'block', 
                       marginBottom: '15px', 
-                      color: '#7a4f4f', 
+                      color: '#5C161E', 
                       fontSize: 'clamp(0.95rem, 3vw, 1rem)', 
                       fontWeight: '500', 
                       letterSpacing: '0.5px' 
@@ -720,7 +720,7 @@ export default function LandingClient() {
                         placeholder="Nome"
                         style={{ 
                           padding: '12px', 
-                          border: '1px solid #d9cfc3', 
+                          border: '1px solid #A4B3A9', 
                           borderRadius: 4, 
                           fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
                           fontFamily: "'Cormorant Garamond', Georgia, serif",
@@ -735,7 +735,7 @@ export default function LandingClient() {
                         placeholder="Cognome"
                         style={{ 
                           padding: '12px', 
-                          border: '1px solid #d9cfc3', 
+                          border: '1px solid #A4B3A9', 
                           borderRadius: 4, 
                           fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
                           fontFamily: "'Cormorant Garamond', Georgia, serif",
@@ -753,7 +753,7 @@ export default function LandingClient() {
                     <label style={{ 
                       display: 'block', 
                       marginBottom: '12px', 
-                      color: '#7a4f4f', 
+                      color: '#5C161E', 
                       fontSize: 'clamp(0.95rem, 3vw, 1rem)', 
                       fontWeight: '500', 
                       letterSpacing: '0.5px' 
@@ -769,7 +769,7 @@ export default function LandingClient() {
                       style={{ 
                         width: '100%', 
                         padding: '12px', 
-                        border: '1px solid #d9cfc3', 
+                        border: '1px solid #A4B3A9', 
                         borderRadius: 4, 
                         fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
                         fontFamily: "'Cormorant Garamond', Georgia, serif",
@@ -792,7 +792,7 @@ export default function LandingClient() {
                       }}>
                         <h4 style={{
                           fontSize: 'clamp(1.2rem, 4vw, 1.5rem)',
-                          color: '#7a4f4f',
+                          color: '#5C161E',
                           marginBottom: '15px',
                           letterSpacing: '1px'
                         }}>
@@ -812,7 +812,7 @@ export default function LandingClient() {
                         <label style={{
                           display: 'block',
                           marginBottom: '12px',
-                          color: '#7a4f4f',
+                          color: '#5C161E',
                           fontSize: 'clamp(0.95rem, 3vw, 1rem)',
                           fontWeight: '500',
                           letterSpacing: '0.5px'
@@ -827,7 +827,7 @@ export default function LandingClient() {
                           style={{
                             width: '100%',
                             padding: '12px',
-                            border: '1px solid #d9cfc3',
+                            border: '1px solid #A4B3A9',
                             borderRadius: 4,
                             fontSize: 'clamp(0.9rem, 3vw, 1rem)',
                             fontFamily: "'Cormorant Garamond', Georgia, serif",
@@ -846,7 +846,7 @@ export default function LandingClient() {
                     <label style={{ 
                       display: 'block', 
                       marginBottom: '12px', 
-                      color: '#7a4f4f', 
+                      color: '#5C161E', 
                       fontSize: 'clamp(0.95rem, 3vw, 1rem)', 
                       fontWeight: '500', 
                       letterSpacing: '0.5px' 
@@ -861,7 +861,7 @@ export default function LandingClient() {
                       style={{ 
                         width: '100%', 
                         padding: '12px', 
-                        border: '1px solid #d9cfc3', 
+                        border: '1px solid #A4B3A9', 
                         borderRadius: 4, 
                         fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
                         fontFamily: "'Cormorant Garamond', Georgia, serif", 
@@ -877,7 +877,7 @@ export default function LandingClient() {
                   <label style={{ 
                     display: 'block', 
                     marginBottom: '12px', 
-                    color: '#7a4f4f', 
+                    color: '#5C161E', 
                     fontSize: 'clamp(0.95rem, 3vw, 1rem)', 
                     fontWeight: '500', 
                     letterSpacing: '0.5px' 
@@ -892,7 +892,7 @@ export default function LandingClient() {
                     style={{ 
                       width: '100%', 
                       padding: '12px', 
-                      border: '1px solid #d9cfc3', 
+                      border: '1px solid #A4B3A9', 
                       borderRadius: 4, 
                       fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
                       fontFamily: "'Cormorant Garamond', Georgia, serif", 
@@ -909,7 +909,7 @@ export default function LandingClient() {
                   style={{
                     width: '100%',
                     padding: 'clamp(14px, 4vw, 18px)',
-                    background: '#7a4f4f',
+                    background: '#5C161E',
                     color: 'white',
                     border: 'none',
                     borderRadius: 4,
@@ -930,15 +930,15 @@ export default function LandingClient() {
           
           {step === 'success' && (
             <div style={{
-              background: '#f9f5f1',
+              background: '#7D8F82',
               padding: '60px 40px',
-              border: '1px solid #d9cfc3',
+              border: '1px solid #A4B3A9',
               borderRadius: 4
             }}>
               <div style={{ fontSize: '4rem', marginBottom: '30px' }}>
                 {rsvpStatus === 'yes' ? '🎉' : '💌'}
               </div>
-              <h3 style={{ fontSize: '2.5rem', fontWeight: '300', marginBottom: '20px', color: '#7a4f4f', letterSpacing: '1px' }}>
+              <h3 style={{ fontSize: '2.5rem', fontWeight: '300', marginBottom: '20px', color: '#5C161E', letterSpacing: '1px' }}>
                 {rsvpStatus === 'yes' ? 'Grazie!' : 'Grazie per la risposta'}
               </h3>
               <p style={{ fontSize: '1.1rem', color: '#6b5d52', marginBottom: '40px', lineHeight: '1.6' }}>
@@ -956,7 +956,7 @@ export default function LandingClient() {
                 }}
                 style={{
                   padding: '14px 40px',
-                  background: '#7a4f4f',
+                  background: '#5C161E',
                   color: 'white',
                   border: 'none',
                   borderRadius: 4,
@@ -975,24 +975,24 @@ export default function LandingClient() {
       </section>
 
       {/* Gallery */}
-      <section style={{ padding: '100px 20px', background: '#f9f5f1', textAlign: 'center' }}>
-        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '300', color: '#7a4f4f', marginBottom: '30px', letterSpacing: '2px' }}>
+      <section style={{ padding: '100px 20px', background: '#7D8F82', textAlign: 'center' }}>
+        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '300', color: '#5C161E', marginBottom: '30px', letterSpacing: '2px' }}>
           Condividi i tuoi momenti
         </h2>
         <p style={{ fontSize: '1.1rem', marginBottom: '50px', color: '#6b5d52' }}>
           Carica e visualizza le foto della giornata
         </p>
         <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="/public-photos" style={{ display: 'inline-block', padding: '16px 40px', background: '#7a4f4f', color: 'white', textDecoration: 'none', borderRadius: 4, fontSize: '0.85rem', letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif", fontWeight: '500' }}>
+          <a href="/public-photos" style={{ display: 'inline-block', padding: '16px 40px', background: '#5C161E', color: 'white', textDecoration: 'none', borderRadius: 4, fontSize: '0.85rem', letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif", fontWeight: '500' }}>
             📷 Carica Foto
           </a>
-          <a href="/gallery" style={{ display: 'inline-block', padding: '16px 40px', background: 'transparent', color: '#7a4f4f', textDecoration: 'none', borderRadius: 4, fontSize: '0.85rem', letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif", fontWeight: '500', border: '1px solid #7a4f4f' }}>
+          <a href="/gallery" style={{ display: 'inline-block', padding: '16px 40px', background: 'transparent', color: '#5C161E', textDecoration: 'none', borderRadius: 4, fontSize: '0.85rem', letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif", fontWeight: '500', border: '1px solid #5C161E' }}>
             🖼️ Gallery
           </a>
         </div>
       </section>
 
-      <footer style={{ padding: '60px 20px', textAlign: 'center', background: 'white', borderTop: '1px solid #d9cfc3' }}>
+      <footer style={{ padding: '60px 20px', textAlign: 'center', background: 'white', borderTop: '1px solid #A4B3A9' }}>
         <p style={{ fontSize: '0.9rem', color: '#8b8376', margin: 0, letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif" }}>
           © 2026 Martina & Francesco · Con amore
         </p>
