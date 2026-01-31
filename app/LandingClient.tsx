@@ -241,7 +241,7 @@ export default function LandingClient() {
         <h2 style={{
           fontSize: 'clamp(2rem, 5vw, 3rem)',
           fontWeight: '300',
-          color: '#5C161E',
+          color: '#A4B3A9',
           marginBottom: '60px',
           letterSpacing: '2px'
         }}>
