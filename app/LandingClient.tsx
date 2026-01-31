@@ -433,7 +433,7 @@ export default function LandingClient() {
       </section>
 
       {/* FAQ */}
-      <section style={{ padding: '100px 20px', background: '#7D8F82' }}>
+      <section style={{ padding: '100px 20px', background: '#A4B3A9' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -976,7 +976,7 @@ export default function LandingClient() {
 
       {/* Gallery */}
       <section style={{ padding: '100px 20px', background: '#7D8F82', textAlign: 'center' }}>
-        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '300', color: '#5C161E', marginBottom: '30px', letterSpacing: '2px' }}>
+        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '300', color: '#A4B3A9', marginBottom: '30px', letterSpacing: '2px' }}>
           Condividi i tuoi momenti
         </h2>
         <p style={{ fontSize: '1.1rem', marginBottom: '50px', color: '#6b5d52' }}>
