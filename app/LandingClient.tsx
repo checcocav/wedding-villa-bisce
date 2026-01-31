@@ -594,7 +594,7 @@ export default function LandingClient() {
 
 {step === 'form' && guest && (
             <div style={{
-              background: '#A4B3A9',
+              background: '#F2E6E1',
               padding: 'clamp(20px, 5vw, 50px)',
               border: '1px solid #A4B3A9',
               borderRadius: 4,
