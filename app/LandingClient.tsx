@@ -519,7 +519,7 @@ export default function LandingClient() {
 
           {step === 'email' && (
             <div style={{
-              background: '#7D8F82',
+              background: '#F2E6E1',
               padding: '50px 40px',
               border: '1px solid #A4B3A9',
               borderRadius: 4
