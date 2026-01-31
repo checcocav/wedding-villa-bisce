@@ -291,7 +291,7 @@ export default function LandingClient() {
       </section>
 
       {/* Location */}
-      <section style={{ padding: '100px 20px', background: '#7D8F82', textAlign: 'center' }}>
+      <section style={{ padding: '100px 20px', background: '#A4B3A9', textAlign: 'center' }}>
         <h2 style={{
           fontSize: 'clamp(2rem, 5vw, 3rem)',
           fontWeight: '300',
