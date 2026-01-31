@@ -68,6 +68,10 @@ export default function LandingClient() {
     { 
       question: "È possibile prenotare un alloggio per la notte?", 
       answer: "In zona ci sono diverse alternative. Nel caso vogliate supporto potete indicarlo nella vostra area riservata e vi daremo una mano noi!" 
+    },
+    { 
+      question: "Come posso fare il regalo",  
+      answer: "Al momento non è ancora possibile regalarci qualcosa. In futuro al posto di questa risposta verrà indicato come poter fare." 
     }
   ]
 
