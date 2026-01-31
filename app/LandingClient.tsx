@@ -590,18 +590,18 @@ export default function LandingClient() {
             </div>
           )}
 
-          {step === 'form' && guest && (
+{step === 'form' && guest && (
             <div style={{
               background: '#f9f5f1',
-              padding: '50px 40px',
+              padding: 'clamp(20px, 5vw, 50px)',
               border: '1px solid #d9cfc3',
               borderRadius: 4,
-              maxHeight: '75vh',
+              maxHeight: '80vh',
               overflowY: 'auto',
               textAlign: 'left'
             }}>
               <h3 style={{
-                fontSize: '2rem',
+                fontSize: 'clamp(1.5rem, 5vw, 2rem)',
                 fontWeight: '300',
                 marginBottom: '10px',
                 color: '#7a4f4f',
@@ -611,9 +611,9 @@ export default function LandingClient() {
                 Ciao {guest.first_name}!
               </h3>
               <p style={{
-                fontSize: '1rem',
+                fontSize: 'clamp(0.9rem, 3vw, 1rem)',
                 color: '#6b5d52',
-                marginBottom: '40px',
+                marginBottom: '30px',
                 textAlign: 'center'
               }}>
                 Conferma la tua partecipazione al nostro matrimonio
@@ -626,93 +626,138 @@ export default function LandingClient() {
                   background: '#f8d7da',
                   color: '#721c24',
                   borderRadius: 4,
-                  fontSize: '0.95rem'
+                  fontSize: '0.9rem'
                 }}>
                   {error}
                 </div>
               )}
 
               <form onSubmit={handleRsvpSubmit}>
-                <div style={{ marginBottom: '30px' }}>
+                {/* Parteciperai */}
+                <div style={{ marginBottom: '25px' }}>
                   <label style={{
                     display: 'block',
-                    marginBottom: '15px',
+                    marginBottom: '12px',
                     color: '#7a4f4f',
-                    fontSize: '1rem',
+                    fontSize: 'clamp(0.95rem, 3vw, 1rem)',
                     fontWeight: '500',
                     letterSpacing: '0.5px'
                   }}>
                     Parteciperai? *
                   </label>
-                  <div style={{ display: 'flex', gap: '15px' }}>
+                  <div style={{ 
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    gap: '10px'
+                  }}>
                     <button
                       type="button"
                       onClick={() => setRsvpStatus('yes')}
                       style={{
-                        flex: 1,
-                        padding: '18px',
+                        padding: 'clamp(12px, 3vw, 18px)',
                         background: rsvpStatus === 'yes' ? '#7a4f4f' : 'white',
                         color: rsvpStatus === 'yes' ? 'white' : '#7a4f4f',
                         border: `1px solid ${rsvpStatus === 'yes' ? '#7a4f4f' : '#d9cfc3'}`,
                         borderRadius: 4,
-                        fontSize: '0.95rem',
+                        fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)',
                         cursor: 'pointer',
                         fontFamily: "'Cormorant Garamond', Georgia, serif",
                         letterSpacing: '0.5px',
                         transition: 'all 0.3s'
                       }}
                     >
-                      ✓ Sì, ci sarò!
+                      ✓ Sì
                     </button>
                     <button
                       type="button"
                       onClick={() => setRsvpStatus('no')}
                       style={{
-                        flex: 1,
-                        padding: '18px',
+                        padding: 'clamp(12px, 3vw, 18px)',
                         background: rsvpStatus === 'no' ? '#7a4f4f' : 'white',
                         color: rsvpStatus === 'no' ? 'white' : '#7a4f4f',
                         border: `1px solid ${rsvpStatus === 'no' ? '#7a4f4f' : '#d9cfc3'}`,
                         borderRadius: 4,
-                        fontSize: '0.95rem',
+                        fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)',
                         cursor: 'pointer',
                         fontFamily: "'Cormorant Garamond', Georgia, serif",
                         letterSpacing: '0.5px',
                         transition: 'all 0.3s'
                       }}
                     >
-                      ✗ Non potrò
+                      ✗ No
                     </button>
                   </div>
                 </div>
 
+                {/* Plus One */}
                 {guest.has_plus_one && rsvpStatus === 'yes' && (
-                  <div style={{ marginBottom: '30px', padding: '25px', background: 'white', borderRadius: 4, border: '1px solid #d9cfc3' }}>
-                    <label style={{ display: 'block', marginBottom: '18px', color: '#7a4f4f', fontSize: '1rem', fontWeight: '500', letterSpacing: '0.5px' }}>
+                  <div style={{ 
+                    marginBottom: '25px', 
+                    padding: 'clamp(15px, 4vw, 25px)', 
+                    background: 'white', 
+                    borderRadius: 4, 
+                    border: '1px solid #d9cfc3' 
+                  }}>
+                    <label style={{ 
+                      display: 'block', 
+                      marginBottom: '15px', 
+                      color: '#7a4f4f', 
+                      fontSize: 'clamp(0.95rem, 3vw, 1rem)', 
+                      fontWeight: '500', 
+                      letterSpacing: '0.5px' 
+                    }}>
                       Accompagnatore
                     </label>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+                    <div style={{ 
+                      display: 'grid', 
+                      gridTemplateColumns: '1fr',
+                      gap: '12px'
+                    }}>
                       <input
                         type="text"
                         value={plusOneFirstName}
                         onChange={(e) => setPlusOneFirstName(e.target.value)}
                         placeholder="Nome"
-                        style={{ padding: '15px', border: '1px solid #d9cfc3', borderRadius: 4, fontSize: '1rem', fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                        style={{ 
+                          padding: '12px', 
+                          border: '1px solid #d9cfc3', 
+                          borderRadius: 4, 
+                          fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
+                          fontFamily: "'Cormorant Garamond', Georgia, serif",
+                          width: '100%',
+                          boxSizing: 'border-box'
+                        }}
                       />
                       <input
                         type="text"
                         value={plusOneLastName}
                         onChange={(e) => setPlusOneLastName(e.target.value)}
                         placeholder="Cognome"
-                        style={{ padding: '15px', border: '1px solid #d9cfc3', borderRadius: 4, fontSize: '1rem', fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                        style={{ 
+                          padding: '12px', 
+                          border: '1px solid #d9cfc3', 
+                          borderRadius: 4, 
+                          fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
+                          fontFamily: "'Cormorant Garamond', Georgia, serif",
+                          width: '100%',
+                          boxSizing: 'border-box'
+                        }}
                       />
                     </div>
                   </div>
                 )}
 
+                {/* Bambini */}
                 {guest.has_children && rsvpStatus === 'yes' && (
-                  <div style={{ marginBottom: '30px' }}>
-                    <label style={{ display: 'block', marginBottom: '15px', color: '#7a4f4f', fontSize: '1rem', fontWeight: '500', letterSpacing: '0.5px' }}>
+                  <div style={{ marginBottom: '25px' }}>
+                    <label style={{ 
+                      display: 'block', 
+                      marginBottom: '12px', 
+                      color: '#7a4f4f', 
+                      fontSize: 'clamp(0.95rem, 3vw, 1rem)', 
+                      fontWeight: '500', 
+                      letterSpacing: '0.5px' 
+                    }}>
                       Numero di bambini
                     </label>
                     <input
@@ -721,44 +766,54 @@ export default function LandingClient() {
                       max="10"
                       value={childrenCount}
                       onChange={(e) => setChildrenCount(parseInt(e.target.value) || 0)}
-                      style={{ width: '100%', padding: '15px', border: '1px solid #d9cfc3', borderRadius: 4, fontSize: '1rem', fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                      style={{ 
+                        width: '100%', 
+                        padding: '12px', 
+                        border: '1px solid #d9cfc3', 
+                        borderRadius: 4, 
+                        fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
+                        fontFamily: "'Cormorant Garamond', Georgia, serif",
+                        boxSizing: 'border-box'
+                      }}
                     />
                   </div>
                 )}
 
                 {/* Alloggio */}
                 {rsvpStatus === 'yes' && (
-                  <div style={{ marginBottom: '30px' }}>
+                  <div style={{ marginBottom: '25px' }}>
                     {guest.accommodation_given ? (
-                      // Ha alloggio fornito dagli sposi
                       <div style={{
                         background: 'linear-gradient(135deg, #e7f3ff 0%, #d4e9ff 100%)',
                         border: '2px solid #7a9cc6',
                         borderRadius: 4,
-                        padding: '30px',
+                        padding: 'clamp(20px, 5vw, 30px)',
                         textAlign: 'center'
                       }}>
                         <h4 style={{
-                          fontSize: '1.5rem',
+                          fontSize: 'clamp(1.2rem, 4vw, 1.5rem)',
                           color: '#7a4f4f',
-                          marginBottom: '20px',
+                          marginBottom: '15px',
                           letterSpacing: '1px'
                         }}>
                           🎉 Hai l'accommodation inclusa in location!
                         </h4>
-                        <p style={{ color: '#5a7399', fontSize: '1rem', lineHeight: 1.6 }}>
-                          Abbiamo riservato una camera per te al Palazzo delle Biscie. 
+                        <p style={{ 
+                          color: '#5a7399', 
+                          fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
+                          lineHeight: 1.6 
+                        }}>
+                          Abbiamo riservato una camera per te al Palazzo delle Bisce. 
                           Riceverai tutti i dettagli via email prima dell'evento.
                         </p>
                       </div>
                     ) : (
-                      // Non ha alloggio - mostra direttamente la textarea
                       <div>
                         <label style={{
                           display: 'block',
-                          marginBottom: '15px',
+                          marginBottom: '12px',
                           color: '#7a4f4f',
-                          fontSize: '1rem',
+                          fontSize: 'clamp(0.95rem, 3vw, 1rem)',
                           fontWeight: '500',
                           letterSpacing: '0.5px'
                         }}>
@@ -767,26 +822,35 @@ export default function LandingClient() {
                         <textarea
                           value={accommodationNotes}
                           onChange={(e) => setAccommodationNotes(e.target.value)}
-                          placeholder="Indica il numero di persone e eventuali preferenze o necessità particolari (es. 2 persone, 1 notte, preferenza per hotel vicino alla location)"
+                          placeholder="Indica il numero di persone e eventuali preferenze (es. 2 persone, 1 notte)"
                           rows={4}
                           style={{
                             width: '100%',
-                            padding: '15px',
+                            padding: '12px',
                             border: '1px solid #d9cfc3',
                             borderRadius: 4,
-                            fontSize: '1rem',
+                            fontSize: 'clamp(0.9rem, 3vw, 1rem)',
                             fontFamily: "'Cormorant Garamond', Georgia, serif",
-                            resize: 'vertical'
+                            resize: 'vertical',
+                            boxSizing: 'border-box'
                           }}
                         />
                       </div>
                     )}
                   </div>
                 )}
-                
+
+                {/* Allergie */}
                 {rsvpStatus === 'yes' && (
-                  <div style={{ marginBottom: '30px' }}>
-                    <label style={{ display: 'block', marginBottom: '15px', color: '#7a4f4f', fontSize: '1rem', fontWeight: '500', letterSpacing: '0.5px' }}>
+                  <div style={{ marginBottom: '25px' }}>
+                    <label style={{ 
+                      display: 'block', 
+                      marginBottom: '12px', 
+                      color: '#7a4f4f', 
+                      fontSize: 'clamp(0.95rem, 3vw, 1rem)', 
+                      fontWeight: '500', 
+                      letterSpacing: '0.5px' 
+                    }}>
                       Allergie e intolleranze
                     </label>
                     <textarea
@@ -794,13 +858,30 @@ export default function LandingClient() {
                       onChange={(e) => setAllergiesNotes(e.target.value)}
                       placeholder="Indica eventuali allergie o intolleranze alimentari"
                       rows={3}
-                      style={{ width: '100%', padding: '15px', border: '1px solid #d9cfc3', borderRadius: 4, fontSize: '1rem', fontFamily: "'Cormorant Garamond', Georgia, serif", resize: 'vertical' }}
+                      style={{ 
+                        width: '100%', 
+                        padding: '12px', 
+                        border: '1px solid #d9cfc3', 
+                        borderRadius: 4, 
+                        fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
+                        fontFamily: "'Cormorant Garamond', Georgia, serif", 
+                        resize: 'vertical',
+                        boxSizing: 'border-box'
+                      }}
                     />
                   </div>
                 )}
 
-                <div style={{ marginBottom: '30px' }}>
-                  <label style={{ display: 'block', marginBottom: '15px', color: '#7a4f4f', fontSize: '1rem', fontWeight: '500', letterSpacing: '0.5px' }}>
+                {/* Messaggio */}
+                <div style={{ marginBottom: '25px' }}>
+                  <label style={{ 
+                    display: 'block', 
+                    marginBottom: '12px', 
+                    color: '#7a4f4f', 
+                    fontSize: 'clamp(0.95rem, 3vw, 1rem)', 
+                    fontWeight: '500', 
+                    letterSpacing: '0.5px' 
+                  }}>
                     Messaggio per gli sposi (opzionale)
                   </label>
                   <textarea
@@ -808,21 +889,31 @@ export default function LandingClient() {
                     onChange={(e) => setMessageToCouple(e.target.value)}
                     placeholder="Lasciaci un messaggio 💌"
                     rows={4}
-                    style={{ width: '100%', padding: '15px', border: '1px solid #d9cfc3', borderRadius: 4, fontSize: '1rem', fontFamily: "'Cormorant Garamond', Georgia, serif", resize: 'vertical' }}
+                    style={{ 
+                      width: '100%', 
+                      padding: '12px', 
+                      border: '1px solid #d9cfc3', 
+                      borderRadius: 4, 
+                      fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
+                      fontFamily: "'Cormorant Garamond', Georgia, serif", 
+                      resize: 'vertical',
+                      boxSizing: 'border-box'
+                    }}
                   />
                 </div>
 
+                {/* Submit */}
                 <button
                   type="submit"
                   disabled={loading}
                   style={{
                     width: '100%',
-                    padding: '18px',
+                    padding: 'clamp(14px, 4vw, 18px)',
                     background: '#7a4f4f',
                     color: 'white',
                     border: 'none',
                     borderRadius: 4,
-                    fontSize: '0.85rem',
+                    fontSize: 'clamp(0.8rem, 2.5vw, 0.85rem)',
                     fontWeight: '500',
                     cursor: loading ? 'not-allowed' : 'pointer',
                     opacity: loading ? 0.6 : 1,
@@ -836,7 +927,7 @@ export default function LandingClient() {
               </form>
             </div>
           )}
-
+          
           {step === 'success' && (
             <div style={{
               background: '#f9f5f1',
