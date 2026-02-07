@@ -151,10 +151,7 @@ export default function LandingClient() {
   }
 
   return (
-    <div style={{  color: '#2c2c2c', // <--- Mancava questa virgola
-    fontFamily: "'Playfair Display', serif", 
-    fontWeight: '400', 
-    fontStyle: 'italic'}}>
+    <div style={{  fontFamily: "'Cormorant Garamond', Georgia, serif", color: '#2c2c2c'}}>
       {/* Hero */}
       <section style={{
         minHeight: '80vh',
