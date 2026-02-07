@@ -1004,7 +1004,7 @@ export default function LandingClient() {
           © 2026 Martina & Francesco
         </p>
         <p style={{
-    fontSize: '0.7 rem',
+    fontSize: '0.4 rem',
       color: '#8b8376',
     letterSpacing: '1px', 
     fontFamily: "'Playfair Display', serif",
