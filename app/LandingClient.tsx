@@ -151,7 +151,7 @@ export default function LandingClient() {
   }
 
   return (
-    <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: '#2c2c2c' }}>
+    <div style={{  color: '#2c2c2c' fontFamily: "'Playfair Display', serif", fontWeight: '400', fontStyle: 'italic'}}>
       {/* Hero */}
       <section style={{
         minHeight: '80vh',
@@ -180,9 +180,6 @@ export default function LandingClient() {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              fontFamily: "'Playfair Display', serif",
-    fontWeight: '400',
-    fontStyle: 'italic',
             }}
           />
         </div>
