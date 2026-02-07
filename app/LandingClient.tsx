@@ -237,7 +237,7 @@ export default function LandingClient() {
             fontWeight: '300',
             textTransform: 'uppercase'
           }}>
-            Palazzo delle Biscie <br /> .
+            Palazzo delle Biscie <br />
           </p>
 
           <p style={{
