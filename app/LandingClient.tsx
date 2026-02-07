@@ -260,11 +260,12 @@ export default function LandingClient() {
       fontSize: 'clamp(1rem, 2vw, 1.3rem)',
       color: 'white',
             letterSpacing: '3px',
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: '300',
-            textTransform: 'uppercase'
+            fontFamily: "'Playfair Display', serif",
+    fontWeight: '400',
+    fontStyle: 'italic',
+            
     }}>
-     Conferma la tua presenza 
+     conferma la tua presenza 
     </p>
         <div style={{ 
     fontSize: '1rem', 
@@ -551,13 +552,9 @@ export default function LandingClient() {
       <section style={{ padding: '100px 20px', background: 'white' }}>
         <div style={{ maxWidth: '700px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{
-            fontSize: '1rem',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: '300',
             color: '#5C161E',
-
-      fontFamily: "'Playfair Display', serif",
-    fontWeight: '400',
-    fontStyle: 'italic',
             marginBottom: '50px',
             letterSpacing: '2px'
           }}>
