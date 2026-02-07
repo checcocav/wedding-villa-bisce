@@ -251,12 +251,13 @@ export default function LandingClient() {
   }}>
     <p style={{
       fontSize: 'clamp(1rem, 2vw, 1.3rem)',
+      color: 'white',
             letterSpacing: '3px',
             fontFamily: "'Montserrat', sans-serif",
             fontWeight: '300',
             textTransform: 'uppercase'
     }}>
-     Come la tua presenza <br /> v
+     Conferma la tua presenza <br /> v
     </p>
   </div>
       </section>
@@ -1010,10 +1011,9 @@ export default function LandingClient() {
     fontFamily: "'Playfair Display', serif",
     fontWeight: '400',
     fontStyle: 'italic',
-    lineHeight: '1.4',
+    lineHeight: '0.8',
     textAlign: 'center' // Opzionale: aggiunge eleganza se il testo è su due righe
 }}>
-    
     come for the love, stay for the party
 </p>
       </footer>
