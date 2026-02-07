@@ -257,8 +257,17 @@ export default function LandingClient() {
             fontWeight: '300',
             textTransform: 'uppercase'
     }}>
-     Conferma la tua presenza <br /> v
+     Conferma la tua presenza 
     </p>
+        <div style={{ 
+    fontSize: '1.5rem', 
+    marginTop: '10px', 
+    fontWeight: '300',
+    display: 'inline-block', // Necessario per applicare transform
+    animation: 'bounce 2s infinite ease-in-out' // <--- Il trucco è qui
+  }}>
+    ∨
+  </div>
   </div>
       </section>
       
