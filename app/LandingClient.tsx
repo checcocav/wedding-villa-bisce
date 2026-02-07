@@ -576,7 +576,7 @@ export default function LandingClient() {
                 marginBottom: '30px',
                 lineHeight: '1.6'
               }}>
-                Inserisci la tua email per accedere al modulo RSVP
+                Inserisci la tua email per rispondere
               </p>
 
               {error && (
