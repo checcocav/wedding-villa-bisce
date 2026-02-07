@@ -968,7 +968,7 @@ export default function LandingClient() {
                     textTransform: 'uppercase'
                   }}
                 >
-                  {loading ? 'Salvataggio...' : 'Salva RSVP'}
+                  {loading ? 'Salvataggio...' : 'Salva'}
                 </button>
               </form>
             </div>
