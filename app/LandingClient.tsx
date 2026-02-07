@@ -241,7 +241,7 @@ export default function LandingClient() {
           </p>
 
           <p style={{
-    fontSize: '1.5rem', // Fixed size or use a simpler scale
+    fontSize: '1rem', // Fixed size or use a simpler scale
     letterSpacing: '1px', 
     fontFamily: "'Playfair Display', serif",
     fontWeight: '400',
