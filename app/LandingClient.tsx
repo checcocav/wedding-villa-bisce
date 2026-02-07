@@ -551,9 +551,13 @@ export default function LandingClient() {
       <section style={{ padding: '100px 20px', background: 'white' }}>
         <div style={{ maxWidth: '700px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{
-            fontSize: 'clamp(2rem, 5vw, 3rem)',
+            fontSize: '1rem',
             fontWeight: '300',
             color: '#5C161E',
+
+      fontFamily: "'Playfair Display', serif",
+    fontWeight: '400',
+    fontStyle: 'italic',
             marginBottom: '50px',
             letterSpacing: '2px'
           }}>
