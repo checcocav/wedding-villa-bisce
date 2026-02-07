@@ -240,6 +240,25 @@ export default function LandingClient() {
             Palazzo delle Biscie
           </p>
         </div>
+
+      <div style={{
+    position: 'absolute',
+    bottom: '20px', // Distanza dal bordo inferiore
+    left: '0',
+    right: '0',
+    textAlign: 'center',
+    zIndex: 10 // Per assicurarne la visibilità sopra l'immagine
+  }}>
+    <p style={{
+      fontSize: '1.1rem',
+      fontFamily: "'Playfair Display', serif",
+      fontStyle: 'italic',
+      margin: 0,
+      lineHeight: '1.4'
+    }}>
+     Come la tua presenza <br /> v
+    </p>
+  </div>
       </section>
       
       {/* Countdown */}
@@ -985,7 +1004,8 @@ export default function LandingClient() {
           © 2026 Martina & Francesco
         </p>
         <p style={{
-    fontSize: '1.1rem',
+    fontSize: '0.7 rem',
+      color: '#8b8376',
     letterSpacing: '1px', 
     fontFamily: "'Playfair Display', serif",
     fontWeight: '400',
