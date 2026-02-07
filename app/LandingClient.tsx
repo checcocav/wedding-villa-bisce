@@ -29,8 +29,8 @@ export default function LandingClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-  const [isIphoneSize, setIsIphoneSize] = useState(false)
-
+const [isSafari, setIsSafari] = useState(false)
+  
   const [rsvpStatus, setRsvpStatus] = useState<'yes' | 'no' | ''>('')
   const [plusOneFirstName, setPlusOneFirstName] = useState('')
   const [plusOneLastName, setPlusOneLastName] = useState('')
@@ -57,11 +57,12 @@ export default function LandingClient() {
     return () => clearInterval(interval)
   }, [])
 
-  useEffect(() => {
-  const checkSize = () => setIsIphoneSize(window.innerWidth <= 430)
-  checkSize() // Check on mount
-  window.addEventListener('resize', checkSize)
-  return () => window.removeEventListener('resize', checkSize)
+ useEffect(() => {
+  const checkSafari = () => {
+    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+    setIsSafari(isSafariBrowser)
+  }
+  checkSafari()
 }, [])
 
   const faqs = [
@@ -162,7 +163,7 @@ export default function LandingClient() {
     <div style={{  fontFamily: "'Cormorant Garamond', Georgia, serif", color: '#2c2c2c'}}>
       {/* Hero */}
       <section style={{
-        minHeight: isIphoneSize ? '80vh' : '100vh',
+        minHeight: isSafari ? '80vh' : '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
