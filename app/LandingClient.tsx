@@ -250,11 +250,11 @@ export default function LandingClient() {
     zIndex: 10 // Per assicurarne la visibilità sopra l'immagine
   }}>
     <p style={{
-      fontSize: '1.1rem',
-      fontFamily: "'Playfair Display', serif",
-      fontStyle: 'italic',
-      margin: 0,
-      lineHeight: '1.4'
+      fontSize: 'clamp(1rem, 2vw, 1.3rem)',
+            letterSpacing: '3px',
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: '300',
+            textTransform: 'uppercase'
     }}>
      Come la tua presenza <br /> v
     </p>
