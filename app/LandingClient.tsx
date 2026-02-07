@@ -154,7 +154,7 @@ export default function LandingClient() {
     <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: '#2c2c2c' }}>
       {/* Hero */}
       <section style={{
-        minHeight: '60vh',
+        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -237,19 +237,8 @@ export default function LandingClient() {
             fontWeight: '300',
             textTransform: 'uppercase'
           }}>
-            Palazzo delle Biscie <br />
+            Palazzo delle Biscie
           </p>
-
-          <p style={{
-    fontSize: '1rem', // Fixed size or use a simpler scale
-    letterSpacing: '1px', 
-    fontFamily: "'Playfair Display', serif",
-    fontWeight: '400',
-    fontStyle: 'italic', // Curvy look
-    lineHeight: '1.4'
-}}>
-   <br /> come for the love, stay for the party
-</p>
         </div>
       </section>
       
@@ -994,6 +983,7 @@ export default function LandingClient() {
       <footer style={{ padding: '60px 20px', textAlign: 'center', background: 'white', borderTop: '1px solid #A4B3A9' }}>
         <p style={{ fontSize: '0.9rem', color: '#8b8376', margin: 0, letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif" }}>
           © 2026 Martina & Francesco
+          <br /> come for the love, stay for the party
         </p>
       </footer>
     </div>
