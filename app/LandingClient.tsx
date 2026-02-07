@@ -231,15 +231,25 @@ export default function LandingClient() {
           </p>
           
           <p style={{
-            fontSize: '1.5rem', // Fixed size or use a simpler scale
+            fontSize: 'clamp(1rem, 2vw, 1.3rem)',
+            letterSpacing: '3px',
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: '300',
+            textTransform: 'uppercase'
+          }}>
+            Palazzo delle Biscie <br /> come for the love, stay for the party.
+          </p>
+
+          <p style={{
+    fontSize: '1.5rem', // Fixed size or use a simpler scale
     letterSpacing: '1px', 
     fontFamily: "'Playfair Display', serif",
     fontWeight: '400',
     fontStyle: 'italic', // Curvy look
     lineHeight: '1.4'
-          }}>
-            Palazzo delle Biscie <br /> Come for the love, stay for the party.
-          </p>
+}}>
+    come for the love, stay for the party
+</p>
         </div>
       </section>
       
