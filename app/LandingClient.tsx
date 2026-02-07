@@ -980,24 +980,6 @@ export default function LandingClient() {
         </div>
       </section>
 
-      {/* Gallery 
-      <section style={{ padding: '100px 20px', background: '#A4B3A9', textAlign: 'center' }}>
-        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '300', color: '#5C161E', marginBottom: '30px', letterSpacing: '2px' }}>
-          Condividi i tuoi momenti
-        </h2>
-        <p style={{ fontSize: '1.1rem', marginBottom: '50px', color: '#6b5d52' }}>
-          Carica e visualizza le foto della giornata
-        </p>
-        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="/public-photos" style={{ display: 'inline-block', padding: '16px 40px', background: '#5C161E', color: 'white', textDecoration: 'none', borderRadius: 4, fontSize: '0.85rem', letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif", fontWeight: '500' }}>
-            📷 Carica Foto
-          </a>
-          <a href="/gallery" style={{ display: 'inline-block', padding: '16px 40px', background: 'transparent', color: '#5C161E', textDecoration: 'none', borderRadius: 4, fontSize: '0.85rem', letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif", fontWeight: '500', border: '1px solid #5C161E' }}>
-            🖼️ Gallery
-          </a>
-        </div>
-      </section> */}
-
       <footer style={{ padding: '60px 20px', textAlign: 'center', background: 'white', borderTop: '1px solid #A4B3A9' }}>
         <p style={{ fontSize: '0.9rem', color: '#8b8376', margin: 0, letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif" }}>
           © 2026 Martina & Francesco
