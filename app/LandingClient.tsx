@@ -163,7 +163,7 @@ const [isSafari, setIsSafari] = useState(false)
     <div style={{  fontFamily: "'Cormorant Garamond', Georgia, serif", color: '#2c2c2c'}}>
       {/* Hero */}
       <section style={{
-        minHeight: isSafari ? '80vh' : '100vh',
+        minHeight: isSafari ? '80vh' : '95vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
