@@ -179,7 +179,10 @@ export default function LandingClient() {
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover'
+              objectFit: 'cover',
+              fontFamily: "'Playfair Display', serif",
+    fontWeight: '400',
+    fontStyle: 'italic',
             }}
           />
         </div>
