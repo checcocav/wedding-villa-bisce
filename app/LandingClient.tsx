@@ -980,7 +980,7 @@ export default function LandingClient() {
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Gallery 
       <section style={{ padding: '100px 20px', background: '#A4B3A9', textAlign: 'center' }}>
         <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '300', color: '#5C161E', marginBottom: '30px', letterSpacing: '2px' }}>
           Condividi i tuoi momenti
@@ -996,11 +996,11 @@ export default function LandingClient() {
             🖼️ Gallery
           </a>
         </div>
-      </section>
+      </section> */}
 
       <footer style={{ padding: '60px 20px', textAlign: 'center', background: 'white', borderTop: '1px solid #A4B3A9' }}>
         <p style={{ fontSize: '0.9rem', color: '#8b8376', margin: 0, letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif" }}>
-          © 2026 Martina & Francesco · Con amore
+          © 2026 Martina & Francesco
         </p>
       </footer>
     </div>
