@@ -154,7 +154,7 @@ export default function LandingClient() {
     <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: '#2c2c2c' }}>
       {/* Hero */}
       <section style={{
-        minHeight: '100vh',
+        minHeight: '80vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -173,8 +173,8 @@ export default function LandingClient() {
         }}>
           <img 
             src="https://cdn.jsdelivr.net/gh/checcocav/wedding-villa-bisce@main/foto_sfondo.jpeg"
-            alt="Martina  <br />
-            & <br />
+            alt="Martina  
+            & 
             Francesco" 
             style={{
               width: '100%',
