@@ -206,8 +206,8 @@ export default function LandingClient() {
         }}>
           <h1 style={{
             fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
-            fontWeight: '300',
-            margin: '0 0 30px 0',
+            color: '#2c2c2c', fontFamily: "'Playfair Display', serif", fontWeight: '400', fontStyle: 'italic',
+                        margin: '0 0 30px 0',
             letterSpacing: '4px',
             textTransform: 'uppercase'
           }}>
