@@ -267,12 +267,12 @@ export default function LandingClient() {
      Conferma la tua presenza 
     </p>
         <div style={{ 
-    fontSize: '1.2rem', 
+    fontSize: '1rem', 
   color: 'white',
     marginTop: '10px', 
     fontWeight: '300',
-    display: 'inline-block', // Necessario per applicare transform
-    animation: 'bounce 2s infinite ease-in-out' // <--- Il trucco è qui
+    display: 'inline-block', 
+    animation: 'bounce 2s infinite ease-in-out' 
   }}>
     ∨
   </div>
@@ -1022,7 +1022,7 @@ export default function LandingClient() {
           © 2026 Martina & Francesco
         </p>
         <p style={{
-    fontSize: '0.4 rem',
+    fontSize: '0.4rem',
       color: '#8b8376',
     letterSpacing: '1px', 
     fontFamily: "'Playfair Display', serif",
