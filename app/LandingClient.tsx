@@ -985,6 +985,18 @@ export default function LandingClient() {
           © 2026 Martina & Francesco
           <br /> come for the love, stay for the party
         </p>
+        <p style={{
+    fontSize: '1.1rem',
+    letterSpacing: '1px', 
+    fontFamily: "'Playfair Display', serif",
+    fontWeight: '400',
+    fontStyle: 'italic',
+    lineHeight: '1.4',
+    textAlign: 'center' // Opzionale: aggiunge eleganza se il testo è su due righe
+}}>
+    
+    Come for the love, stay for the party.
+</p>
       </footer>
     </div>
   )
