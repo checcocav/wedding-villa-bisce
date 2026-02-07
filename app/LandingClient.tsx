@@ -53,6 +53,14 @@ export default function LandingClient() {
     }
     updateCountdown()
     const interval = setInterval(updateCountdown, 1000)
+    <style>
+{`
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+`}
+</style>
     return () => clearInterval(interval)
   }, [])
 
