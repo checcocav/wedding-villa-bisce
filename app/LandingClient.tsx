@@ -154,7 +154,7 @@ export default function LandingClient() {
     <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: '#2c2c2c' }}>
       {/* Hero */}
       <section style={{
-        minHeight: '100vh',
+        minHeight: '80vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -178,7 +178,7 @@ export default function LandingClient() {
             Francesco" 
             style={{
               width: '100%',
-              height: '80%',
+              height: '100%',
               objectFit: 'cover'
             }}
           />
