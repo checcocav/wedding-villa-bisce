@@ -151,7 +151,7 @@ export default function LandingClient() {
   }
 
   return (
-    <div style={{  color: '#2c2c2c' fontFamily: "'Playfair Display', serif", fontWeight: '400', fontStyle: 'italic'}}>
+    <div style={{  color: '#2c2c2c' fontFamily: "'Playfair Display', serif" }}>
       {/* Hero */}
       <section style={{
         minHeight: '80vh',
