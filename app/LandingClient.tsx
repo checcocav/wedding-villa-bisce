@@ -63,15 +63,15 @@ export default function LandingClient() {
     },
     { 
       question: "Posso fare foto durante l'evento?", 
-      answer: "Siete liberissimi di fare foto durante tutto l'evento, lo raccomandiamo! Vi chiediamo la cortesia di caricarle nella sezione dedicata nella vostra area personale." 
+      answer: "Siete liberissimi di fare foto durante tutto l'evento, lo raccomandiamo! Vi chiediamo la cortesia di condividerle con noi." 
     },
     { 
       question: "È possibile prenotare un alloggio per la notte?", 
       answer: "In zona ci sono diverse alternative. Nel caso vogliate supporto potete indicarlo nella vostra area riservata e vi daremo una mano noi!" 
     },
     { 
-      question: "Come posso fare il regalo",  
-      answer: "Al momento non è ancora possibile regalarci qualcosa. In futuro al posto di questa risposta verrà indicato come poter fare." 
+      question: "Cosa posso regalarvi?",  
+      answer: "Il regalo più bello sarà condividere con voi questo giorno speciale. Per chi lo desidera, è possibile contribuire al nostro viaggio di nozze: un safari in Sudafrica e il relax delle Seychelles, un sogno che non vediamo l’ora di vivere insieme. Il nostro IBAN apparirà in questo box qualche settimana prima del matrimonio." 
     }
   ]
 
