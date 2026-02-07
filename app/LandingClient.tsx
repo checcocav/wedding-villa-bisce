@@ -237,7 +237,7 @@ export default function LandingClient() {
             fontWeight: '300',
             textTransform: 'uppercase'
           }}>
-            Palazzo delle Biscie <br /> come for the love, stay for the party.
+            Palazzo delle Biscie <br /> .
           </p>
 
           <p style={{
@@ -248,7 +248,7 @@ export default function LandingClient() {
     fontStyle: 'italic', // Curvy look
     lineHeight: '1.4'
 }}>
-    come for the love, stay for the party
+   <br /> come for the love, stay for the party
 </p>
         </div>
       </section>
