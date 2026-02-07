@@ -267,7 +267,8 @@ export default function LandingClient() {
      Conferma la tua presenza 
     </p>
         <div style={{ 
-    fontSize: '1.5rem', 
+    fontSize: '1.2rem', 
+  color: 'white',
     marginTop: '10px', 
     fontWeight: '300',
     display: 'inline-block', // Necessario per applicare transform
