@@ -2,15 +2,6 @@
 
 import { useState, useEffect } from 'react'
 
-<style>
-{`
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(10px); }
-  }
-`}
-</style>
-
 type Guest = {
   id: string
   first_name: string
@@ -249,7 +240,14 @@ export default function LandingClient() {
             Palazzo delle Biscie
           </p>
         </div>
-
+<style>
+    {`
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+      }
+    `}
+  </style>  
       <div style={{
     position: 'absolute',
     bottom: '20px', // Distanza dal bordo inferiore
