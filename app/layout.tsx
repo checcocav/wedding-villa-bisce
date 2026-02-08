@@ -8,7 +8,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Matrimonio Martina & Francesco",
-  description: ""Palazzo delle Biscie - 29 Agosto 2026",
+  description: "Palazzo delle Biscie - 29 Agosto 2026",
   manifest: "/manifest.json",
   themeColor: "#007bff",
   appleWebApp: {
