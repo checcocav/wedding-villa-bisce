@@ -7,14 +7,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Matrimonio Villa delle Bisce",
-  description: "RSVP e gallery foto del matrimonio - 29 Agosto 2026",
+  title: "Matrimonio Martina & Francesco",
+  description: ""Palazzo delle Biscie - 29 Agosto 2026",
   manifest: "/manifest.json",
   themeColor: "#007bff",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Villa Bisce",
+    title: "Villa Biscie",
   },
 };
 
