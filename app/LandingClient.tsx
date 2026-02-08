@@ -858,7 +858,7 @@ const [isSafari, setIsSafari] = useState(false)
                           fontSize: 'clamp(0.9rem, 3vw, 1rem)', 
                           lineHeight: 1.6 
                         }}>
-                          Abbiamo riservato una camera per te al Palazzo delle Bisce. 
+                          Abbiamo riservato una camera per te al Palazzo delle Biscie. 
                           Riceverai tutti i dettagli via email prima dell'evento.
                         </p>
                       </div>
