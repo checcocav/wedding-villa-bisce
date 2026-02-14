@@ -45,4 +45,34 @@ export async function POST(req: Request) {
     }
     
     // Now update with .select() to see what changed
-    const { data: updateDat
+    const { data: updateData, error: updateError } = await supabase
+      .from('guests')
+      .update({
+        rsvp_status: status,
+        user_id: user.id,
+        updated_at: new Date().toISOString()
+      })
+      .eq('email', user.email)
+      .select()
+    
+    console.log('Update result:', updateData)
+    console.log('Update error:', updateError)
+    
+    if (updateError) {
+      console.error('Update error:', updateError)
+      return NextResponse.redirect(new URL('/dashboard?error=update_failed', req.url))
+    }
+    
+    if (!updateData || updateData.length === 0) {
+      console.error('Update succeeded but no rows affected')
+      return NextResponse.redirect(new URL('/dashboard?error=no_rows_updated', req.url))
+    }
+    
+    console.log('✅ RSVP updated successfully')
+    return NextResponse.redirect(new URL('/dashboard?success=rsvp_saved', req.url))
+    
+  } catch (error) {
+    console.error('Unexpected error in RSVP route:', error)
+    return NextResponse.redirect(new URL('/dashboard?error=unexpected', req.url))
+  }
+}
