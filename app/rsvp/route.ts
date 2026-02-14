@@ -24,19 +24,21 @@ export async function POST(req: Request) {
       return NextResponse.redirect(new URL('/login', req.url))
     }
     
+    // Update by EMAIL instead of user_id, and also set user_id
     const { error: updateError } = await supabase
       .from('guests')
       .update({
         rsvp_status: status,
+        user_id: user.id  // Also populate user_id for future use
       })
-      .eq('user_id', user.id)
+      .eq('email', user.email)  // Match by email instead
     
     if (updateError) {
       console.error('Update error:', updateError)
       return NextResponse.redirect(new URL('/dashboard?error=update_failed', req.url))
     }
     
-    console.log('RSVP updated successfully for user:', user.id, 'Status:', status)
+    console.log('RSVP updated successfully for user:', user.email, 'Status:', status)
     return NextResponse.redirect(new URL('/dashboard?success=rsvp_saved', req.url))
     
   } catch (error) {
