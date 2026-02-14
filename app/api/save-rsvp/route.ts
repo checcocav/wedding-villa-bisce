@@ -16,6 +16,10 @@ export async function POST(req: Request) {
       message_to_couple,
     } = body
 
+    console.log('=== SAVE RSVP DEBUG ===')
+    console.log('Email received:', email)
+    console.log('RSVP status:', rsvp_status)
+
     if (!email || !rsvp_status) {
       return NextResponse.json({ 
         error: 'Email e stato RSVP sono obbligatori' 
@@ -28,20 +32,27 @@ export async function POST(req: Request) {
     )
 
     const normalizedEmail = email.toLowerCase().trim()
+    console.log('Normalized email:', normalizedEmail)
 
     // Verifica che il guest esista
-    const { data: guests } = await supabase
+    const { data: guests, error: fetchError } = await supabase
       .from('guests')
-      .select('id, has_plus_one, has_children')
+      .select('id, has_plus_one, has_children, email, rsvp_status')
       .ilike('email', normalizedEmail)
 
+    console.log('Guests found:', guests)
+    console.log('Fetch error:', fetchError)
+
     if (!guests || guests.length === 0) {
+      console.error('No guest found for email:', normalizedEmail)
       return NextResponse.json({ 
         error: 'Guest non trovato' 
       }, { status: 404 })
     }
 
     const existingGuest = guests[0]
+    console.log('Existing guest ID:', existingGuest.id)
+    console.log('Current RSVP status:', existingGuest.rsvp_status)
 
     // Prepara i dati da aggiornare
     const updateData: any = {
@@ -63,11 +74,17 @@ export async function POST(req: Request) {
     updateData.needs_accommodation = needs_accommodation || false
     updateData.accommodation_notes = accommodation_notes || null
 
+    console.log('Update data:', updateData)
+
     // Aggiorna il database
-    const { error: updateError } = await supabase
+    const { data: updatedData, error: updateError } = await supabase
       .from('guests')
       .update(updateData)
       .eq('id', existingGuest.id)
+      .select()
+
+    console.log('Updated data:', updatedData)
+    console.log('Update error:', updateError)
 
     if (updateError) {
       console.error('Update error:', updateError)
@@ -76,6 +93,14 @@ export async function POST(req: Request) {
       }, { status: 500 })
     }
 
+    if (!updatedData || updatedData.length === 0) {
+      console.error('Update succeeded but no rows affected')
+      return NextResponse.json({ 
+        error: 'Nessuna riga aggiornata' 
+      }, { status: 500 })
+    }
+
+    console.log('✅ RSVP saved successfully!')
     return NextResponse.json({ 
       success: true,
       message: 'RSVP salvato con successo!' 
