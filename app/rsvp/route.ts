@@ -24,25 +24,25 @@ export async function POST(req: Request) {
       return NextResponse.redirect(new URL('/login', req.url))
     }
     
-    // Update by EMAIL instead of user_id, and also set user_id
-    const { error: updateError } = await supabase
-      .from('guests')
-      .update({
-        rsvp_status: status,
-        user_id: user.id  // Also populate user_id for future use
-      })
-      .eq('email', user.email)  // Match by email instead
+    console.log('=== RSVP UPDATE DEBUG ===')
+    console.log('User ID:', user.id)
+    console.log('User email:', user.email)
+    console.log('New status:', status)
     
-    if (updateError) {
-      console.error('Update error:', updateError)
-      return NextResponse.redirect(new URL('/dashboard?error=update_failed', req.url))
+    // First, check if guest exists with this email
+    const { data: existingGuest, error: checkError } = await supabase
+      .from('guests')
+      .select('id, email, user_id, rsvp_status')
+      .eq('email', user.email)
+      .single()
+    
+    console.log('Existing guest found:', existingGuest)
+    console.log('Check error:', checkError)
+    
+    if (!existingGuest) {
+      console.error('No guest found with email:', user.email)
+      return NextResponse.redirect(new URL('/dashboard?error=guest_not_found', req.url))
     }
     
-    console.log('RSVP updated successfully for user:', user.email, 'Status:', status)
-    return NextResponse.redirect(new URL('/dashboard?success=rsvp_saved', req.url))
-    
-  } catch (error) {
-    console.error('Unexpected error in RSVP route:', error)
-    return NextResponse.redirect(new URL('/dashboard?error=unexpected', req.url))
-  }
-}
+    // Now update with .select() to see what changed
+    const { data: updateDat
