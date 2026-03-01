@@ -80,7 +80,7 @@ const [isSafari, setIsSafari] = useState(false)
     },
     { 
       question: "Cosa posso regalarvi?",  
-      answer: "Il regalo più bello sarà condividere con voi questo giorno speciale. Per chi lo desidera, è possibile contribuire al nostro viaggio di nozze: un safari in Sudafrica e il relax delle Seychelles, un sogno che non vediamo l’ora di vivere insieme. Il nostro IBAN apparirà in questo box qualche settimana prima del matrimonio." 
+      answer: "Il regalo più bello sarà condividere con voi questo giorno speciale. Per chi lo desidera, è possibile contribuire al nostro viaggio di nozze: un safari in Sudafrica e il relax delle Seychelles, un sogno che non vediamo l’ora di vivere insieme. Il nostro IBAN: IT92D0366901600137256412366. Intestato a: Francesco Cavina & Martina Balboni" 
     }
   ]
 
