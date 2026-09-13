@@ -291,7 +291,7 @@ const [isSafari, setIsSafari] = useState(false)
   </div>
       </section>
       
-      {/* Countdown */}
+{/* Countdown / Thank You */}
       <section style={{ padding: '100px 20px', background: 'white', textAlign: 'center' }}>
         <h2 style={{
           fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -300,48 +300,47 @@ const [isSafari, setIsSafari] = useState(false)
           marginBottom: '60px',
           letterSpacing: '2px'
         }}>
-          Quanto manca al nostro "Lo Voglio"
+          Il nostro "Lo Voglio"
         </h2>
         
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
+          gridTemplateColumns: '1fr',
           gap: 30,
           maxWidth: '600px',
           margin: '0 auto'
         }}>
-          {[
-            { value: timeLeft.days, label: 'Giorni' },
-            { value: timeLeft.hours, label: 'Ore' },
-            { value: timeLeft.minutes, label: 'Minuti' },
-            { value: timeLeft.seconds, label: 'Secondi' }
-          ].map((item, i) => (
-            <div key={i} style={{
-              padding: '40px 20px',
-              background: '#F2E6E1',
-              border: '1px solid #F2E6E1',
-              borderRadius: 4
+          <div style={{
+            padding: '60px 20px',
+            background: '#F2E6E1',
+            border: '1px solid #F2E6E1',
+            borderRadius: 4,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            align: 'center',
+            minHeight: '220px'
+          }}>
+            <div style={{
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.2rem)',
+              fontWeight: '300',
+              color: '#5C161E',
+              marginBottom: 15,
+              lineHeight: 1.4,
+              fontFamily: "'Montserrat', sans-serif"
             }}>
-              <div style={{
-                fontSize: 'clamp(3rem, 8vw, 5rem)',
-                fontWeight: '300',
-                color: '#5C161E',
-                marginBottom: 10,
-                lineHeight: 1
-              }}>
-                {item.value}
-              </div>
-              <div style={{
-                fontSize: '0.9rem',
-                color: '#a8836f',
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                fontFamily: "'Montserrat', sans-serif"
-              }}>
-                {item.label}
-              </div>
+              Grazie a tutti di aver partecipato!
             </div>
-          ))}
+            <div style={{
+              fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+              color: '#a8836f',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              fontFamily: "'Montserrat', sans-serif"
+            }}>
+              Vi vogliamo bene
+            </div>
+          </div>
         </div>
       </section>
 
