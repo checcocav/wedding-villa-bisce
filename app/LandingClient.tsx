@@ -290,19 +290,8 @@ const [isSafari, setIsSafari] = useState(false)
   </div>
   </div>
       </section>
-      
-{/* Countdown / Thank You */}
+      {/* Thank You Section */}
       <section style={{ padding: '100px 20px', background: 'white', textAlign: 'center' }}>
-        <h2 style={{
-          fontSize: 'clamp(2rem, 5vw, 3rem)',
-          fontWeight: '300',
-          color: '#5C161E',
-          marginBottom: '60px',
-          letterSpacing: '2px'
-        }}>
-          Il nostro "Lo Voglio"
-        </h2>
-        
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr',
@@ -322,11 +311,12 @@ const [isSafari, setIsSafari] = useState(false)
             minHeight: '220px'
           }}>
             <div style={{
-              fontSize: 'clamp(1.5rem, 3.5vw, 2.2rem)',
+              fontSize: 'clamp(2rem, 5vw, 3rem)',
               fontWeight: '300',
               color: '#5C161E',
               marginBottom: 15,
-              lineHeight: 1.4,
+              lineHeight: 1.2,
+              letterSpacing: '2px',
               fontFamily: "'Montserrat', sans-serif"
             }}>
               Grazie a tutti di aver partecipato!
@@ -343,6 +333,7 @@ const [isSafari, setIsSafari] = useState(false)
           </div>
         </div>
       </section>
+
       {/* Location */}
       <section style={{ padding: '100px 20px', background: '#A4B3A9', textAlign: 'center' }}>
         <h2 style={{
