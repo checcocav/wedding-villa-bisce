@@ -300,6 +300,7 @@ const [isSafari, setIsSafari] = useState(false)
           letterSpacing: '2px'
         }}>
           Grazie a tutti di aver partecipato!
+        <br />
           Vi vogliamo bene
         </h2>
       </section>
