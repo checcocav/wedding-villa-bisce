@@ -292,46 +292,16 @@ const [isSafari, setIsSafari] = useState(false)
       </section>
       {/* Thank You Section */}
       <section style={{ padding: '100px 20px', background: 'white', textAlign: 'center' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gap: 30,
-          maxWidth: '600px',
-          margin: '0 auto'
+      <h2 style={{
+          fontSize: 'clamp(2rem, 5vw, 3rem)',
+          fontWeight: '300',
+          color: '#5C161E',
+          marginBottom: '60px',
+          letterSpacing: '2px'
         }}>
-          <div style={{
-            padding: '60px 20px',
-            background: '#F2E6E1',
-            border: '1px solid #F2E6E1',
-            borderRadius: 4,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            minHeight: '220px'
-          }}>
-            <div style={{
-              fontSize: 'clamp(2rem, 5vw, 3rem)',
-              fontWeight: '300',
-              color: '#5C161E',
-              marginBottom: 15,
-              lineHeight: 1.2,
-              letterSpacing: '2px',
-              fontFamily: "'Montserrat', sans-serif"
-            }}>
-              Grazie a tutti di aver partecipato!
-            </div>
-            <div style={{
-              fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-              color: '#a8836f',
-              letterSpacing: '2px',
-              textTransform: 'uppercase',
-              fontFamily: "'Montserrat', sans-serif"
-            }}>
-              Vi vogliamo bene
-            </div>
-          </div>
-        </div>
+          Grazie a tutti di aver partecipato!
+          Vi vogliamo bene
+        </h2>
       </section>
 
       {/* Location */}
