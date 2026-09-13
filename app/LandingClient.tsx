@@ -290,18 +290,37 @@ const [isSafari, setIsSafari] = useState(false)
   </div>
   </div>
       </section>
-      {/* Thank You Section */}
-      <section style={{ padding: '100px 20px', background: 'white', textAlign: 'center' }}>
-      <h2 style={{
+      
+    {/* Thank You Section */}
+      <section style={{ 
+        padding: '100px 20px', 
+        background: 'white', 
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '400px' // Adjust this height if you want the section taller or shorter
+      }}>
+        <h2 style={{
           fontSize: 'clamp(2rem, 5vw, 3rem)',
           fontWeight: '300',
           color: '#5C161E',
-          marginBottom: '60px',
-          letterSpacing: '2px'
+          marginBottom: '0', // Removes default browser margin causing the shift
+          letterSpacing: '2px',
+          lineHeight: '1.4'  // Gives a nice breathing room between the two lines
         }}>
           Grazie a tutti di aver partecipato!
-        <br />
-          Vi vogliamo bene
+          <br />
+          <span style={{
+            fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+            color: '#a8836f',
+            textTransform: 'uppercase',
+            display: 'inline-block',
+            marginTop: '15px' // Space between the main sentence and this line
+          }}>
+            Vi vogliamo bene
+          </span>
         </h2>
       </section>
 
