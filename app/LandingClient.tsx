@@ -318,7 +318,7 @@ const [isSafari, setIsSafari] = useState(false)
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            align: 'center',
+            alignItems: 'center',
             minHeight: '220px'
           }}>
             <div style={{
@@ -343,7 +343,6 @@ const [isSafari, setIsSafari] = useState(false)
           </div>
         </div>
       </section>
-
       {/* Location */}
       <section style={{ padding: '100px 20px', background: '#A4B3A9', textAlign: 'center' }}>
         <h2 style={{
